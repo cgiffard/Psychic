@@ -54,7 +54,7 @@ fs.readdir("./test",function(err,dirContents) {
 	if (err) throw err;
 	
 	// No errors? Loop through each of these files, read, parse, show titles.
-	[dirContents.shift()].forEach(function(file,index) {
+	dirContents.forEach(function(file,index) {
 		
 		// Read in...
 		fs.readFile("./test/" + file, function(err,data) {
@@ -65,7 +65,7 @@ fs.readdir("./test",function(err,dirContents) {
 			// Psych!
 			var psy = new Psychic(data);
 			var title = psy.getTitle();
-			
+			//logTree(psy.parseTree);
 			console.log(file + "\t\t" + title + "\n\n\n");
 			
 			//logTree(psy.parseTree);

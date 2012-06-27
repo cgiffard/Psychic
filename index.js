@@ -2,6 +2,47 @@
 // Simple content extraction.
 // Christopher Giffard
 
+function printAttr(tree) {
+	var attrs = [];
+	for (attrName in tree.attributes) {
+		if (tree.attributes.hasOwnProperty(attrName)) {
+			attrs.push(attrName + "='" + tree.attributes[attrName] + "'");
+		}
+	}
+
+	return attrs.length ? " " + attrs.join(" ") : "";
+}
+
+function logTree(tree,depth) {
+	var indent = "", depth = depth || 0;
+	while (indent.length < depth) indent += "\t";
+
+	if (tree.nodeType === 3) {
+		if (tree.textContent.replace(/\s+/ig,"").length) {
+			console.log(indent + tree.textContent.replace(/\s+/ig," "));
+		}
+	} else if (tree.nodeType === 8) {
+		console.log(indent + "<!-- " + tree.textContent.replace(/\s+/ig," ") + " -->");
+	} else if (tree.nodeType === 1) {
+		var nodeAttributes = printAttr(tree);
+		console.log(indent + "<" + tree.tagName + nodeAttributes + (tree.childNodes.length ? "" : "/") + ">");
+	} else if (tree.nodeType === 99) {
+		// Ignore document node, but decrement depth to balance tree...
+		depth --;
+	} else {
+		console.log(indent + "<? [[ " + tree.nodeType + ":" + tree.nodeValue + " ]] ?>");
+	}
+
+	if (tree && tree.childNodes && tree.childNodes.length) {
+		tree.childNodes.forEach(function(node) {
+			logTree(node,depth+1);
+		});
+
+		if (tree.nodeType === 1) {
+			console.log(indent + "</" + tree.tagName + ">");
+		}
+	}
+};
 (function(glob) {
 	var Castor = require("castor");
 	
@@ -24,10 +65,6 @@
 						if (treeProp !== "parentNode") {
 							found = found.concat(walkFor(tree[treeProp],testFunction));
 						}
-					} else {
-						if (testFunction(tree[treeProp])) {
-							found.push(tree[treeProp])
-						}
 					}
 				}
 			}
@@ -39,10 +76,6 @@
 					
 					found = found.concat(walkFor(treeItem,testFunction));
 					
-				} else {
-					if (testFunction(treeItem)) {
-						found.push(treeItem)
-					}
 				}
 			})
 		}
@@ -50,9 +83,24 @@
 		return found;
 	}
 	
-	function getElementsByTagName(node,tagName) {
+	function getElement(node,testFunction) {
 		return walkFor(node,function(subNode) {
-			return subNode && subNode.nodeType === 1 && subNode.tagName.toLowerCase() === tagName.toLowerCase();
+			if (subNode && subNode.nodeType === 1) {
+				return testFunction(subNode);
+			}
+			return false;
+		});
+	}
+	
+	function getElementsByTagName(node,tagName) {
+		return getElement(node,function(subNode) {
+			if (tagName instanceof RegExp) {
+				return !!tagName.exec(subNode.tagName);
+				
+			} else {
+				return subNode.tagName.toLowerCase() === tagName.toLowerCase();
+				
+			}
 		});
 	}
 	
@@ -104,14 +152,7 @@
 		this.prepare();
 		
 		// Find title nodes...
-		var headingText = walkFor(this.parseTree,function(node) {
-			if (!!node && !!node.tagName && node.tagName.match(/^h\d/i)) {
-				
-				return true;
-			}
-			
-			return false;
-		});
+		var headingText = getElementsByTagName(this.parseTree,/^h\d/i);
 		
 		headingText.forEach(function(node) {
 			var nodeText = node.getText().replace(/[\r\n]/ig," ").replace(/\s+/ig," ").replace(/^\s+/,"").replace(/\s+$/,"");
@@ -137,13 +178,19 @@
 		// Ensure we're ready...
 		this.prepare();
 		
+		function countElementChildren(node) {
+			return node.childNodes.filter(function(subNode) {
+				return subNode.nodeType === 1;
+			}).length || 0;
+		}
+		
 		// Function to find number of descendant nodes given a single node
 		// Appends some tagging/other properties to nodes:
 		// .descendantCount
 		function countDescendants(node) {
 			if (node.descendantCount && !isNaN(node.descendantCount)) return node.descendantCount;
 			
-			var descendantCount = node.childNodes.length || 0;
+			var descendantCount = countElementChildren(node);
 			
 			node.childNodes.forEach(function(childNode) {
 				descendantCount += countDescendants(childNode);
@@ -164,10 +211,7 @@
 		}
 		
 		function countLinkWords(node) {
-			var links = walkFor(node,function(subNode) {
-				return subNode && subNode.nodeType === 1 && subNode.tagName.toLowerCase() === "a";
-			});
-			
+			var links = getElementsByTagName(node,"a");
 			var linkWords = links.reduce(function(tally,link) {
 				return tally + countNodeWords(link);
 			},0);
@@ -175,37 +219,46 @@
 			return linkWords;
 		}
 		
-		var nodeSorted = [];
+		var isNonText = /(area|base|keygen|link|meta|title|script|style|head|html|form|input|button)/i;
+		var isText = /(p|ul|ol|li|blockquote|code|th|td|dt|dl|dd|thead|tbody|h\d|strong|b|i|u)/i;
+		var isTextContainer = /(body|div|article|section|layer|header)/i;
+		
+		function countNonTextNodes(node) {
+			return getElementsByTagName(node,isNonText).length;
+		}
+		
+		function countTextNodes(node) {
+			return getElementsByTagName(node,isText).length;
+		}
 		
 		// Find node score...
 		function findNodeScore(node) {
 			if (node.nodeType === 1) {
 				var descendantCount = countDescendants(node);
-				var childDescendantRatio = (node.childNodes.length||0) / descendantCount;
-				var flatness = node.childNodes.length * 10;
+				var childElementCount = countElementChildren(node);
+				var childDescendantRatio = (childElementCount / descendantCount) || 0;
 				var nodeWords = countNodeWords(node);
 				var nodeLinkWords = countLinkWords(node);
-				var wordRatio = nodeWords / nodeLinkWords;
-				console.log(node.tagName);
-				console.log("ChildDescendant Ratio",childDescendantRatio);
-				console.log("NODEWORDS",nodeWords);
-				console.log("AWORDS",nodeLinkWords);
-				console.log("FLATNESS:",flatness)
+				var linkWordsToWords = (nodeWords / nodeLinkWords) || 0;
+				var nonTextNodes = countNonTextNodes(node);
+				var textNodes = countTextNodes(node);
+				var textNodesToNodes = (textNodes / descendantCount) || 0;
 				
-				//console.log(node.tagName + ": Score: ",childDescendantRatio*flatness*wordRatio);
-				//nodeSorted.push({"node":node,"score":childDescendantRatio*flatness*wordRatio});
+				var digest = (descendantCount * childDescendantRatio) * textNodesToNodes * (linkWordsToWords < Infinity ? linkWordsToWords : 1);
+				
+				return {"node":node,"score":digest};
 			}
 		}
 		
-		walkFor(this.parseTree,function(node) {
-			if (node && node.nodeType) {
-				findNodeScore(node);
-			}
-		});
+		var nodeSorted = getElementsByTagName(this.parseTree,isTextContainer).map(findNodeScore);
 		
-		console.log(nodeSorted.sort(function(a,b) {
+		if (!nodeSorted.length) {
+			return null
+		}
+		
+		return nodeSorted.sort(function(a,b) {
 			return b.score - a.score;
-		}).slice(0,10))
+		}).slice(0,1).node;
 		
 		// Unwritten algorithm ideas:
 		// Define certain nodes as being highly relevant to 'text' content. P, STRONG, B, U, I, OL, UL, LI, etc.
@@ -216,10 +269,6 @@
 		// Nodes with negative weight would include script tags, link tags, etc.
 		// Also use 'flatness' as a deciding factor. Flatness would be number of direct children divided by total decendant nodes.
 		//
-		//var contentSplit = this.data.split(/<div class\=\"content\">/ig).pop();
-		//	contentSplit = contentSplit.split(/<\/div>/i).shift();
-		
-		return "";
 	};
 	
 	function psychic(htmlData) {
