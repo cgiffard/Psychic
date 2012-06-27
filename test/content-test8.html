@@ -1,0 +1,726 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Linux Anecdotes</title>
+
+<link rel="icon" href="../favicon.ico" type="image/x-icon" />
+
+<link rel="stylesheet" href="../style.css" type="text/css" />
+
+<link rel="stylesheet" href="../local.css" type="text/css" />
+
+
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/ikiwiki.cgi?page=linux-anecdotes&amp;do=edit" />
+
+
+<link rel="vcs-git" href="ssh://b-liw-fi@liw-fi.branchable.com/" title="wiki git repository" />
+<link rel="vcs-git" href="git://liw-fi.branchable.com/" title="wiki git repository" />
+
+
+</head>
+<body><script src="../ikiwiki/ikiwiki.js" type="text/javascript" charset="utf-8"></script>
+<script src="../ikiwiki/relativedate.js" type="text/javascript" charset="utf-8"></script>
+
+<div class="page">
+
+<div class="pageheader">
+<div class="header">
+<span>
+<span class="parentlinks">
+
+<a href="../">liw.fi</a>/ 
+
+</span>
+<span class="title">
+Linux Anecdotes
+
+</span>
+</span>
+
+<form method="get" action="/ikiwiki.cgi" id="searchform">
+<div>
+<input type="text" id="searchbox" name="P" value="" size="16"
+ />
+</div>
+</form>
+
+
+</div>
+
+
+<div class="actions">
+<ul>
+
+<li><a href="/ikiwiki.cgi?page=linux-anecdotes&amp;do=edit" rel="nofollow">Edit</a></li>
+
+
+<li><a href="../recentchanges/">RecentChanges</a></li>
+
+
+<li><a href="http://source.liw-fi.branchable.com/?p=source.git;a=history;f=linux-anecdotes.mdwn;hb=HEAD">History</a></li>
+
+
+
+<li><a href="/ikiwiki.cgi?do=prefs">Preferences</a></li>
+
+
+
+<li><a href="/ikiwiki.cgi?do=branchable">Branchable</a></li>
+
+
+
+<li><a href="./#comments">7 comments</a></li>
+
+</ul>
+</div>
+
+
+
+
+
+
+</div>
+
+
+<div class="sidebar">
+<h4><strong>See also</strong></h4>
+
+<ul>
+<li><a href="../tag/">Tags used on this site</a></li>
+<li><a href="http://blog.liw.fi">My blog</a></li>
+<li><a href="../cv/">My CV</a></li>
+<li><a href="http://gtdfh.branchable.com/">Getting Things Done for Hackers</a></li>
+<li><a href="http://www.branchable.com/">Branchable</a></li>
+<li><a href="http://kalastuskievari.fi/">Kalastuskievari</a></li>
+<li><a href="http://koha-community.org/">Koha</a></li>
+</ul>
+
+
+<hr />
+
+
+<p>All content on this site is copyrighted by
+Lars Wirzenius and possibly other authors (it's a wiki), and licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 Unported License</a>.</p>
+
+</div>
+
+
+<div id="pagebody">
+
+<div id="content">
+<blockquote><p>A look at the history of Linux, as seen by a long
+time Linux user.  The talk is a series of anecdotes,
+shy of technical details, and sprinkled with personal
+memories.</p>
+
+<p>27 April 1998</p>
+
+<p>This talk was given at the 1998 Linux Expo.</p></blockquote>
+
+<h2>Who I am and why I am here</h2>
+
+<p>I seem to have acquired a little bit of reputation in the Linux community,
+despite my efforts in to stay quiet and invisible, so that I don't get
+so many questions from people having trouble with Linux.</p>
+
+<p>Part of my reputation is that I know Linux pretty well. That part is based
+on the time when I and Linus Torvalds---I assume you know Linus---shared
+an office at the University of Helsinki. In reality, I don't know Linux
+all that well. For example, my one stab at kernel programming resulted
+in a bug that took three years to track down and fix, and even then it
+was done by someone hacking OS/2. I'm referring to the sprintf function
+inside the kernel.</p>
+
+<p>I wrote sprintf in the summer of 1991. Linus needed some easy way to print
+messages from the kernel, and did not then know how to use the stdarg
+mechanism to implement variable argument lists to functions. I see
+some people in the audience shaking their heads. Yes, it's true. There
+was a time when Linus didn't know everything. Really. Trust me. I was
+there.</p>
+
+<p>Anyway, I wrote a simple sprintf for Linus, to show him how it was done,
+and he used in the Linux kernel, after some modification. The bug was in
+the handling of an asterisk as the width for an output field. I forgot
+to increment a pointer past the asterisk, so the code had no chance of
+working for this case. No chance at all. This was clear to anyone who
+tried it. Obviously, I didn't, which means that I probably shouldn't be
+employed to write software. In 1994, three years later, one Friedemann
+Baitinger noticed the bug, and sent me a patch.  He was using the
+sprintf while debugging a device driver he was writing for OS/2.</p>
+
+<p>Anyway, back to who I am. I've been a friend of Linus since before
+Linux even existed. We met as first-year students in 1988. When he
+started to write Linux, I naturally followed things with interest and
+some jealosy. Except for sprintf, I didn't really participate, since
+I'm not a hacker, just a wannabe. When Linux and its community grew, I
+took part in various non-technical things that needed doing. For
+example, I helped created the Linux Documentation Project, and
+co-moderated comp.os.linux.announce, also known as cola.</p>
+
+<p>My moderating cola is the reason I'm here. When I had been doing it
+for five years, that is, in last December, I decided to retire from it
+and found a successor. In my farewell note to the group, I jokingly
+said that I wouldn't mind getting a trip around the world, if anyone
+wanted to send me one. It happens that some people don't understand
+jokes, and it seems that Marc Ewing is one of them. He told me I would
+come here to give a talk and he wouldn't take no for an answer. If you
+feel bored now, you know whom to blame.</p>
+
+<h2>Linus the god</h2>
+
+<p>You all know Linus, at least by reputation. The wonder-child. The
+coding wizard. The hacker god. Well, it wasn't always like that. What
+I'm about to say next may shock the most devout Linuxers in the audience,
+but that's all right. This is a free country, and anyway, I've been
+promised police protection.</p>
+
+<p>I've already told you that Linus didn't always know everything. I'm
+not saying he isn't omniscient now. After all, he might now be a god
+and I'm not lightning-proof. So I'm only going to talk about old
+times. I'm sure he'll forgive me that.</p>
+
+<p>Not only did Linus not know everything about C, he also didn't know
+anything about PC's. In fact, he didn't even have one when I first met
+him. When he bought his first PC, he didn't even start hacking it
+right away. Instead, he played computer games, especially one called
+something like Prince of Persia. I've never understood that part of him.
+I mean, what's a computer game worth if it doesn't simulate
+playing cards? No, give me solitaire, if you want me to play with a
+computer.</p>
+
+<p>Even a few years later, when Linux was already a success, Linus had
+this strange fascination for silly computer games, such as Doom and
+Quake. By then he'd already learned some social skills and knew that one
+just doesn't admit to liking computer games after the age of 12.
+So when he was playing Doom, he used to explain that he was
+debugging and stress testing memory management and the X server.</p>
+
+<p>When Linus decides to learn something, he really learns it, and usually
+quickly. This is why he may now be omniscient. I remember once when we
+were being questioned about some math home work. I happened to know Linus
+hadn't done it. But bold as he was even then, he claimed to have done
+them anyway. As luck would have it, the teacher wanted Linus to present
+his solution to the class. On the way to the blackboard, Linus read the
+problem, then stood in front of the board for a second or two, and went
+on to present a solution that the teacher couldn't understand. Linus
+can be quite annoying like that.</p>
+
+<p>Once, when Linus was abroad at some conference or another, he modified
+my shell setup scripts so that when I logged in, it looked as if I was
+using MS-DOS. That was fun, of course, but it begged for revenge. This
+happened while we were sharing an office at the university, so once
+when Linus went out to get something to drink or something, I created an
+alias for startx for him. My alias first ran the real startx, and then
+printed out a kernel <code>Oops' message. The first time Linus noticed this
+made him a bit worried, but he logged out and cleared the screen too fast
+to read it, but the second time made him really worried. I'd copied the
+</code>Oops' message from linux-kernel, and of course it didn't suit Linus's
+kernel at all. He had gotten as far as decoding the message by hand,
+and muttering something like ``Why is it crashing there? It can't crash
+there!'', when I burst out laughing and told him what I'd done. Linus
+was quite relieved and never tried any practical jokes on me again.</p>
+
+<h2>The early times</h2>
+
+<p>Let's go back to the spring of 1991. In January, Linus bought a PC.
+He'd been using a Sinclair QL before that, which, like much British
+computer stuff, was ingenious and almost unusably different from
+everything else. Like every self-respecting hacker, Linus had written
+some software development tools of his own; an editor and an
+assembler, I think. He'd also modified the QL hardware a bit, to
+replace a broken keyboard, and to add a PC-compatible floppy drive.
+When he bought the PC, he wrote a device driver for the QL so he could
+move stuff from the QL to the PC.</p>
+
+<p>When he got up to speed with the PC, after having played
+enough Prince of Persia, he started learning about programming the PC.
+Especially assembly language programming, since only wimps use high
+level languages. I remember one day when he was quite proud for having
+written a strlen function in assembly. Gee, I was impressed.</p>
+
+<p>As I said, when Linus decides to learn, he really learns. A few weeks
+later he showed me two simple concurrent processes. One printed out
+A's as fast as it could, the other B's. That was much more fun to look
+at than his strlen, but not, I think, immediately as useful.</p>
+
+<p>As time progressed, Linus added keyboard and serial port drivers, so
+that he could use his modem from the PC. Normal people would have used
+one of the dozens of existing terminal emulators, but Linus had to
+write his own. After that, he spent a long time just reading netnews.
+Sorry, I mean of course that he was debugging his terminal emulation code
+by reading netnews. The emulator consisted of two processes, one reading
+the keyboard and writing to the serial port, the other reading the
+serial port and writing to the screen and emulating a terminal.</p>
+
+<p>At some point during this time Linus decided he wanted a Unix-like
+system at home, and the obvious choice back then was Minix, since it was
+the only thing he could afford. As it happened, Linus wasn't very
+happy with Minix, so he kept improving his terminal emulator, and
+modifying it to become more like an operating system. I guess we can
+conclude by now that he succeeded.</p>
+
+<p>The success of Linux wasn't automatic, and things might well have gone
+differently. For example, if the Hurd had been finished a few years
+ago, Linux probably wouldn't exist today. Or the BSD systems might
+have taken over the free operating system marketplace.</p>
+
+<p>However, things went as they did, and Linux prospered. The success has
+resulted in fame and also material rewards for rewards, including
+money. One of the first rewards wasn't money, but virtual
+beer. You may have heard the expression, since it is still used
+somewhat, but these days it is just a general good wish phrase.
+Originally, it had a very concrete meaning. Two guys from Oxford,
+England, calling themselves the Oxford Beer Trolls, wanted to buy
+Linus some beer, but since it was impractical to move either
+themselves, Linus, or the beer physically around, they asked me to
+receive the money via mail, and buy Linus beer with it, and that's
+what happened. So, virtual
+beer really means money, preferably money sent to me.</p>
+
+<p>Alas, people started sending Linus money directly. I'm not
+sure they did it out of gratitude, however, since they usually sent
+personal checks from the US. As Linus quickly learned, Finnish banks
+really, really hate checks. Especially personal checks. Particularly
+personal checks from the US. They invent all sorts of bureaucratic pit-falls
+and rules and fees to make it difficult and expensive to use checks.
+If you want to make trouble for a Finn, send him a personal check from
+the US. And that's not a joke.</p>
+
+<p>Linus also got some other stuff via mail. For example, a pair of 40
+megabyte hard disks. That was really nice, since it meant that Linus
+was finally able to keep some backups. Not that he did, of course.
+One of his well-known quotes is: "Backups are for wimps. Real men
+upload their data to an FTP site and have everyone else mirror it." He
+said that even after dialling his hard disk.</p>
+
+<p>At one point, Linus had implemented device files in /dev, and wanted to
+dial up the university computer and debug his terminal emulation code
+again. So he starts his terminal emulator program and tells it to use
+/dev/hda. That should have been /dev/ttyS1. Oops. Now his master boot
+record started with "ATDT" and the university modem pool phone number. I
+think he implemented permission checking the following day.</p>
+
+<p>The name Linux was not coined by Linus himself, strange though that
+may seem to people familiar with his self-esteem. It was coined by
+Ari Lemmke, the administrator at ftp.funet.fi who first made Linux
+available for FTP. Ari had to coin a name since Linus had failed to give a
+proper one, so Ari invented one and it stuck.</p>
+
+<p>A few days after Linux was put on ftp.funet.fi for the first time,
+Linus was bubbling with excitement. Ari had sent him the first
+download statistics for Linux, and there were literally tens of
+downloads! Ooh, the glory of success.</p>
+
+<h2>My own Linux history</h2>
+
+<p>My own Linux history is rather boring. I first installed Linux on a 109
+megabyte hard disk that already had MS-DOS and SCO Xenix. That was rather
+cramped, so I got rid of SCO Xenix, first, and MS-DOS, later, when I no
+longer needed it for work. However, 109 megabytes isn't nearly enough for
+Linux anyway, so I bought a new hard disk and had my first kernel panic. I
+had some trouble getting the two hard disks to work together, so I was
+iterating various combinations of the seven jumpers on them. That gives
+rather a large number of possibilities, so I got a bit careless with
+how I attached the cables. At one point, I swiveled my chair, hit the
+computer with my knee, and the cable got loose and Linux panicked. That
+was fun. I never did get the two disks working together, however.</p>
+
+<p>My first Linux installation was from the boot and root floppy pair that
+many old timers remember with fondness. I don't remember much about them,
+but I do remember having to edit offsets 508 and 509 of the boot floppy
+to set the root file system. The first time I did this, I didn't have a
+binary editor, so I used something like Emacs, which luckily was binary
+clean, even though I had to count the offsets manually.</p>
+
+<p>Later, when distributions started to get built, I tried them out. That
+was a bit painful, since I only had a 2400 bit/s modem. What I did was
+invade a computer classroom at the university, or at least about half a
+dozen computers, and had them formatting floppies and downloading stuff
+via ftp in parallel. Then I carried the 50 or so floppies home, and tried
+to install Slackware or whatever from them. Usually, I found that one or
+two of the floppies had gone bad during the trip home, so I then had to
+spend a few hours downloading some files with the modem. I rather prefer
+my current situation, with a 10 Mbit/s connection to ftp.funet.fi.</p>
+
+<p>I did prefer the original keyboard driver, however, since I didn't have
+to configure it for Finnish. I really don't understand why Linus went
+and changed the default to be American.</p>
+
+<h2>Advocacy</h2>
+
+<p>When Linux was young, in 1993 or so, I made some visiting cards that
+said I was a Linux fanatic. I've since been cured of that by meeting
+some real Linux fanatics. If you haven't had the dubious pleasure, let
+me tell, it ain't fun. This talk is meant to be fun, so I won't go
+on about advocacy any further.</p>
+
+<h2>The future</h2>
+
+<p>Every look at the history of Linux seems to end in a look at the
+future. I guess this one should also.</p>
+
+<p>Linux the operating system kernel seems to me to be relatively
+finished. There's a lot of work to do, bugs to fix, drivers to write,
+architectures to port to, but that's pretty small stuff. It's not like
+the huge changes in the past, such as demand paging, networking, or the
+port to the Alpha.</p>
+
+<p>The operating system distributions built on top of Linux the kernel
+still need a lot of work, but most of it just needs to be done.
+There's some huge projects remaining, such as good graphical desktops,
+but they're being worked on, so things are looking good on that front
+as well.</p>
+
+<p>Where should Linux go next, then? I think the answer is clear, if
+you think about it: fluffy toys.</p>
+
+<p>What is it that Linux has that no other operating system has? A
+cuddly, lovable, silly-looking mascot. If we play our cards
+right, the Linux penguin could be the next mass-consumer hit product.
+Can you imagine a Windows flag competing against our penguin? No, this
+time Mr. Gates has definitely  dropped the ball and we're in exactly
+the right position to pick it up. Forget Microsoft, they're history.
+Start worrying about Mattel and the Barbie doll!</p>
+
+</div>
+
+
+
+<div id="comments">
+<div  class="feedlink">
+
+<a class="feedbutton" type="application/rss+xml" rel="alternate" title="liw.fi (RSS feed)" href="comments.rss">RSS</a>
+
+
+<a class="feedbutton" type="application/atom+xml" rel="alternate" title="liw.fi (Atom feed)" href="comments.atom">Atom</a>
+
+</div>
+<div class="comment" id="comment-cd30c9a53fd5de83f01221a98ad6185c">
+
+
+
+<div class="comment-subject">
+
+<a href="http://liw.fi/linux-anecdotes/#comment-cd30c9a53fd5de83f01221a98ad6185c">Nice view of Linux history</a>
+
+</div>
+
+<div class="inlinecontent">
+Very interesting to see some Linux history from someone that was actually there, thanks for writing this
+
+</div>
+
+<div class="comment-header">
+
+Comment by
+
+<span class="author" title="OpenID">
+<a href="https://www.google.com/accounts/o8/id?id=AItOawnHHjSNcNUZl_GWxaW3LUtKXAjSim7B1vI">Adam</a>
+</span>
+
+
+&mdash; <span class="relativedate" title="Thu, 11 Aug 2011 18:11:35 +0000">Thu Aug 11 18:11:35 2011</span>
+</div>
+
+
+<div class="actions">
+<ul>
+
+<li><a href="/ikiwiki.cgi?page=linux-anecdotes%2Fcomment_1_a4db986f3c2b495289874df06d8f2fc4&amp;do=remove" rel="nofollow">Remove comment</a></li>
+
+</ul>
+</div>
+
+
+<div style="clear: both"></div>
+</div>
+<div class="comment" id="comment-5f4bf5a218fcc16c077cb532642f895e">
+
+
+
+<div class="comment-subject">
+
+<a href="http://liw.fi/linux-anecdotes/#comment-5f4bf5a218fcc16c077cb532642f895e">comment 2</a>
+
+</div>
+
+<div class="inlinecontent">
+I agree with Adam, was interesting to read.
+
+</div>
+
+<div class="comment-header">
+
+Comment by
+
+<span class="author" title="OpenID">
+<a href="https://www.google.com/accounts/o8/id?id=AItOawlZpYiv4bgAehuAxAx2R_t6nqjD4aLkQh4">Tanner</a>
+</span>
+
+
+&mdash; <span class="relativedate" title="Fri, 12 Aug 2011 08:29:33 +0000">Fri Aug 12 08:29:33 2011</span>
+</div>
+
+
+<div class="actions">
+<ul>
+
+<li><a href="/ikiwiki.cgi?page=linux-anecdotes%2Fcomment_2_e9f5a828e7e540637ca612e5740cde2a&amp;do=remove" rel="nofollow">Remove comment</a></li>
+
+</ul>
+</div>
+
+
+<div style="clear: both"></div>
+</div>
+<div class="comment" id="comment-b804e8ac58d025491fafceef537c8d3b">
+
+
+
+<div class="comment-subject">
+
+<a href="http://liw.fi/linux-anecdotes/#comment-b804e8ac58d025491fafceef537c8d3b">Excellent</a>
+
+</div>
+
+<div class="inlinecontent">
+I really really like this kind of "dive into" post, many thanks for writing it.
+
+</div>
+
+<div class="comment-header">
+
+Comment by
+
+<span class="author" title="OpenID">
+<a href="https://www.google.com/accounts/o8/id?id=AItOawkLY7Prk5X8n1c6-u8T-Uuf4gOgrZ-Mlzg">Thomas</a>
+</span>
+
+
+&mdash; <span class="relativedate" title="Sat, 13 Aug 2011 13:55:07 +0000">Sat Aug 13 13:55:07 2011</span>
+</div>
+
+
+<div class="actions">
+<ul>
+
+<li><a href="/ikiwiki.cgi?page=linux-anecdotes%2Fcomment_3_8575b39eb465ca5740aaae330da693fd&amp;do=remove" rel="nofollow">Remove comment</a></li>
+
+</ul>
+</div>
+
+
+<div style="clear: both"></div>
+</div>
+<div class="comment" id="comment-bafac56fbde1800fa251817fadf7fc24">
+
+
+
+<div class="comment-subject">
+
+<a href="http://liw.fi/linux-anecdotes/#comment-bafac56fbde1800fa251817fadf7fc24">Fun Read</a>
+
+</div>
+
+<div class="inlinecontent">
+I enjoyed it. I've seen some of your Debian projects, but I never knew you were classmates with Linus.
+
+</div>
+
+<div class="comment-header">
+
+Comment by
+
+<span class="author" title="Signed in">
+
+<a href="/ikiwiki.cgi?page=handheldcar&amp;do=goto">handheldcar</a>
+
+</span>
+
+
+&mdash; <span class="relativedate" title="Sat, 20 Aug 2011 22:36:31 +0000">Sat Aug 20 22:36:31 2011</span>
+</div>
+
+
+<div class="actions">
+<ul>
+
+<li><a href="/ikiwiki.cgi?page=linux-anecdotes%2Fcomment_4_17c307955fa9a76f0a1edf2e22fe8014&amp;do=remove" rel="nofollow">Remove comment</a></li>
+
+</ul>
+</div>
+
+
+<div style="clear: both"></div>
+</div>
+<div class="comment" id="comment-6b0933d34b872b6464f7797e27b3e4cd">
+
+
+
+<div class="comment-subject">
+
+<a href="http://liw.fi/linux-anecdotes/#comment-6b0933d34b872b6464f7797e27b3e4cd">good read</a>
+
+</div>
+
+<div class="inlinecontent">
+i enjoyed this thank you
+
+</div>
+
+<div class="comment-header">
+
+Comment by
+
+<span class="author" title="OpenID">
+<a href="https://www.google.com/accounts/o8/id?id=AItOawl1cDOJ4bB0FY5JLYuYfGtAKomavRHKqhk">Chris</a>
+</span>
+
+
+&mdash; <span class="relativedate" title="Thu, 25 Aug 2011 17:24:11 +0000">Thu Aug 25 17:24:11 2011</span>
+</div>
+
+
+<div class="actions">
+<ul>
+
+<li><a href="/ikiwiki.cgi?page=linux-anecdotes%2Fcomment_5_40e07046144cf8c1a2a9c579d2a43cc3&amp;do=remove" rel="nofollow">Remove comment</a></li>
+
+</ul>
+</div>
+
+
+<div style="clear: both"></div>
+</div>
+<div class="comment" id="comment-315fa5843d599e8137558224409f0ce6">
+
+
+
+<div class="comment-subject">
+
+<a href="http://liw.fi/linux-anecdotes/#comment-315fa5843d599e8137558224409f0ce6">amazing read</a>
+
+</div>
+
+<div class="inlinecontent">
+it was fun reading
+
+</div>
+
+<div class="comment-header">
+
+Comment by
+
+<span class="author" title="OpenID">
+<a href="https://me.yahoo.com/a/DRH7a.sYk.oD1UoINQgLDr7LH8ZOaw--#88c3a">NiCk</a>
+</span>
+
+
+&mdash; <span class="relativedate" title="Wed, 28 Sep 2011 08:06:42 +0000">Wed Sep 28 08:06:42 2011</span>
+</div>
+
+
+<div class="actions">
+<ul>
+
+<li><a href="/ikiwiki.cgi?page=linux-anecdotes%2Fcomment_6_8251d8fc3527cbd9fbc11cefe3676d00&amp;do=remove" rel="nofollow">Remove comment</a></li>
+
+</ul>
+</div>
+
+
+<div style="clear: both"></div>
+</div>
+<div class="comment" id="comment-9e85e1312932a8f2f160bdfe590e2505">
+
+
+
+<div class="comment-subject">
+
+<a href="http://liw.fi/linux-anecdotes/#comment-9e85e1312932a8f2f160bdfe590e2505">awesome</a>
+
+</div>
+
+<div class="inlinecontent">
+really cool stuff.Is nice to look into linux's past from people who were there. Ahh and thanks for  the linux documentation project man... even if ur not longer working on it, is a great source for newbies like me.
+
+</div>
+
+<div class="comment-header">
+
+Comment by
+
+<span class="author" title="OpenID">
+<a href="https://www.google.com/accounts/o8/id?id=AItOawmgHxhzVkzQngfSg3_ZnFc6l5r0ylc4PJ4">Juan</a>
+</span>
+
+
+&mdash; <span class="relativedate" title="Tue, 22 Nov 2011 19:54:08 +0000">Tue Nov 22 19:54:08 2011</span>
+</div>
+
+
+<div class="actions">
+<ul>
+
+<li><a href="/ikiwiki.cgi?page=linux-anecdotes%2Fcomment_7_a6cf01e4218489c1a43421365c6d0116&amp;do=remove" rel="nofollow">Remove comment</a></li>
+
+</ul>
+</div>
+
+
+<div style="clear: both"></div>
+</div>
+
+
+
+
+<div class="addcomment">
+<a href="/ikiwiki.cgi?page=linux-anecdotes&amp;do=comment">Add a comment</a>
+</div>
+
+</div>
+
+
+
+</div>
+
+<div id="footer" class="pagefooter">
+
+<div id="pageinfo">
+
+
+
+
+<div class="tags">
+Tags:
+
+<a href="../tag/talk/" rel="tag">talk</a>
+
+</div>
+
+
+
+
+
+
+
+
+<div class="pagedate">
+Last edited <span class="relativedate" title="Sat, 26 Nov 2011 18:43:39 +0000">Sat Nov 26 18:43:39 2011</span>
+<!-- Created <span class="relativedate" title="Fri, 29 Jan 2010 08:03:30 +0000">Fri Jan 29 08:03:30 2010</span> -->
+</div>
+
+</div>
+
+
+<!-- from liw.fi -->
+</div>
+
+</div>
+
+</body>
+</html>

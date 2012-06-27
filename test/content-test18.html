@@ -1,0 +1,1961 @@
+<!DOCTYPE html>
+<html class="no-js" dir="ltr" lang="en-US">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta charset="UTF-8">
+
+        <title>All About Unicode, UTF8 &amp; Character Sets | Smashing Coding</title>
+
+        <link rel="alternate" type="application/atom+xml" title="News-Feed" href="http://rss1.smashingmagazine.com/feed/" />
+	<link type="application/atom+xml" rel="alternate" title="Smashing Magazine &raquo; Coding Feed" href="http://rss1.smashingmagazine.com/feed/?f=coding-std" />    	<link rel="pingback" href="http://coding.smashingmagazine.com/xmlrpc.php" />  
+        <link rel="shortcut icon" href="http://media.smashingmagazine.com/themes/smashingv4/images/favicon.ico" />
+        <link rel="apple-touch-icon" href="http://media.smashingmagazine.com/themes/smashingv4/images/appletouchicon.png" />
+        
+<!-- This site is optimized with the Yoast WordPress SEO plugin v1.2.2 - http://yoast.com/wordpress/seo/ -->
+<meta name="description" content="This article covers the history of characters, character sets, Unicode and UTF-8, and why question marks and odd accented characters sometimes show up in databases and text files."/>
+<meta name="keywords" content="encoding, unicode, utf8"/>
+<link rel="canonical" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/" />
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link type="application/atom+xml" rel="alternate" title="Smashing Magazine &raquo; Feed" href="http://rss1.smashingmagazine.com/feed/" />
+
+
+<link rel='stylesheet' id='fontdeck-css'  href='http://f.fontdeck.com/s/css/qjAxanDb3GzL8rviVV7PWUySExw/*.smashingmagazine.com/12777.css?ver=1340580729' type='text/css' media='screen, print' />
+<link rel='stylesheet' id='reset-css'  href='http://media.smashingmagazine.com/themes/smashingv4/stylesheets/reset.css?ver=1340580729' type='text/css' media='screen' />
+<link rel='stylesheet' id='0-up-css'  href='http://media.smashingmagazine.com/themes/smashingv4/stylesheets/0-up.css?ver=1340580729' type='text/css' media='screen' />
+<link rel='stylesheet' id='responsive-css'  href='http://media.smashingmagazine.com/themes/smashingv4/stylesheets/responsive.css?ver=1340580729' type='text/css' media='screen' />
+<link rel='stylesheet' id='print-css'  href='http://media.smashingmagazine.com/themes/smashingv4/stylesheets/print.css?ver=1340580729' type='text/css' media='print' />
+<link rel='stylesheet' id='smash-commentratings-css'  href='http://media.smashingmagazine.com/plugins/smash-commentratings/commentratings-css.css?ver=1.50' type='text/css' media='all' />
+<link rel='stylesheet' id='shGlobals-css'  href='http://media.smashingmagazine.com/themes/smashingv4/stylesheets/sh/shGlobals.css?ver=3.0.1a' type='text/css' media='screen' />
+<script type='text/javascript' src='http://media.smashingmagazine.com/themes/smashingv4/javascripts/jquery-1.5.2.min.js?ver=3.4'></script>
+<script type='text/javascript' src='http://coding.smashingmagazine.com/site-config.js?ver=1340580729'></script>
+<script type='text/javascript' src='http://media.smashingmagazine.com/themes/smashingv4/javascripts/thirdparty.min.js?ver=1340580729'></script>
+<script type='text/javascript' src='http://platform.twitter.com/widgets.js?ver=1340580729'></script>
+<script type='text/javascript' src='http://media.smashingmagazine.com/themes/smashingv4/javascripts/onload.js?ver=1340580729'></script>
+<script type='text/javascript' src='http://media.smashingmagazine.com/themes/smashingv4/javascripts/contact.js?ver=1340580729'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var ratingsL10n = {"plugin_url":"http:\/\/coding.smashingmagazine.com\/wp-content\/plugins\/smash-commentratings","ajax_url":"http:\/\/coding.smashingmagazine.com\/wp-content\/plugins\/smash-commentratings\/smash-commentratings.php","text_wait":"Please rate only 1 post at a time.","image":"stars","image_ext":"gif","max":"5","show_loading":"1","show_fading":"1","custom":"0"};
+var ratings_mouseover_image=new Image();ratings_mouseover_image.src="http://media.smashingmagazine.com/plugins/smash-commentratings/images/"+ratingsL10n.image+"/rating_over."+ratingsL10n.image_ext;;
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://media.smashingmagazine.com/plugins/smash-commentratings/commentratings-min.js?ver=1.0.0'></script>
+<script type='text/javascript' src='http://media.smashingmagazine.com/themes/smashingv4/javascripts/sh/shBrushbundle.min.js?ver=3.4'></script>
+<script type='text/javascript' src='http://coding.smashingmagazine.com/wp-includes/js/comment-reply.js?ver=3.4'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpAjax = {"noPerm":"You do not have permission to do that.","broken":"An unidentified error has occurred."};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://coding.smashingmagazine.com/wp-includes/js/wp-ajax-response.js?ver=3.4'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var thickboxL10n = {"next":"Next >","prev":"< Prev","image":"Image","of":"of","close":"Close","noiframes":"This feature requires inline frames. You have iframes disabled or your browser does not support them.","loadingAnimation":"http:\/\/coding.smashingmagazine.com\/wp-includes\/js\/thickbox\/loadingAnimation.gif","closeImage":"http:\/\/coding.smashingmagazine.com\/wp-includes\/js\/thickbox\/tb-close.png"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://coding.smashingmagazine.com/wp-includes/js/thickbox/thickbox.js?ver=3.1-20111117'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpajaxeditcomments = {"AEC_PluginUrl":"http:\/\/coding.smashingmagazine.com\/wp-content\/plugins\/smash-edit-comments","AEC_CanScroll":"0","AEC_Minutes":"minutes","AEC_Minute":"minute","AEC_And":"and","AEC_Seconds":"seconds","AEC_Second":"second","AEC_Moderation":"Mark for Moderation?","AEC_Approve":"Approve Comment?","AEC_Spam":"Mark as Spam?","AEC_Delete":"Delete this comment?","AEC_Anon":"Anonymous","AEC_Loading":"Loading...","AEC_Ready":"Ready","AEC_Sending":"Sending...","AEC_Sent":"Message Sent","AEC_LoadSuccessful":"Comment Loaded Successfully","AEC_Saving":"Saving...","AEC_Saved":"Comment Successfully Saved","AEC_Delink":"De-link Successful"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://media.smashingmagazine.com/plugins/smash-edit-comments/js/wp-ajax-edit-comments.js?ver=2.3'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://coding.smashingmagazine.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://coding.smashingmagazine.com/wp-includes/wlwmanifest.xml" /> 
+
+<link rel='shortlink' href='http://coding.smashingmagazine.com/?p=119625' />
+<link rel="stylesheet" href="http://media.smashingmagazine.com/plugins/smash-edit-comments/css/edit-comments.css" type="text/css" media="screen"  /><!-- Ajax Edit Comments -->
+<!--[if IE]>
+<style>
+  .clearfix {display: inline-block;}
+  /* Hides from IE-mac \*/
+  * html .clearfix {height: 1%;}
+  .clearfix {display: block;}
+  /* End hide from IE-mac */
+</style>
+<![endif]-->
+<link rel="stylesheet" href="http://coding.smashingmagazine.com/wp-includes/js/thickbox/thickbox.css" type="text/css" media="all"  />        
+        <!--[if IE 8]>
+        <link rel="stylesheet" href="http://media.smashingmagazine.com/themes/smashingv4/stylesheets/ie8.css" />
+        <![endif]-->
+    </head>
+
+    <body class="single single-post postid-119625 single-format-standard coding-section">
+		<a id="top"></a>
+		<nav class="toplevel clearfix">
+
+			<div class="mini">
+				<a href="http://www.smashingmagazine.com/"><img src="http://media.smashingmagazine.com/themes/smashingv4/images/logo.png" alt="Smashing Magazine" title="Jump to the front page" /></a>
+				<select name="network" id="networkselection">
+					<option value="network" selected="selected">- select -</option>
+					<option value="http://www.smashingmagazine.com/books/">Books</option>
+					<option value="http://www.smashingmagazine.com/ebooks/">eBooks</option>
+					<option value="http://jobs.smashingmagazine.com/">Job Board</option>
+					<option value="https://shop.smashingmagazine.com/">Shop</option>
+				</select>
+			</div>
+
+			<ul class="network clearfix">			
+				<li class="current"><a href="http://www.smashingmagazine.com/"><img src="http://media.smashingmagazine.com/themes/smashingv4/images/logo.png" alt="Smashing Magazine" title="Jump to the front page" /></a></li>
+				<li><a href="http://www.smashingmagazine.com/books/">Books</a></li>
+				<li><a href="http://www.smashingmagazine.com/ebooks/">eBooks</a></li>
+				<li><a href="http://jobs.smashingmagazine.com/">Job Board</a></li>
+				<li><a href="https://shop.smashingmagazine.com/">Shop</a></li>
+			</ul>
+
+			<ul class="channels">
+				<li class="rss"><a href="http://rss1.smashingmagazine.com/feed/" title="Subscribe to our RSS-feed (900K)">RSS</a></li>
+				<li class="facebook"><a href="http://www.facebook.com/smashmag" title="Join our Facebook page! (89K)">Facebook</a></li>
+				<li class="twitter"><a href="http://twitter.com/smashingmag" title="Follow us on Twitter! (568K)">Twitter</a></li>
+				<li class="newsletter"><a href="http://www.smashingmagazine.com/the-smashing-newsletter/" title="Subscribe to our Email Newsletter (107K)">Newsletter</a></li>
+			</ul>
+
+		</nav>
+
+		<div id="container">
+
+			<div class="fluid clearfix">
+
+				<div class="grid clearfix">
+
+					<div class="mini-search wp-search-form" >			
+						<form id="search" method="get" action="http://www.smashingmagazine.com/search-results/" target="_top">
+							<input name="q" type="text" placeholder="e.g. JavaScript" />
+							<button class="search_submit" type="submit"><span class="first-type">Search</span><span class="last-type">Go!</span></button>
+							<input type="hidden" name="cx" value="partner-pub-6779860845561969:5884617103">
+							<input type="hidden" name="cof" value="FORID:10">
+							<input type="hidden" name="ie" value="UTF-8">
+						</form>
+					</div>
+			
+					<div class="col sidebar">
+						<nav class="sections">
+							<div class="mini">
+								<select name="sections" id="subsection-select">
+									<option value="network">- select -</option>
+									<optgroup label="Smashing Categories">
+										<option value="http://www.smashingmagazine.com/books/">Books</option>
+										<option value="http://www.smashingmagazine.com/ebooks/">eBooks</option>
+										<option value="http://jobs.smashingmagazine.com/">Job Board</option>
+										<option value="https://shop.smashingmagazine.com/">Shop</option>								
+									</optgroup>
+									<optgroup label="Smashing Sections">
+										<option selected="selected" value="http://coding.smashingmagazine.com/">Coding</option>
+										<option value="http://www.smashingmagazine.com/category/design/">Design</option>
+										<option value="http://mobile.smashingmagazine.com">Mobile</option>
+										<option value="http://www.smashingmagazine.com/category/graphics/">Graphics</option>
+										<option value="http://uxdesign.smashingmagazine.com">UX Design</option>
+										<option value="http://wp.smashingmagazine.com">WordPress</option>
+									</optgroup>
+								</select>
+							</div>
+							<ul class="clearfix">
+								<li class="coding current">
+									<a href="http://coding.smashingmagazine.com">Coding</a>
+									<ul>
+										<li><a href="http://coding.smashingmagazine.com/tag/css/">CSS</a></li>
+										<li><a href="http://coding.smashingmagazine.com/tag/html/">HTML</a></li>
+										<li><a href="http://coding.smashingmagazine.com/tag/javascript/">JavaScript</a></li>
+										<li><a href="http://coding.smashingmagazine.com/tag/techniques/">Techniques</a></li>
+									</ul>
+								</li>
+								<li class="design">
+									<a href="http://www.smashingmagazine.com/category/design/">Design</a>
+									<ul>
+										<li><a href="http://www.smashingmagazine.com/tag/web-design/">Web Design</a></li>
+										<li><a href="http://www.smashingmagazine.com/tag/typography/">Typography</a></li>
+										<li><a href="http://www.smashingmagazine.com/tag/inspiration/">Inspiration</a></li>
+										<li><a href="http://www.smashingmagazine.com/tag/business/">Business</a></li>
+									</ul>
+								</li>
+								<li class="community">
+									<a href="http://mobile.smashingmagazine.com">Mobile</a>
+									<ul>
+										<li><a href="http://mobile.smashingmagazine.com/tag/responsive-design/">Responsive</a></li>
+										<li><a href="http://mobile.smashingmagazine.com/tag/ios/">iPhone &amp; iPad</a></li>
+										<li><a href="http://mobile.smashingmagazine.com/tag/android/">Android</a></li>
+										<li><a href="http://mobile.smashingmagazine.com/tag/design-patterns/">Design Patterns</a></li>
+									</ul>
+								</li>
+								<li class="graphics">
+									<a href="http://www.smashingmagazine.com/category/graphics/">Graphics</a>
+									<ul>
+										<li><a href="http://www.smashingmagazine.com/tag/photoshop/">Photoshop</a></li>
+										<li><a href="http://www.smashingmagazine.com/tag/illustrator/">Illustrator</a></li>
+										<li><a href="http://www.smashingmagazine.com/tag/wallpapers/">Wallpapers</a></li>
+										<li><a href="http://www.smashingmagazine.com/tag/freebies/">Freebies</a></li>
+									</ul>
+								</li>
+								<li class="ux">
+									<a href="http://uxdesign.smashingmagazine.com">UX Design</a>
+									<ul>
+										<li><a href="http://uxdesign.smashingmagazine.com/tag/usability/">Usability</a></li>
+										<li><a href="http://uxdesign.smashingmagazine.com/tag/user-experience/">User Experience</a></li>
+										<li><a href="http://uxdesign.smashingmagazine.com/tag/ui/">UI Design</a></li>
+										<li><a href="http://uxdesign.smashingmagazine.com/tag/e-commerce/">E-Commerce</a></li>
+									</ul>
+								</li>
+								<li class="wordpress">
+									<a href="http://wp.smashingmagazine.com">WordPress</a>
+									<ul>
+										<li><a href="http://wp.smashingmagazine.com/tag/essentials/">Essentials</a></li>
+										<li><a href="http://wp.smashingmagazine.com/tag/techniques/">Techniques</a></li>
+										<li><a href="http://wp.smashingmagazine.com/tag/plugins/">Plugins</a></li>
+										<li><a href="http://wp.smashingmagazine.com/tag/themes/">Themes</a></li>
+									</ul>
+								</li>
+
+							</ul>
+							<br class="nasty" />
+						</nav>
+					</div><!-- .col.sidebar -->
+
+					<div class="col main single">
+
+
+	<article class="post-119625 post type-post status-publish format-standard hentry category-coding category-toolbox category-programming-techniques tag-encoding tag-unicode tag-utf8 post">
+	
+	    <h2><a href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/">All About Unicode, UTF8 &amp; Character Sets</a></h2>
+	    
+	    <ul class="postmetadata clearfix">
+	        <li class="author">By <a href="http://coding.smashingmagazine.com/author/paul-tero/" title="Posts by Paul Tero" rel="author">Paul Tero</a></li>
+		
+	        		
+	        <li class="date">June 6th, 2012</li>
+	        <li class="tags"><a href="http://coding.smashingmagazine.com/tag/encoding/">Encoding</a>, <a href="http://coding.smashingmagazine.com/tag/unicode/">Unicode</a>, <a href="http://coding.smashingmagazine.com/tag/utf8/">Utf8</a></li>
+	        <li class="comments"><a href="#comments" title="Comment on All About Unicode, UTF8 &amp; Character Sets">34 Comments</a></li>
+	        	    </ul>
+	    
+	    	    
+	    		    <p>This is a story that dates back to the earliest days of computers. The story has a plot, well, sort of. It has competition and intrigue, as well as traversing oodles of countries and languages. There is conflict and resolution, and a happyish ending. But the main focus is the characters &mdash; <strong>110,116</strong> of them. By the end of the story, they will all find their own unique place in this world.</p>
+<p>This story (or <em>article</em>, as known on Smashing Magazine) will follow a few of those characters more closely, as they journey from Web server to browser, and back again. Along the way, you&#8217;ll find out more about the history of characters, character sets, Unicode and UTF-8, and why question marks and odd accented characters sometimes show up in databases and text files.</p>
+<p><strong>Warning</strong>: this article contains lots of numbers, including a bit of binary &#8211; best approached after your morning cup of coffee.</p>
+<h3>ASCII</h3>
+<p>Computers only deal in numbers and not letters, so it&#8217;s important that all computers agree on which numbers represent which letters.</p>
+<p>Let&#8217;s say my computer used the number 1 for A, 2 for B, 3 for C, etc and yours used 0 for A, 1 for B, etc. If I sent you the message HELLO, then the numbers 8, 5, 12, 12, 15 would whiz across the wires. But for you 8 means I, so you would receive and decode it as IFMMP. To communicate effectively, we would need to agree on a standard way of encoding the characters.</p>
+<p>To this end, in the 1960s the American Standards Association created a 7-bit encoding called the American Standard Code for Information Interchange (<a href="http://en.wikipedia.org/wiki/ASCII">ASCII</a>). In this encoding HELLO is 72, 69, 76, 76, 79 and would be transmitted digitally as 1001000 1000101 1001100 1001100 1001111. Using 7 bits gives 128 possible values from 0000000 to 1111111, so ASCII has enough room for all lower case and upper case Latin letters, along with each numerical digit, common punctuation marks, spaces, tabs and other control characters. In 1968, <a href="http://www.presidency.ucsb.edu/ws/index.php?pid=28724#axzz1s2VIkMsP">US President Lyndon Johnson made it official</a> &#8211; all computers must use and understand ASCII.</p>
+<h3>Trying It Yourself</h3>
+<p>There are plenty of <a href="http://www.asciitable.com/">ASCII tables</a> available, displaying or describing the 128 characters. Or you can make one of your own with a little bit of CSS, HTML and Javascript, most of which is to get it to display nicely:</p>
+<pre class="brush:php">&lt;html&gt;
+&lt;body&gt;
+&lt;style type="text/css"&gt;p {float: left; padding: 0 15px; margin: 0; font-size: 80%;}&lt;/style&gt;
+&lt;script type="text/javascript"&gt;
+for (var i=0; i&lt;128; i++) document.writeln ((i%32?'':'&lt;p&gt;') + i + ': ' + String.fromCharCode (i) + '&lt;br&gt;');
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>This will display a table like this:</p>
+<p><img class="alignnone size-full wp-image-119956" title="Do-It-Yourself Javascript ASCII table viewed in Firefox" src="http://media.smashingmagazine.com/wp-content/uploads/2012/04/ascii-chart-javascript-red.png" alt="Do-It-Yourself Javascript ASCII table viewed in Firefox" width="300" height="567" /><br />
+<em>Do-It-Yourself Javascript ASCII table viewed in Firefox</em></p>
+<p>The most important bit of this is the Javascript <code>String.fromCharCode</code> function. It takes a number and turns it into a character. In fact, the following four lines of HTML and Javascript all produce the same result. They all get the browser to display character numbers 72, 69, 76, 76 and 79:</p>
+<pre class="brush:php">HELLO
+&amp;#72;&amp;#69;&amp;#76;&amp;#76;&amp;#79;
+&lt;script&gt;document.write ("HELLO");&lt;/script&gt;
+&lt;script&gt;document.write (String.fromCharCode (72,69,76,76,79));&lt;/script&gt;</pre>
+<p>Also notice how Firefox displays the unprintable characters (like backspace and escape) in the first column. Some browsers show blanks or question marks. Firefox squeezes four hexadecimal digits into a small box.</p>
+<h2>The Eighth Bit</h2>
+<p><a href="http://en.wikipedia.org/wiki/Teleprinter">Teleprinters</a> and stock tickers were quite happy sending 7 bits of information to each other. But the new fangled <a href="http://en.wikipedia.org/wiki/Microprocessor#8-bit_designs">microprocessors</a> of the 1970s preferred to work with powers of 2. They could process 8 bits at a time and so used 8 bits (aka a byte or octet) to store each character, giving 256 possible values.</p>
+<p>An 8 bit character can store a number up to 255, but ASCII only assigns up to 127. The other values from 128 to 255 are spare. Initially, IBM PCs used the spare slots to represent accented letters, various symbols and shapes and a handful of Greek letters. For instance, number 200 was the lower left corner of a box: ╚, and 224 was the Greek letter alpha in lower case: <strong>α</strong>. This way of encoding the letters was later given the name <a href="http://en.wikipedia.org/wiki/Code_page_437">code page 437</a>.</p>
+<p>However, unlike ASCII, characters 128-255 were never standardized, and various countries started using the spare slots for their own alphabets. Not everybody agreed that 224 should display <strong>α</strong>, not even the Greeks. This led to the creation of a handful of new<a href="http://en.wikipedia.org/wiki/Code_pages#IBM_PC_.28OEM.29_code_pages"> code pages</a>. For example, in Russian IBM computers using code page 885, 224 represents the Cyrillic letter <strong>Я</strong>. And in Greek code page 737, it is lower case omega: <strong>ω</strong>.</p>
+<p>Even then there was disagreement. From the 1980s Microsoft Windows introduced its own code pages. In the Cyrillic code page Windows-1251, 224 represents the Cyrillic letter <strong>a</strong>, and <strong>Я</strong> is at 223.</p>
+<p>In the late 1990s, an attempt at standardization was made. Fifteen different 8 bit character sets were created to cover many different alphabets such as Cyrillic, Arabic, Hebrew, Turkish, and Thai. They are called <a href="http://en.wikipedia.org/wiki/Iso-8859">ISO-8859-1 up to ISO-8859-16</a> (number 12 was abandoned). In the Cyrillic ISO-8859-5, 224 represents the letter <strong>р</strong>, and <strong>Я</strong> is at 207.</p>
+<p>So if a Russian friend sends you a document, you really need to know what code page it uses. The document by itself is just a sequence of numbers. Character 224 could be <strong>Я</strong>, <strong>a</strong> or <strong>р</strong>. Viewed using the wrong code page, it will look like a bunch of scrambled letters and symbols.</p>
+<p>(The situation isn&#8217;t quite as bad when viewing Web pages &#8211; as Web browsers can usually detect a page&#8217;s character set based on frequency analysis and other such techniques. But this is a false sense of security &#8211; they can and do get it wrong.)</p>
+<h3>Trying It Yourself</h3>
+<p>Code pages are also known as <strong>character sets</strong>. You can explore these character sets yourself, but you have to use PHP or a similar server side language this time (roughly because the character needs to be in the page before it gets to the browser). Save these  lines in a PHP file and upload it to your server:</p>
+<pre class="brush:php">&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="ISO-8859-5"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;style type="text/css"&gt;p {float: left; padding: 0 15px; margin: 0; font-size: 80%;}&lt;/style&gt;
+&lt;?php  for ($i=0; $i&lt;256; $i++) echo ($i%32?'':'&lt;p&gt;') . $i . ': ' . chr ($i) . '&lt;br&gt;'; ?&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>This will display a table like this:</p>
+<p><img class="alignnone size-full wp-image-119957" title="Cyrillic character set ISO-8859-5 viewed in Firefox" src="http://media.smashingmagazine.com/wp-content/uploads/2012/04/iso-8859-5-php-orange.png" alt="Cyrillic character set ISO-8859-5 viewed in Firefox" width="550" height="552" /><br />
+<em>Cyrillic character set ISO-8859-5 viewed in Firefox</em></p>
+<p>The PHP function <code>chr</code> does a similar thing to Javascript&#8217;s <code>String.fromCharCode</code>. For example <code>chr(224)</code> embeds the number 224 into the Web page before sending it to the browser. As we&#8217;ve seen above, 224 can mean many different things. So, the browser needs to know which character set to use to display the 224. That&#8217;s what the first line above is for. It tells the browser to use the Cyrillic character set ISO-8858-5:</p>
+<pre class="brush:php">&lt;meta charset="ISO-8859-5"&gt;</pre>
+<p>If you exclude the <code>charset</code> line, then it will display using the browser&#8217;s default. In countries with Latin-based alphabets (like the UK and US), this is probably ISO-8859-1, in which case 224 is an a with grave accent: <strong>à</strong>. Try changing this line to ISO-8859-7 or Windows-1251 and refresh the page. You can also override the character set in the browser. In Firefox go to View &gt; Character Encoding. Swap between a few to see what effect it has. If you try to display more than 256 characters, the sequence will repeat.</p>
+<h3>Summary Circa 1990</h3>
+<p>This is the situation in about 1990. Documents can be written, saved and exchanged in many languages, but <strong>you need to know which character set they use</strong>. There is also no easy way to use two or more non-English alphabets in the same document, and alphabets with more than 256 characters like Chinese and Japanese have to use entirely different systems.</p>
+<p>Finally, the Internet is coming! Internationalization and globalization is about to make this a much bigger issue. A new standard is required.</p>
+<h2>Unicode To The Rescue</h2>
+<p>Starting in the late 1980s, a new standard was proposed – one that would assign a unique number (officially known as a code point) to every letter in every language, one that would have way more than 256 slots. It was called <a href="http://en.wikipedia.org/wiki/Unicode">Unicode</a>. It is now in version 6.1 and consists of over 110,000 code points. If you have a few hours to spare you can <a href="http://www.babelstone.co.uk/Unicode/unicode.html">watch them all whiz past</a>.</p>
+<p>The first 128 Unicode code points are the same as ASCII. The range 128-255 contains currency symbols and other common signs and accented characters (aka characters with <a href="http://en.wikipedia.org/wiki/Diacritic">diacritical marks</a>), and much of it is borrowed ISO-8859-1. After 256 there are many more accented characters. After 880 it gets into Greek letters, then Cyrillic, Hebrew, Arabic, Indic scripts, and Thai. Chinese, Japanese and Korean start from 11904 with many others in between.</p>
+<p>This is great – no more ambiguity – each letter is represented by its own unique number. Cyrillic <strong>Я</strong> is always 1071 and Greek <strong>α</strong> is always 945. 224 is always <strong>à</strong>, and <strong>H</strong> is still 72. Note that these Unicode code points are officially written in hexadecimal preceded by U+. So the Unicode code point H is usually written as U+0048 rather than 72 (to convert from hexadecimal to decimal: 4*16+8=72).</p>
+<p>The major problem is that there are more than 256 of them. The characters will no longer fit into 8 bits. However <strong>Unicode is not a character set or code page</strong>. So officially that is not the Unicode Consortium&#8217;s problem. They just came up with the idea and left someone else to sort out the implementation. That will be discussed in the next two sections.</p>
+<h2>Unicode Inside The Browser</h2>
+<p>Unicode does not fit into 8 bits, not even into 16. Although only 110,116 code points are in use, it has the capability to define up to 1,114,112 of them, which would require 21 bits.</p>
+<p>However, computers have advanced since the 1970s. An 8 bit microprocessor is a bit out of date. New computers now have 64 bit processors, so why can&#8217;t we move beyond an 8 bit character and into a 32 bit or 64 bit character?</p>
+<p>The first answer is: we can!</p>
+<p>A lot of software is written in C or C++, which supports a &#8220;wide character&#8221;. This is a 32 bit character called <code>wchar_t</code>. It is an extension of C&#8217;s 8 bit <code>char</code> type. Internally, modern Web browsers use these wide characters (or something similar) and can theoretically quite happily deal with over 4 billion distinct characters. This is plenty for Unicode. So &#8211; <strong>i</strong><strong>nternally, modern Web browers use Unicode</strong>.</p>
+<h3>Trying It Yourself</h3>
+<p>The Javascript code below is similar to the ASCII code above, except it goes up to a much higher number. For each number, it tells the browser to display the corresponding Unicode code point:</p>
+<pre class="brush:php">&lt;html&gt;
+&lt;body&gt;
+&lt;style type="text/css"&gt;p {float: left; padding: 0 15px; margin: 0; font-size: 80%;}&lt;/style&gt;
+&lt;script type="text/javascript"&gt;
+for (var i=0; i&lt;2096; i++)
+  document.writeln ((i%256?'':'&lt;p&gt;') + i + ': ' + String.fromCharCode (i) + '&lt;br&gt;');
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>It will output a table like this:</p>
+<p><img class="alignnone size-full wp-image-119960" title="A selection of Unicode code points viewed in Firefox" src="http://media.smashingmagazine.com/wp-content/uploads/2012/05/unicode-javascript-yellow.png" alt="A selection of Unicode code points viewed in Firefox" width="550" height="600" /><br />
+<em>A selection of Unicode code points viewed in Firefox</em></p>
+<p>The screenshot above only shows a subset of the first few thousand code points output by the Javascript. The selection includes some Cyrillic and Arabic characters, displayed right-to-left.</p>
+<p>The important point here is that Javascript runs completely in the Web browser where 32 bit characters are perfectly acceptable. The Javascript function <code>String.fromCharCode(1071)</code> outputs the Unicode code point 1071 which is the letter <strong>Я</strong>.</p>
+<p>Similarly if you put the HTML entity <code>&amp;#1071;</code> into an HTML page, a modern Web browser would display <strong>Я</strong>. Numerical HTML entities also refer to Unicode.</p>
+<p>On the other hand, the PHP function <code>chr(1071)</code> would output a forward slash<strong> / </strong>because the <code>chr</code> function only deals with 8 bit numbers up to 256 and repeats itself after that, and 1071%256=47 which has been a / since the 1960s.</p>
+<h2>UTF-8 To The Rescue</h2>
+<p>So if browsers can deal with Unicode in 32 bit characters, where is the problem? <strong>The problem is in the sending and receiving, and reading and writing of characters.</strong></p>
+<p>The problem remains because:</p>
+<ol>
+<li>A lot of existing software and protocols send/receive and read/write 8 bit characters</li>
+<li>Using 32 bits to send/store English text would quadruple the amount of bandwidth/space required</li>
+</ol>
+<p>Although browsers can deal with Unicode internally, you still have to get the data from the Web server to the Web browser and back again, and you need to save it in a file or database somewhere. So you still need a way to make 110,000 Unicode code points fit into just 8 bits.</p>
+<p>There have been several attempts to solve this problem such as UCS2 and UTF-16. But the winner in recent years is UTF-8, which stands for Universal Character Set Transformation Format 8 bit.</p>
+<p>UTF-8 is a clever. It works a bit like the Shift key on your keyboard. Normally when you press the H on your keyboard a lower case &#8220;h&#8221; appears on the screen. But if you press Shift first, a capital H will appear.</p>
+<p>UTF-8 treats numbers 0-127 as ASCII, 192-247 as Shift keys, and 128-192 as the key to be shifted. For instance, characters 208 and 209 shift you into the Cyrillic range. <a href="http://en.wikipedia.org/wiki/%D0%AF#Computing_codes">208 followed by 175</a> is character 1071, the Cyrillic <strong>Я</strong>. The <a href="http://en.wikipedia.org/wiki/UTF-8#Examples">exact calculation</a> is (208%32)*64 + (175%64) = 1071. Characters 224-239 are like a double shift. <a href="http://www.fileformat.info/info/unicode/char/2F80/index.htm">226 followed by 190 and then 128</a> is character 12160: ⾀. 240 and over is a triple shift.</p>
+<p>UTF-8 is therefore a multi-byte variable-width encoding. Multi-byte because a single character like <strong>Я</strong> takes more than one byte to specify it. Variable-width because some characters like <strong>H</strong> take only 1 byte and some up to 4.</p>
+<p>Best of all it is backward compatible with ASCII. Unlike some of the other proposed solutions, any document written only in ASCII, using only characters 0-127, is perfectly valid UTF-8 as well &#8211; which saves bandwidth and hassle.</p>
+<h3>Trying It Yourself</h3>
+<p>This is a different experiment. PHP embeds the 6 numbers mentioned above into an HTML page: 72, 208, 175, 226, 190, 128. The browser interprets those numbers as UTF-8, and internally converts them into Unicode code points. Then Javascript outputs the Unicode values. Try changing the character set from UTF-8 to ISO-8859-1 and see what happens:</p>
+<pre class="brush:php">&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p&gt;Characters embedded in the page:&lt;br&gt;
+&lt;span id="chars"&gt;&lt;?php echo chr(72).chr(208).chr(175).chr(226).chr(190).chr(128); ?&gt;&lt;/span&gt;
+&lt;p&gt;Character values according to Javascript:&lt;br&gt;
+&lt;script type="text/javascript"&gt;
+function ShowCharacters (s) {var r=''; for (var i=0; i&lt;s.length; i++)
+  r += s.charCodeAt (i) + ': ' + s.substr (i, 1) + '&lt;br&gt;'; return r;}
+document.writeln (ShowCharacters (document.getElementById('chars').innerHTML));
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>If you are in a hurry, this is what it will look like:</p>
+<p><img class="alignnone size-full wp-image-119961" title="A sequence of numbers shown using the UTF-8 character set" src="http://media.smashingmagazine.com/wp-content/uploads/2012/05/utf8-green.png" alt="A sequence of numbers shown using the UTF-8 character set" width="395" height="297" /><br />
+<em>The sequence of numbers above shown using the UTF-8 character set</em></p>
+<p><img class="alignnone size-full wp-image-119962" title="Same sequence of numbers shown using the ISO-8859-1 character set" src="http://media.smashingmagazine.com/wp-content/uploads/2012/05/characters-iso-8859-1-blue.png" alt="Same sequence of numbers shown using the ISO-8859-1 character set" width="395" height="307" /><br />
+<em>Same sequence of numbers shown using the ISO-8859-1 character set</em></p>
+<p>If you display the page  using the UTF-8 character set, you will see only 3 characters: HЯ⾀. If you display it using the character set ISO-8859-1, you will see six separate characters: HÐ¯â¾€ . This is what is happening:</p>
+<ol>
+<li>On your Web server, PHP is embedding the numbers 72, 208, 175, 226, 190 and 128 into a Web page</li>
+<li>The Web page whizzes across the Internet from the Web server to your Web browser</li>
+<li>The browser receives those numbers and interprets them according to the character set</li>
+<li>The browser internally represents the characters using their Unicode values</li>
+<li>Javascript outputs the corresponding Unicode values</li>
+</ol>
+<p>Notice that when viewed as ISO-8859-1 the first 5 numbers are the same (72, 208, 175, 226, 190) as their Unicode code points. This is because Unicode borrowed heavily from ISO-8859-1 in that range. The last number however, the euro symbol €, is different. It is at position 128 in ISO-8859-1 and has the Unicode value 8364.</p>
+<h3>Summary Circa 2003</h3>
+<p>UTF-8 is becoming the most popular international character set on the Internet, superseding the older single-byte character sets like ISO-8859-5. When you view or send a non-English document, you still need to know what character set it uses. For widest interoperability, website administrators need to make sure all their web pages use the UTF-8 character sets.</p>
+<p>Perhaps the Ð looks familiar &#8211; it will sometimes show up if you try to view Russian UTF-8 documents. The next section describes how character sets get confused and end up storing things wrongly in a database.</p>
+<h2>Lots Of Problems</h2>
+<p>As long as everybody is speaking UTF-8, this should all work swimmingly. If they aren&#8217;t, then characters can get mangled. To explain way, imagine a typical interaction a website, such as a user making a comment on a blog post:</p>
+<ol>
+<li>A Web page displays a comment form</li>
+<li>The user types a comment and submits.</li>
+<li>The comment is sent back to the server and saved in a database.</li>
+<li>The comment is later retrieved from the database and displayed on a Web page</li>
+</ol>
+<p>This simple process can go wrong in lots of ways and produce the following types of problems:</p>
+<h3>HTML Entities</h3>
+<p>Pretend for a moment that you don&#8217;t know anything about character sets &#8211; erase the last 30 minutes from your memory. The form on your blog will probably display itself using the character set ISO-8859-1. This character set doesn&#8217;t know any Russian or Thai or Chinese, and only a little bit of Greek. If you attempt to copy and paste any into the form and press Submit, a modern browser will try to convert it into HTML numerical entities like <code>&amp;#1071;</code> for <strong>Я</strong>.</p>
+<p>That&#8217;s what will get saved in your database, and that&#8217;s what will be output when the comment is displayed &#8211; which means it will display fine on a Web page, but cause problems when you try to output it to a PDF or email, or run text searches for it in a database.</p>
+<h3>Confused Characters</h3>
+<p>How about if you operate a Russian website, and you have not specified a character set in your Web page? Imagine a Russian user whose default character set is ISO-8859-5. To say &#8220;hi&#8221;, they might type Привет. When the user presses Submit<span id="result_box" class="short_text" lang="ru"><span class="hps">, <strong>the characters are encoded according to the character set of the sending page</strong>. In this case, </span></span>Привет is encoded as the numbers 191, 224, 216, 210, 213 and 226. Those numbers will get sent across the Internet to the server, and saved like that into a database.</p>
+<p>If somebody later views that comment using ISO-8859-5, they will see the correct text. But if they view using a different Russian character set like Windows-1251, they will see їаШТХв. It&#8217;s still Russian, but makes no sense.</p>
+<h3>Accented Characters with Lots of Vowels</h3>
+<p>If someone views the same comment using ISO-8859-1, they will see ¿àØÒÕâ instead of Привет. A longer phrase like Я тоже рада Вас видеть (&#8220;nice to see you&#8221; in a formal way to a female), submitted as ISO-8859-5, will show up in ISO-8859-1 as Ï âÞÖÕ àÐÔÐ. It looks like that because the 128-255 range of ISO-8859-1 contains lots of vowels with accents.</p>
+<p>So if you see this sort of pattern, it&#8217;s probably because text has been entered in a single byte character set (one of the ISO-8859s or Windows ones) and is being displayed as ISO-8859-1. To fix the text, you&#8217;ll need to figure out which character set it was entered as, and resubmit it as UTF-8 instead.</p>
+<h3>Alternating Accented Characters</h3>
+<p>What if the user submitted the comment in UTF-8? In that case the Cyrillic characters which make up the word Привет would each get sent as 2 numbers each: 208/159, 209/128, 208/184, 208/178, 208/181 and 209/130. If you viewed that in ISO-8859-1 it would look like: ÐŸÑ€Ð¸Ð²ÐµÑ‚.</p>
+<p>Notice that every other character is a Ð or Ñ. Those characters are numbers 208 and 209, and they tell UTF-8 to switch to the Cyrillic range. So if you see a lot of Ð and Ñ, you can assume that you are looking at Russian text entered in UTF-8, viewed as ISO-8859-1. Similarly, Greek will have lots of Î and Ï, 206 and 207. And Hebrew has alternating ×, number 215.</p>
+<h3>Vowels Before a Pound and Copyright Sign</h3>
+<p>A very common issue in the UK is the currency symbol £ getting converted into Â£. This is exactly the same issue as above with a coincidence thrown in to add confusion. The £ symbol has the Unicode and ISO-8859-1 value of 163. Recall that in UTF-8 any character over 127 is represented by a sequence of two or more numbers. In this case, the UTF-8 sequence is 194/163. Mathematically, this is because (194%32)*64 + (<strong>163</strong>%64) = <strong>163</strong>.</p>
+<p>Visually it means that the if you view the UTF-8 sequence using ISO-8859-1, it appears to gain a Â which is character 194 in ISO-8859-1. The same thing happens for all Unicode code points 161-191, which includes © and ® and ¥.</p>
+<p>So if your £ or © suddenly inherit a Â, it is because they were entered as UTF-8.</p>
+<h3>Black Diamond Question Marks</h3>
+<p>How about the other way around? If you enter Привет as ISO-8859-5, it will get saved as the numbers shown above: 191, 224, etc. If you then try to view this as UTF-8, you may well see lots of question marks inside black diamonds: �. The browser displays these when it can&#8217;t make sense of the numbers it is reading.</p>
+<p>UTF-8 is self-synchronzising. Unlike other multi-byte character encodings, you always know where you are with UTF-8. If you see a number 192-247, you know you are at the beginning of a multi-byte sequence. If you see 128-191 you know you are in the middle of one. There&#8217;s no danger of missing the first number and garbling the rest of the text.</p>
+<p>This means that in UTF-8, the sequence 191 followed by 224 will never occur naturally, so the browser doesn&#8217;t know what to do with it and displays �� instead.</p>
+<p>This can also cause £ and © related problems. £50 in ISO-8859-1 is the numbers 163, 53 and 48. The 53 and 48 cause no issues, but in UTF-8, 163 can never occur by itself, so this will show up as �50. Similarly if you see �2012, it is probably because ©2012 was input as ISO-8859-1 but is being displayed as UTF-8.</p>
+<h3>Blanks, Question Marks and Boxes</h3>
+<p>Even if they are fully up-to-speed with UTF-8 and Unicode, a browser still may not know how to display a character. The first few ASCII characters 1-31 are mostly control sequences for teleprinters (things like Acknowledge and Stop). If you try to display them, a browser might show a ? or a blank or a box with tiny numbers inside it.</p>
+<p>Also, Unicode defines over 110,000 characters. <strong>Your browser may not have the correct font to display all of them.</strong> Some of the more obscure characters may also get shown as ? or blank or a small box. In older browsers, even fairly common non-English characters may show as boxes.</p>
+<p>Older browsers may also behave differently for some of the issues above, showing ? and blank boxes more often.</p>
+<h3>Databases</h3>
+<p>The discussion above has avoided the middle step in the process &#8211; saving data to a database. Databases like MySQL can also specify a character set for a database, table or column. But it is less important that the Web pages&#8217; character set.</p>
+<p>When saving and retrieving data, MySQL deals just with numbers. If you tell it to save number 163, it will. If you give it 208/159 it will save those two numbers. And when you retrieve the data, you&#8217;ll get the same two numbers back.</p>
+<p>The character set becomes more important when you use database functions to compare, convert and measure the data. For example, the <code>LENGTH</code>  of a field may depend on its character set, as do string comparisons using <code>LIKE</code> and <code><code>=</code></code>. The method used to compare strings is called a <a href="http://dev.mysql.com/doc/refman/5.5/en/charset-general.html">collation</a>.</p>
+<p>Character sets and collations in MySQL are an in-depth subject. It&#8217;s not simply a case of changing the character set of a table to UTF-8. There are further SQL commands to take into account to make sure the data goes in and out in the right format as well. <a href="http://blog.tremend.ro/2006/09/26/mysql-php-and-utf8/">This blog</a> is a good starting point.</p>
+<h3>Trying It Yourself</h3>
+<p>The following PHP and Javascript code allows you to experiment with all these issues. You can specify which character set is used to input and output text, and you can see what the browser thinks about it too.</p>
+<pre class="brush:php">&lt;?php
+$charset = $_POST['charset']; if (!$charset) $charset = 'ISO-8859-1';
+$string = $_POST['string'];
+if ($string) {
+        echo '&lt;p&gt;This is what PHP thinks you entered:&lt;br&gt;';
+        for ($i=0; $i&lt;strlen($string); $i++) {$c=substr ($string,$i,1); echo ord ($c).': '.$c.' &lt;br/&gt;';}
+}       
+?&gt;      
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="&lt;?=$charset?&gt;"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form method="post"&gt;
+&lt;input name="lastcharset" type="hidden" value="&lt;?php echo $charset?&gt;"/&gt;
+Form was submitted as: &lt;?php echo $_POST['lastcharset']?&gt;&lt;br/&gt;
+Text is displayed as: &lt;?php echo $charset?&gt;&lt;br/&gt;
+Text will be submitted as: &lt;?php echo $charset?&gt;&lt;br/&gt;
+Copy and paste or type here:
+&lt;input name="string" type="text" size="20" value="&lt;?php echo $string?&gt;"/&gt;&lt;br/&gt;
+Next page will display as:
+&lt;select name="charset"&gt;&lt;option&gt;ISO-8859-1&lt;option&gt;ISO-8859-5
+&lt;option&gt;Windows-1251&lt;option&gt;ISO-8859-7&lt;option&gt;UTF-8&lt;/select&gt;&lt;br/&gt;
+&lt;input type="submit" value="Submit" onclick="ShowCharacters (this.form.string.value); return 1;"/&gt;
+&lt;/form&gt;
+&lt;script type="text/javascript"&gt;
+function ShowCharacters (s) {
+  var r='You entered:';
+  for (var i=0; i&lt;s.length; i++) r += '\n' + s.charCodeAt (i) + ': ' + s.substr (i, 1);
+  alert (r);
+}
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>This is an example of the code in action. The numbers at the top are the numerical values of each of the characters and their representation (when viewed individually) in the current character set:</p>
+<p><img class="alignnone size-full wp-image-120202" title="Example of inputting and output in different character sets" src="http://media.smashingmagazine.com/wp-content/uploads/2012/05/input-output-purple1.png" alt="Example of inputting and output in different character sets" width="395" height="381" /><br />
+<em>Example of inputting and output in different character sets. This shows a £ sign turning into a � in Google Chrome.</em></p>
+<p>The page above shows the previous, current and future character sets. You can use this code to quickly see how text can get really mangled. For example, if you pressed Submit again above, the<em></em> � has Unicode code point 65533 which is 239/191/189 in UTF-8 and will be displayed as ï¿½50  in ISO-8859-1. So if you ever get £ symbols turning into ï¿½, that is probably the route they took.</p>
+<p>Note that the select box at the bottom will change back to ISO-8859-1 each time.</p>
+<h2>One Solution</h2>
+<p>All the encoding problems above are caused by text being submitted in one character set and viewed in another. The solution is to <strong>make sure that every page on your website uses UTF-8</strong>. You can do this with one of these lines immediately after the <code>&lt;head&gt;</code> tag:</p>
+<pre class="brush:php">&lt;meta charset="UTF-8"&gt;
+&lt;meta http-equiv="Content-type" content="text/html; charset=UTF-8"&gt;</pre>
+<p>It has to be one of the first things in your Web page, as it will cause the browser to look again at the page in a whole new light. For speed and efficiency, it should do this as soon as possible.</p>
+<p>You can also specify UTF-8 in your MySQL tables, though to fully use this feature, you&#8217;ll need to delve deeper.</p>
+<p>Note that users can still override the character set in their browsers. This is rare, but does mean that this solution is not guaranteed to work. For extra safety, you could implement a back-end check to ensure data is arriving in the correct format.</p>
+<h3>Existing Websites</h3>
+<p>If your website has already been collecting text in a variety of languages, then you will also need to convert your existing data into UTF-8. If there is not much of it, you can use a PHP page like the one above to figure out the original character set, and use the browser to convert the data into UTF-8.</p>
+<p>If you have lots of data in various character sets, you&#8217;ll need to first detect the character set and then convert it. In PHP you can use <a href="http://www.php.net/manual/en/function.mb-detect-encoding.php"><code>mb_detect_encoding</code></a> to detect and <a href="http://www.php.net/manual/en/function.iconv.php"><code>iconv</code></a> to convert. Reading the comments for  <code>mb_detect_encoding</code>, it looks like quite a fussy function, so be sure to experiment to make sure you are using it properly and getting the right results.</p>
+<p>A potentially misleading function is <a href="http://php.net/manual/en/function.utf8-decode.php"><code>utf8_decode</code></a>. It turns UTF-8 into ISO-8859-1. Any characters not available in ISO-8859-1 (like Cyrillic, Greek, Thai, etc) are turned into question marks. It&#8217;s misleading because you might have expected more from it, but it does the best it can.</p>
+<h2>Summary</h2>
+<p>This article has relied heavily on numbers and has tried to leave no stone unturned. Hopefully it has provided an exhaustive understanding of character sets, Unicode, UTF-8 and the various problems that can arise. The morals of the story are:</p>
+<ul>
+<li>You need to know the character set in order to make sense of non-Latin text</li>
+<li>Internally, browsers use Unicode to represent characters</li>
+<li>Make sure all your Web pages specify the UTF-8 character set</li>
+</ul>
+<p>For a slightly different approach to this subject, <a href="http://www.joelonsoftware.com/articles/Unicode.html">this 2003 character set article</a> is excellent. Thank you for sticking with this epic journey.</p>
+	    
+		
+	<div class="tagsdata">
+		<p class="tags longtags"><strong>Tags:</strong><a href="http://coding.smashingmagazine.com/tag/encoding/" title="View all articles tagged 'Encoding' (1)">Encoding</a><a href="http://coding.smashingmagazine.com/tag/unicode/" title="View all articles tagged 'Unicode' (1)">Unicode</a><a href="http://coding.smashingmagazine.com/tag/utf8/" title="View all articles tagged 'Utf8' (1)">Utf8</a></p>		<p><a href="#top" class="backtotop single" title="Jump to the top of the page">&uarr; Back to top</a><a href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fcoding.smashingmagazine.com%2F2012%2F06%2F06%2Fall-about-unicode-utf8-character-sets%2F&amp;source=tweetbutton&amp;text=All%20About%20Unicode%2C%20UTF8%20%26amp%3B%20Character%20Sets&amp;url=http%3A%2F%2Fcoding.smashingmagazine.com%2F2012%2F06%2F06%2Fall-about-unicode-utf8-character-sets%2F&amp;via=smashingmag" class="share-on-twitter single" title="Share on Twitter!">Share on Twitter</a></p>
+	</div>
+
+	</article>
+
+	
+	<div class="bio clearfix">
+	    <div class="gravatar">
+	        <img alt='' src='http://0.gravatar.com/avatar/e446e7dbb8211827be58ab11548f4a55?s=78&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D78&amp;r=G' class='avatar avatar-78 photo' height='78' width='78' />	    </div>
+	    <div class="about">
+	        <a rel="author" href="http://coding.smashingmagazine.com/author/paul-tero/?rel=author" title="Posts by Paul Tero"  class="post-author">Paul Tero</a>	        <p>Paul Tero is an experienced PHP programmer and server administrator. He developed the <a href="http://www.stockashop.co.uk/">Stockashop ecommerce system</a> in 2005 for Sensable Media. He now works for the makers of <a href="http://www.cleverbot.com/">Cleverbot</a>. He has also released an <a href="http://www.amazon.co.uk/dp/B007931NYI">eBook of his articles</a> and his written numerous other <a href="http://www.tero.co.uk/">open sourcish scripts and programs</a>.</p>
+	    </div>
+	</div>
+
+		<div class="footer-arrows" id="keyboard-navigation">
+					<a class="prev" href="/2012/05/31/50-jquery-function-demos-for-aspiring-web-developers/">Useful jQuery Function Demos For Your Projects<span>&nbsp;</span></a>
+							<a class="next" href="/2012/06/12/javascript-profiling-chrome-developer-tools/">JavaScript Profiling With The Chrome Developer Tools<span>&nbsp;</span></a>
+			</div>
+			
+		<div class="related-articles">
+		<h2>Related Articles</h2>
+				<div class="related-article">
+			<a class="post-picture" href="http://coding.smashingmagazine.com/2011/09/19/css3-flexible-box-layout-explained/"><img src="http://provide.smashingmagazine.com/related-posts/related-081.jpg" alt="CSS3 Flexible Box Layout Explained" /></a>
+			<h3><a href="http://coding.smashingmagazine.com/2011/09/19/css3-flexible-box-layout-explained/">CSS3 Flexible Box Layout Explained</a></h3>
+		</div>
+				<div class="related-article">
+			<a class="post-picture" href="http://coding.smashingmagazine.com/2009/10/26/modern-css-layouts-the-essential-characteristics/"><img src="http://provide.smashingmagazine.com/related-posts/related-posts-156.jpg" alt="Modern CSS Layouts: The Essential Characteristics" /></a>
+			<h3><a href="http://coding.smashingmagazine.com/2009/10/26/modern-css-layouts-the-essential-characteristics/">Modern CSS Layouts: The Essential Characteristics</a></h3>
+		</div>
+				<div class="related-article">
+			<a class="post-picture" href="http://coding.smashingmagazine.com/2011/08/23/the-semantic-grid-system-page-layout-for-tomorrow/"><img src="http://provide.smashingmagazine.com/related-posts/related-105.jpg" alt="The Semantic Grid System: Page Layout For Tomorrow" /></a>
+			<h3><a href="http://coding.smashingmagazine.com/2011/08/23/the-semantic-grid-system-page-layout-for-tomorrow/">The Semantic Grid System: Page Layout For Tomorrow</a></h3>
+		</div>
+			</div>
+
+<!-- Smashing Magazine - Comment spnsr ed spot -->
+<a id="comments"></a>
+<ul class="sub-tabs clearfix">
+    <li><a href="#show-comments" class="active">34 Comments</a></li>
+    <li><a href="#best-comments">Best Comments</a></li></ul>
+
+<div id="discussion" class="subtab-pages">
+    <div id="show-comments">
+                <ol id="comments-overview" class="commentlist">
+                <li class="comment even thread-even depth-1 clearfix ">
+    <span class="commentnumber">1</span>
+    <div class="comment" id="comment-581461">
+        <div class="comment-author">
+		<img alt='' src='http://1.gravatar.com/avatar/3839c0681f281e37eaff819b7ab8b3d2?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">François "cahnory" Germain</h3> 
+        		<span class="datetime"><a title="Commentlink #1" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581461">June 6th, 2012 5:24 am</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>Interesting but I think it&#8217;s more focused on how utf-8 works than how to use it. Here is an article I wrote on &#8220;using utf-8&#8243; from getting data to output it (in french):<br />
+<a href="http://cahnory.tumblr.com/post/17108999879/utf-8-comment-ca-marche" rel="nofollow">http://cahnory.tumblr.com/post/17108999879/utf-8-comment-ca-marche</a><br />
+I think it could clarify the last part of your article.</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=581461#respond' onclick='return addComment.moveForm("comment-581461", "581461", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult negative">-3</div>
+        		<a class="ratebtn down_active" id="btn-581461-down" style="opacity:0.3;" title="Vote down! (6 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-581461-up" style="opacity:0.3;" title="Vote up! (3 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment odd alt thread-odd thread-alt depth-1 clearfix ">
+    <span class="commentnumber">2</span>
+    <div class="comment" id="comment-581462">
+        <div class="comment-author">
+		<img alt='' src='http://0.gravatar.com/avatar/2b5281974a45573daa6409ce4478b40d?s=38&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Joe Larson</h3> 
+        		<span class="datetime"><a title="Commentlink #2" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581462">June 6th, 2012 5:32 am</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>A few of useful sites that help you explore unicode:</p>
+<p><a href="http://unicodinator.com/" rel="nofollow">http://unicodinator.com/</a> &#8211; Unicodinator, a visual unicode navigator<br />
+<a href="http://graphemica.com/" rel="nofollow">http://graphemica.com/</a> &#8211; For people who ♥ letters, numbers, punctuation, &amp; co.<br />
+<a href="http://unicode.martinleopold.com/" rel="nofollow">http://unicode.martinleopold.com/</a> &#8211; Explore Unicode</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=581462#respond' onclick='return addComment.moveForm("comment-581462", "581462", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult positive">&#43;3</div>
+        		<a class="ratebtn down_active" id="btn-581462-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-581462-up" style="opacity:0.3;" title="Vote up! (3 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment even thread-even depth-1 clearfix ">
+    <span class="commentnumber">3</span>
+    <div class="comment" id="comment-581465">
+        <div class="comment-author">
+		<img alt='' src='http://1.gravatar.com/avatar/16d0bad600a9d77853e05a38bb9fc2bb?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Matt Moore</h3> 
+        		<span class="datetime"><a title="Commentlink #3" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581465">June 6th, 2012 5:47 am</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>Great article. I wish I had it a year ago!</p>
+<p>Here&#8217;s something important to watch our for. So you can have all web elements displaying info in UTF-8. That includes pages to add/edit content. It all looks fine and displays fine. But when you look at the raw data in the database, they characters are messed up. But somehow it still works. </p>
+<p>If using MySQL, you can have a non-utf-8 database, connect to it using your normal connection strings and in the front end it will all seem fine.</p>
+<p>Even if you convert your databases to UTF-8 this will be the case. The key is in the MySQL connection. </p>
+<p>Regularly, this is all you need (using plain old mysql_connect).<br />
+mysql_connect($host,$user,$password) OR DIE(&#8220;Unable to connect to database&#8221;);<br />
+@mysql_select_db($away_db) or die(&#8220;Unable to select database..&#8221;); </p>
+<p>However if you&#8217;re using UTF-8, you MUST append the following 2 lines.<br />
+@mysql_query(&#8220;SET NAMES &#8216;utf8&#8242;&#8221;);<br />
+@mysql_query(&#8220;SET CHARACTER_SET utf8&#8243;);</p>
+<p>Do this, and your characters will display beautifully throughout your system, including in the database. I hope it helps someone who finds themselves stuck as I was a year ago.</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=581465#respond' onclick='return addComment.moveForm("comment-581465", "581465", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult positive">&#43;4</div>
+        		<a class="ratebtn down_active" id="btn-581465-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-581465-up" style="opacity:0.3;" title="Vote up! (4 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment odd alt thread-odd thread-alt depth-1 clearfix ">
+    <span class="commentnumber">4</span>
+    <div class="comment" id="comment-581477">
+        <div class="comment-author">
+		<img alt='' src='http://1.gravatar.com/avatar/d150f0e4580561e4062a51c06df8f8a1?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Dustan Curtis</h3> 
+        		<span class="datetime"><a title="Commentlink #4" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581477">June 6th, 2012 6:51 am</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>&#8220;All About Unicode, UTF8 &amp; Character Sets&#8221;</p>
+<p>Am I the only one who gets excited by that title?</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=581477#respond' onclick='return addComment.moveForm("comment-581477", "581477", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult positive">&#43;2</div>
+        		<a class="ratebtn down_active" id="btn-581477-down" style="opacity:0.3;" title="Vote down! (1 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-581477-up" style="opacity:0.3;" title="Vote up! (3 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment even thread-even depth-1 clearfix ">
+    <span class="commentnumber">5</span>
+    <div class="comment" id="comment-581610">
+        <div class="comment-author">
+		<img alt='' src='http://1.gravatar.com/avatar/589db442f3788ed9a3ee2f6e2bb3bcc5?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Lindsay</h3> 
+        		<span class="datetime"><a title="Commentlink #5" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581610">June 6th, 2012 11:37 pm</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>Using UTF-8 to store and transmit stuff on the web is great, in fact I&#8217;d say it&#8217;s essential nowadays.  However it is also important to use a font that will be able to display the Unicode characters you&#8217;re publishing, most essentially if you&#8217;re working with Southeast Asian languages or other non-Latin character sets.</p>
+<p>There are a number of issues to work around here.  First of all, there are almost no fonts out there that actually cover the full range of Unicode characters, any font that did would be insanely large (at a guess, I&#8217;d say 10s to 100s of MB).  So you have to pick a font that has, at minimum, all of the characters you&#8217;re trying to display.  Such a font could potentially still get too large for @font-face embedding (the smallest usable Simplified Chinese font I&#8217;ve seen was something like 1.5MB).</p>
+<p>In these cases it&#8217;s useful to determine whether your users already have a font installed on their machine that will support the language you&#8217;re displaying, and if so what font (or fonts) is likely to serve this purpose?  This may seem like a step backwards these days but it&#8217;s still a practical alternative to forcing multiple-MB downloads to every user of your site.</p>
+<p>If you do decide to embed a font using @font-face to provide your &#8220;exotic character&#8221; support, be wary of services like Font Squirrel.  Their (admittedly great) optimisation routine explicitly strips out non-essential non-Latin characters.  So if you need to convert to EOT/WOFF or strip out characters, I&#8217;d suggest doing it yourself using the open source tools available for the purpose.</p>
+<p>Then you&#8217;ve of course got issues with older browsers (looking at you IE).  Modern browsers typically will have a &#8220;fallback font&#8221; that is capable of displaying *most* of the UTF-8 characters if a suitable character is not found in the fonts specified in CSS&#8217;s &#8220;font-family&#8221;.  Browsers like IE however can only use a single font for each element.  In effect, if that font lacks a certain character, IE is incapable of falling back to a character from the next font in the &#8220;font-family:&#8221; chain.  It will simply display a box or equivalent &#8220;I can&#8217;t display this&#8221; character.  Another terrible IE feature is that any embedded @font-face fonts will always be downloaded, even if that font-face is never applied to any element.  Thanks!</p>
+<p>There are many other issues surrounding display of non-Latin characters on the web, but the ones above were the core issues that I encountered as part of a team developing a news site for Southeast Asia and Pacific island nations.</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=581610#respond' onclick='return addComment.moveForm("comment-581610", "581610", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult positive">&#43;4</div>
+        		<a class="ratebtn down_active" id="btn-581610-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-581610-up" style="opacity:0.3;" title="Vote up! (4 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            <ul class='children'>
+<li class="comment odd alt depth-2 clearfix ">
+    <span class="commentnumber">6</span>
+    <div class="comment" id="comment-582489">
+        <div class="comment-author">
+		<img alt='' src='http://1.gravatar.com/avatar/9005b531138a6839fc232c8a70da3aa5?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Ferdy</h3> 
+        		<span class="datetime"><a title="Commentlink #6" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-582489">June 12th, 2012 10:15 am</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>I&#8217;m glad you made this remark. This article is wonderfully comprehensive, however, it definitely is missing the font piece. You could follow all the advise in the article and without the right font, you&#8217;re still getting nowhere. </p>
+<p>In my experience it depends on the control you have over your content. The more control you have, the more choices in font you have. If you have limited control, for example on a user-generated content site, you are extremely limited in the fonts you can chose to represent UTF-8 data. In my experience, Arial is a safe choice in that case.</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=582489#respond' onclick='return addComment.moveForm("comment-582489", "582489", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult">0</div>
+        		<a class="ratebtn down_active" id="btn-582489-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-582489-up" style="opacity:0.3;" title="Vote up! (0 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+</ul>
+</li>
+<li class="comment even thread-odd thread-alt depth-1 clearfix ">
+    <span class="commentnumber">7</span>
+    <div class="comment" id="comment-581611">
+        <div class="comment-author">
+		<img alt='' src='http://1.gravatar.com/avatar/d0ee829716e4ff8b67fe459aaa9465a0?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Marc-Antoine</h3> 
+        		<span class="datetime"><a title="Commentlink #7" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581611">June 6th, 2012 11:37 pm</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>And now there is UTF-16 and UTF-32. *suicide*</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=581611#respond' onclick='return addComment.moveForm("comment-581611", "581611", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult">0</div>
+        		<a class="ratebtn down_active" id="btn-581611-down" style="opacity:0.3;" title="Vote down! (1 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-581611-up" style="opacity:0.3;" title="Vote up! (1 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment odd alt thread-even depth-1 clearfix ">
+    <span class="commentnumber">8</span>
+    <div class="comment" id="comment-581656">
+        <div class="comment-author">
+		<img alt='' src='http://1.gravatar.com/avatar/595cfcf4f3cd662ec29b1d80532f08cc?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Sander</h3> 
+        		<span class="datetime"><a title="Commentlink #8" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581656">June 7th, 2012 7:17 am</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>Setting the character set in the HTML header actually is NOT the best way to do this, since the browser has already received some text by then. The proper way to do this is by sending an HTTP request with the character set in it.</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=581656#respond' onclick='return addComment.moveForm("comment-581656", "581656", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult negative">-1</div>
+        		<a class="ratebtn down_active" id="btn-581656-down" style="opacity:0.3;" title="Vote down! (1 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-581656-up" style="opacity:0.3;" title="Vote up! (0 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment even thread-odd thread-alt depth-1 clearfix ">
+    <span class="commentnumber">9</span>
+    <div class="comment" id="comment-581707">
+        <div class="comment-author">
+		<img alt='' src='http://1.gravatar.com/avatar/70ab04d69434d43f96821890fdad1145?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Dylan Valade</h3> 
+        		<span class="datetime"><a title="Commentlink #9" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581707">June 7th, 2012 12:30 pm</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>That was character information overload.  My big takeaway is why I need a UTF-8 meta tag in my webpages.  Thanks for research.</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=581707#respond' onclick='return addComment.moveForm("comment-581707", "581707", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult positive">&#43;3</div>
+        		<a class="ratebtn down_active" id="btn-581707-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-581707-up" style="opacity:0.3;" title="Vote up! (3 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment odd alt thread-even depth-1 clearfix ">
+    <span class="commentnumber">10</span>
+    <div class="comment" id="comment-581728">
+        <div class="comment-author">
+		<img alt='' src='http://0.gravatar.com/avatar/e0942b84c0044a0d130a6497fd488a64?s=38&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Ayoub</h3> 
+        		<span class="datetime"><a title="Commentlink #10" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581728">June 7th, 2012 3:17 pm</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>This is funny. I see &#8220;?&#8221; in the whole article where you give examples of foreign characters. I am using Chrome on windows.</p>
+<p>Thanks for the article.</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=581728#respond' onclick='return addComment.moveForm("comment-581728", "581728", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult positive">&#43;14</div>
+        		<a class="ratebtn down_active" id="btn-581728-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-581728-up" style="opacity:0.3;" title="Vote up! (14 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            <ul class='children'>
+<li class="comment even depth-2 clearfix ">
+    <span class="commentnumber">11</span>
+    <div class="comment" id="comment-581820">
+        <div class="comment-author">
+		<img alt='' src='http://1.gravatar.com/avatar/3f8b3c8d4b6dd230c508ceab5b7b6623?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Andy</h3> 
+        		<span class="datetime"><a title="Commentlink #11" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581820">June 8th, 2012 1:26 am</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>I do too, Chrome on OS X. Same in Safari and Firefox.</p>
+<p>The irony, it burns.</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=581820#respond' onclick='return addComment.moveForm("comment-581820", "581820", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult positive">&#43;9</div>
+        		<a class="ratebtn down_active" id="btn-581820-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-581820-up" style="opacity:0.3;" title="Vote up! (9 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment odd alt depth-2 clearfix ">
+    <span class="commentnumber">12</span>
+    <div class="comment" id="comment-581892">
+        <div class="comment-author">
+		<img alt='' src='http://1.gravatar.com/avatar/fd9589fae334f0ffe4bd217484c6fec9?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">PaBLoX</h3> 
+        		<span class="datetime"><a title="Commentlink #12" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581892">June 8th, 2012 12:16 pm</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>Same issue here, but on Firefox 13 and on a Linux box.</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=581892#respond' onclick='return addComment.moveForm("comment-581892", "581892", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult">0</div>
+        		<a class="ratebtn down_active" id="btn-581892-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-581892-up" style="opacity:0.3;" title="Vote up! (0 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment even depth-2 clearfix ">
+    <span class="commentnumber">13</span>
+    <div class="comment" id="comment-581948">
+        <div class="comment-author">
+		<img alt='' src='http://1.gravatar.com/avatar/554fb203fbf89e6e31ac94c96a87d6a0?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Malith</h3> 
+        		<span class="datetime"><a title="Commentlink #13" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581948">June 8th, 2012 10:33 pm</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>I think that&#8217;s because we don&#8217;t have fonts installed for those languages</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=581948#respond' onclick='return addComment.moveForm("comment-581948", "581948", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult negative">-2</div>
+        		<a class="ratebtn down_active" id="btn-581948-down" style="opacity:0.3;" title="Vote down! (3 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-581948-up" style="opacity:0.3;" title="Vote up! (1 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment odd alt depth-2 clearfix ">
+    <span class="commentnumber">14</span>
+    <div class="comment" id="comment-581984">
+        <div class="comment-author">
+		<img alt='' src='http://0.gravatar.com/avatar/29c03bf4ff528e93f6aa611721c65af1?s=38&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">saurabh</h3> 
+        		<span class="datetime"><a title="Commentlink #14" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581984">June 9th, 2012 3:02 am</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>My guess is article was copy pasted in a non Unicode compliant way. Especially ironic given the content of the article.</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=581984#respond' onclick='return addComment.moveForm("comment-581984", "581984", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult positive">&#43;7</div>
+        		<a class="ratebtn down_active" id="btn-581984-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-581984-up" style="opacity:0.3;" title="Vote up! (7 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment even depth-2 clearfix ">
+    <span class="commentnumber">15</span>
+    <div class="comment" id="comment-582433">
+        <div class="comment-author">
+		<img alt='' src='http://1.gravatar.com/avatar/d81edfb9d0b77a719839f4782f1c0081?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Paul Tero</h3> 
+        		<span class="datetime"><a title="Commentlink #15" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-582433">June 12th, 2012 5:06 am</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>That is very ironic. The article was written directly into WordPress and I checked it many times while writing it. So must be something in the publishing &#8211; I&#8217;ll ask. Sorry about that &#8211; though it is quite funny.</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=582433#respond' onclick='return addComment.moveForm("comment-582433", "582433", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult positive">&#43;2</div>
+        		<a class="ratebtn down_active" id="btn-582433-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-582433-up" style="opacity:0.3;" title="Vote up! (2 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+</ul>
+</li>
+<li class="comment odd alt thread-odd thread-alt depth-1 clearfix ">
+    <span class="commentnumber">16</span>
+    <div class="comment" id="comment-581736">
+        <div class="comment-author">
+		<img alt='' src='http://0.gravatar.com/avatar/64ee7a124a5db8fdac3464aafa5e838c?s=38&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Tomas Kapler</h3> 
+        		<span class="datetime"><a title="Commentlink #16" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581736">June 7th, 2012 4:08 pm</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>Great article &#8211; many developers and designers from US i know simply do not understand this problem, as they have never met anythng else then that 127 iso chars. For us who use other native language with chars like ěščřžýáíéúů this is daily business. So very often i need to e.g. solve bugs with US scripts, where developer simply did not use multibyte compatible functions and they do not work as expected.<br />
+There is also one other not mentioned problem &#8211; the characters must be supported by font &#8211; (and properly) &#8211; e.g. from &gt;500 google web fonts only 180 report to know even just extended latin chars, and even from them about 30 % got some wrong / missing characters.<br />
+P.S.: by the way &#8211; your russian azbuka texts here are replaced with ??? &#8211; nic example of what are writing about</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=581736#respond' onclick='return addComment.moveForm("comment-581736", "581736", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult positive">&#43;2</div>
+        		<a class="ratebtn down_active" id="btn-581736-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-581736-up" style="opacity:0.3;" title="Vote up! (2 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment even thread-even depth-1 clearfix ">
+    <span class="commentnumber">17</span>
+    <div class="comment" id="comment-581810">
+        <div class="comment-author">
+		<img alt='' src='http://1.gravatar.com/avatar/96dbaa7c6dae1f0466ae1aef0762402c?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Jabe</h3> 
+        		<span class="datetime"><a title="Commentlink #17" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581810">June 8th, 2012 12:38 am</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>Please keep in mind that Unicode does not &#8220;just solve&#8221; all text related problems. Read up on Unicode Normalization and why &#8220;ä&#8221; != &#8220;ä&#8221; (&#8220;\x00E4&#8243; != &#8220;\x0061\x0308&#8243;), depending on your favorite programming language.</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=581810#respond' onclick='return addComment.moveForm("comment-581810", "581810", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult positive">&#43;2</div>
+        		<a class="ratebtn down_active" id="btn-581810-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-581810-up" style="opacity:0.3;" title="Vote up! (2 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment odd alt thread-odd thread-alt depth-1 clearfix ">
+    <span class="commentnumber">18</span>
+    <div class="comment" id="comment-581947">
+        <div class="comment-author">
+		<img alt='' src='http://1.gravatar.com/avatar/bfc8798e2c6b8d66a6bdd69fac3d8fa6?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Michael Kaiser</h3> 
+        		<span class="datetime"><a title="Commentlink #18" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581947">June 8th, 2012 9:35 pm</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>If you want to demonstrate greek Characters you should use a font that has greek Characters included (unlike the <a href="https://typekit.com/fonts/proxima-nova" rel="nofollow">Proxima Nova from Typekit</a>). And of course you should send greek character codes and not just U+003F,  which is a question mark.<br />
+But apart from that, this is a well researched article.</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=581947#respond' onclick='return addComment.moveForm("comment-581947", "581947", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult">0</div>
+        		<a class="ratebtn down_active" id="btn-581947-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-581947-up" style="opacity:0.3;" title="Vote up! (0 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment even thread-even depth-1 clearfix ">
+    <span class="commentnumber">19</span>
+    <div class="comment" id="comment-582143">
+        <div class="comment-author">
+		<img alt='' src='http://1.gravatar.com/avatar/57d1139c3f37754b796e8d0d0788cb90?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Abbas</h3> 
+        		<span class="datetime"><a title="Commentlink #19" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-582143">June 10th, 2012 4:15 am</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>The best article on Unicode/UTF-8. ASCII&#8230;so far&#8230;this is simply perfect</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=582143#respond' onclick='return addComment.moveForm("comment-582143", "582143", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult">0</div>
+        		<a class="ratebtn down_active" id="btn-582143-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-582143-up" style="opacity:0.3;" title="Vote up! (0 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment odd alt thread-odd thread-alt depth-1 clearfix ">
+    <span class="commentnumber">20</span>
+    <div class="comment" id="comment-582258">
+        <div class="comment-author">
+		<img alt='' src='http://0.gravatar.com/avatar/adfb055317aa5e5fd8ff410b7b377f77?s=38&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">ausi</h3> 
+        		<span class="datetime"><a title="Commentlink #20" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-582258">June 10th, 2012 10:48 pm</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>An intresting MySQL fact is that the utf8 character set does not support all utf-8 characters.<br />
+You have to use the utf8mb4 character set instead.<br />
+<a href="http://dev.mysql.com/doc/refman/5.5/en/charset-unicode-utf8mb4.html" rel="nofollow">http://dev.mysql.com/doc/refman/5.5/en/charset-unicode-utf8mb4.html</a></p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=582258#respond' onclick='return addComment.moveForm("comment-582258", "582258", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult">0</div>
+        		<a class="ratebtn down_active" id="btn-582258-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-582258-up" style="opacity:0.3;" title="Vote up! (0 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment even thread-even depth-1 clearfix ">
+    <span class="commentnumber">21</span>
+    <div class="comment" id="comment-582259">
+        <div class="comment-author">
+		<img alt='' src='http://0.gravatar.com/avatar/458475a3a0b08d058385219276080421?s=38&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Anders Floderus</h3> 
+        		<span class="datetime"><a title="Commentlink #21" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-582259">June 10th, 2012 11:19 pm</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>And there is more. Like special characters. To display ISO-8859-1 characters 128 &#8211; 255 in a browser, you can code them as special characters. You did show how to write them as numericals. For Latin capital letter A with diaeresis (Ä) you could write &#196; . (Don&#8217;t know how general that is.) But a more general way to write it should be &amp;Auml; .</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=582259#respond' onclick='return addComment.moveForm("comment-582259", "582259", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult">0</div>
+        		<a class="ratebtn down_active" id="btn-582259-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-582259-up" style="opacity:0.3;" title="Vote up! (0 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment odd alt thread-odd thread-alt depth-1 clearfix ">
+    <span class="commentnumber">22</span>
+    <div class="comment" id="comment-582260">
+        <div class="comment-author">
+		<img alt='' src='http://0.gravatar.com/avatar/a538081473724de398258d15c094d0d1?s=38&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">jordi</h3> 
+        		<span class="datetime"><a title="Commentlink #22" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-582260">June 10th, 2012 11:38 pm</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>great! When I started creatin webpages I soon saw the arising problem with the german ä and ö &#8216;s. So I was looking around and the decided to use UTF8. I didnt think much about other solutions, just wanted to see my pages correct wherever they are displayed. Please encourage people to make their pages correct for ALL users! Thanks.</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=582260#respond' onclick='return addComment.moveForm("comment-582260", "582260", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult positive">&#43;1</div>
+        		<a class="ratebtn down_active" id="btn-582260-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-582260-up" style="opacity:0.3;" title="Vote up! (1 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment even thread-even depth-1 clearfix ">
+    <span class="commentnumber">23</span>
+    <div class="comment" id="comment-582269">
+        <div class="comment-author">
+		<img alt='' src='http://1.gravatar.com/avatar/9c7db691759a84a7f6d20e13cb7f7b56?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Mathew O'Hare</h3> 
+        		<span class="datetime"><a title="Commentlink #23" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-582269">June 11th, 2012 2:28 am</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>This is great. The saying in the article reference towards the end of yours is right. There are no plain text files any more. I would love to see more about big and little endian.</p>
+<p>Also, I really need to explore more with the business logic and data layers. My site is fine for the website/presentation layers now. Everything goes through fine. Still issues in my back office, but.</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=582269#respond' onclick='return addComment.moveForm("comment-582269", "582269", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult">0</div>
+        		<a class="ratebtn down_active" id="btn-582269-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-582269-up" style="opacity:0.3;" title="Vote up! (0 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment odd alt thread-odd thread-alt depth-1 clearfix ">
+    <span class="commentnumber">24</span>
+    <div class="comment" id="comment-582277">
+        <div class="comment-author">
+		<img alt='' src='http://0.gravatar.com/avatar/20fa61683bfb307f410dfdbf4678559f?s=38&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Snorri Kristjánsson</h3> 
+        		<span class="datetime"><a title="Commentlink #24" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-582277">June 11th, 2012 3:46 am</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>Great article &#8211; thanks for sharing.</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=582277#respond' onclick='return addComment.moveForm("comment-582277", "582277", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult">0</div>
+        		<a class="ratebtn down_active" id="btn-582277-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-582277-up" style="opacity:0.3;" title="Vote up! (0 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment even thread-even depth-1 clearfix ">
+    <span class="commentnumber">25</span>
+    <div class="comment" id="comment-582285">
+        <div class="comment-author">
+		<img alt='' src='http://0.gravatar.com/avatar/6d40a8d4540dac9f6f98baa60e3b7acd?s=38&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">richard clark</h3> 
+        		<span class="datetime"><a title="Commentlink #25" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-582285">June 11th, 2012 5:33 am</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>Hmm.  I am afraid the bit around 8859-1 etc is nothing like accurate.  I should know &#8211; I proposed it initially many years ago,&#8230;..<br />
+Originally, we dealt with 7 bit codes.  The eighth bit was used as a parity check for those noisy old modems, or even when we moved to digital, the US had a 56kbit/s path (8k sampling rate and &#8211;7&#8211;bits).  So things like IBM&#8217;s code table 437 were designed to work so you could swap 7 bit code pages in and out, preserving the all important control characters (they controlled the teletypes and, in band, devices like modems) irrespective of which 7 bit table was in use.  ISO 2022 governed how you did this, and invented &#8216;Escape sequences&#8217;  to control things (especially things with parameters, such as colour changes) as devices grew more complicated&#8230;</p>
+<p>So when we proposed 8859 as an 8 bit code, we needed an easy way to allow us to map in the old world of 7 bit.  We did this by leaving the range 128-139 clear for extra &#8216;control&#8217; characters &#8211; I was responsible for standardising Prestel, for example that used this mechanism, and the actual code tables came primarily from contributions to and from Digital Equipment&#8217;s VT100 and VT220 VDUs.  So 8859-1 (familiar to HTML users?) was the first version of this new exciting 8 bit code.  Needless to say Microsoft saw the gaps in the range 128-139, and ignoring the standard, filled them in with text characters, and Windows 1251 (and a fair amount of hatred for MS ignorance, or deliberate ignoring of standards) was born.<br />
+I then decided it might be a good idea to use the code extension for a better way to compress images in band, and guess what came next&#8230; JPEG&#8230;..</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=582285#respond' onclick='return addComment.moveForm("comment-582285", "582285", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult positive">&#43;1</div>
+        		<a class="ratebtn down_active" id="btn-582285-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-582285-up" style="opacity:0.3;" title="Vote up! (1 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            <ul class='children'>
+<li class="comment odd alt depth-2 clearfix ">
+    <span class="commentnumber">26</span>
+    <div class="comment" id="comment-582438">
+        <div class="comment-author">
+		<img alt='' src='http://1.gravatar.com/avatar/d81edfb9d0b77a719839f4782f1c0081?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Paul Tero</h3> 
+        		<span class="datetime"><a title="Commentlink #26" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-582438">June 12th, 2012 5:15 am</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>Thank you for that explanation. I&#8217;m sorry I didn&#8217;t get it correct in the text. I did research the history, but spent most of my time on the rest of the article.</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=582438#respond' onclick='return addComment.moveForm("comment-582438", "582438", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult">0</div>
+        		<a class="ratebtn down_active" id="btn-582438-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-582438-up" style="opacity:0.3;" title="Vote up! (0 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+</ul>
+</li>
+<li class="comment even thread-odd thread-alt depth-1 clearfix ">
+    <span class="commentnumber">27</span>
+    <div class="comment" id="comment-582295">
+        <div class="comment-author">
+		<img alt='' src='http://0.gravatar.com/avatar/e5292a6ad4feb7a1060578ccd789d404?s=38&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Marc</h3> 
+        		<span class="datetime"><a title="Commentlink #27" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-582295">June 11th, 2012 6:09 am</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>Is is just me or are the Unicode character in this article not appearing? </p>
+<p>For example, where there is a reference to &#8220;omega&#8221;, I see a question mark.</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=582295#respond' onclick='return addComment.moveForm("comment-582295", "582295", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult">0</div>
+        		<a class="ratebtn down_active" id="btn-582295-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-582295-up" style="opacity:0.3;" title="Vote up! (0 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment odd alt thread-even depth-1 clearfix ">
+    <span class="commentnumber">28</span>
+    <div class="comment" id="comment-582424">
+        <div class="comment-author">
+		<img alt='' src='http://1.gravatar.com/avatar/700413df1bad9a268fc330b07e567a31?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Andy</h3> 
+        		<span class="datetime"><a title="Commentlink #28" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-582424">June 12th, 2012 3:48 am</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>UTF-8 is not a character set. It is an *encoding* of the Unicode character set.  I suspect that this error is responsible for much of the misunderstanding that surrounds an essentially simple idea.</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=582424#respond' onclick='return addComment.moveForm("comment-582424", "582424", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult positive">&#43;1</div>
+        		<a class="ratebtn down_active" id="btn-582424-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-582424-up" style="opacity:0.3;" title="Vote up! (1 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment even thread-odd thread-alt depth-1 clearfix ">
+    <span class="commentnumber">29</span>
+    <div class="comment" id="comment-582439">
+        <div class="comment-author">
+		<img alt='' src='http://1.gravatar.com/avatar/d81edfb9d0b77a719839f4782f1c0081?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Paul Tero</h3> 
+        		<span class="datetime"><a title="Commentlink #29" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-582439">June 12th, 2012 5:17 am</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>Thank you for all the comments, and the tips about MySQL and fonts. I focused on the characters in this article, but those two areas could be lengthy topics in their own right. I apologise for the ? issue. That is embarrassing and I hope to fix it very soon.</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=582439#respond' onclick='return addComment.moveForm("comment-582439", "582439", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult">0</div>
+        		<a class="ratebtn down_active" id="btn-582439-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-582439-up" style="opacity:0.3;" title="Vote up! (0 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment odd alt thread-even depth-1 clearfix ">
+    <span class="commentnumber">30</span>
+    <div class="comment" id="comment-582447">
+        <div class="comment-author">
+		<img alt='' src='http://1.gravatar.com/avatar/7d8cae86a842899adaecc03c747a4ebc?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Lachlan Hunt</h3> 
+        		<span class="datetime"><a title="Commentlink #30" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-582447">June 12th, 2012 5:51 am</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>JavaScript doesn&#8217;t deal with full unicode well. It only handles 16 bit code units.  String.fromCharCode(n) where n is greater than 0xFFFF doesn&#8217;t work so well. See fromCharCode() documenation, refer to the example function fixedFromCharCode().</p>
+<p><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String/fromCharCode" rel="nofollow">https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String/fromCharCode</a></p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=582447#respond' onclick='return addComment.moveForm("comment-582447", "582447", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult">0</div>
+        		<a class="ratebtn down_active" id="btn-582447-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-582447-up" style="opacity:0.3;" title="Vote up! (0 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            <ul class='children'>
+<li class="comment even depth-2 clearfix ">
+    <span class="commentnumber">31</span>
+    <div class="comment" id="comment-583000">
+        <div class="comment-author">
+		<img alt='' src='http://0.gravatar.com/avatar/24e08a9ea84deb17ae121074d0f17125?s=38&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">Mathias Bynens</h3> 
+        		<span class="datetime"><a title="Commentlink #31" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-583000">June 18th, 2012 12:15 am</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>For those interested, this is explained in more detail here: <a href="http://mathiasbynens.be/notes/javascript-encoding" rel="nofollow">http://mathiasbynens.be/notes/javascript-encoding</a></p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=583000#respond' onclick='return addComment.moveForm("comment-583000", "583000", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult positive">&#43;1</div>
+        		<a class="ratebtn down_active" id="btn-583000-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-583000-up" style="opacity:0.3;" title="Vote up! (1 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+</ul>
+</li>
+<li class="comment odd alt thread-odd thread-alt depth-1 clearfix ">
+    <span class="commentnumber">32</span>
+    <div class="comment" id="comment-582544">
+        <div class="comment-author">
+		<img alt='' src='http://0.gravatar.com/avatar/85f5912349d8b31c8011492eddd3104a?s=38&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">lance</h3> 
+        		<span class="datetime"><a title="Commentlink #32" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-582544">June 13th, 2012 1:34 am</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>It would be sinful not to leave a comment! I&#8217;ve had a horrible experience regarding character sets a few years ago, and this would&#8217;ve been really a lifesaver if I knew it back then. </p>
+<p>One thing I would love to follow though, is the database &#8216;collation&#8217; aspect of this topic. As with the above remark regarding fonts, I think anyone working on character sets would sooner or later bump into database collations.</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=582544#respond' onclick='return addComment.moveForm("comment-582544", "582544", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult">0</div>
+        		<a class="ratebtn down_active" id="btn-582544-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-582544-up" style="opacity:0.3;" title="Vote up! (0 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment even thread-even depth-1 clearfix ">
+    <span class="commentnumber">33</span>
+    <div class="comment" id="comment-582901">
+        <div class="comment-author">
+		<img alt='' src='http://1.gravatar.com/avatar/d6ff06a8dae1cc6ba640f5ad319531b5?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">alexkmbk</h3> 
+        		<span class="datetime"><a title="Commentlink #33" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-582901">June 16th, 2012 10:14 pm</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>Thank You for the article, it’s clear and useful.</p>
+<p>Only minor quibble about C++ “wchar_t” type length. With different C++ compilers, I&#8217;ve got different length of the  “wchar_t” type:</p>
+<p>On 32-bit Visual Studio 2008 Express Edition C++ compiler, &#8220;sizeof(wchar_t)&#8221; returns 2, so it&#8217;s only 16-bit length and the article <a href="http://msdn.microsoft.com/en-us/library/s3f49ktz%28v=vs.90%29.aspx" rel="nofollow">http://msdn.microsoft.com/en-us/library/s3f49ktz%28v=vs.90%29.aspx</a> just confirmed it.</p>
+<p>On 32-bit Windows Vista, MinGW g++ 4.6.1 compiler &#8220;sizeof(wchar_t)&#8221; returns 2 also.</p>
+<p>On Fedora 8 and i386 g++ 4.1.2 compiler with default settings &#8220;sizeof(wchar_t)&#8221; returns 4, so it’s 32-bit length, but with “-fshort-wchar” option of the compiler &#8220;sizeof(wchar_t)&#8221; returns 2.</p>
+<p>It seems like the length of &#8220;wchar_t&#8221; depends on version/settings of a compiler.</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=582901#respond' onclick='return addComment.moveForm("comment-582901", "582901", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult">0</div>
+        		<a class="ratebtn down_active" id="btn-582901-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-582901-up" style="opacity:0.3;" title="Vote up! (0 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+<li class="comment odd alt thread-odd thread-alt depth-1 clearfix ">
+    <span class="commentnumber">34</span>
+    <div class="comment" id="comment-584751">
+        <div class="comment-author">
+		<img alt='' src='http://0.gravatar.com/avatar/cb2b050f22477d1c82a204b5704de5b6?s=38&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />        	<div class="authormeta">
+       			<h3 class="comment-author">fjpoblam</h3> 
+        		<span class="datetime"><a title="Commentlink #34" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-584751">June 24th, 2012 5:20 am</a></span>            
+        	</div>
+        </div>
+        <div class="comment-text">
+        	<p>I often imbed special UTF-8 characters directly in my HTML using  amper x format. (Maybe that path, instead of what you suggest, has been my downfall.) </p>
+<p> I&#8217;m fascinated when I scroll down through the master reference at <a href="http://www.columbia.edu/kermit/utf8-t1.html" rel="nofollow">http://www.columbia.edu/kermit/utf8-t1.html</a>. I was taken aback, though, to discover that a few of the (I thought) often-used characters posed problems for Opera Mini on my iPad. Some characters were simply displayed as blanks, but some (in the x9xxxx range) even led to rendering changes and formatting problems. So, I&#8217;m passing on, be sure to test before deploying.</p>
+        </div>
+        <div class="commentmeta">
+            <div class="reply">
+                        <a class='comment-reply-link' href='/2012/06/06/all-about-unicode-utf8-character-sets/?replytocom=584751#respond' onclick='return addComment.moveForm("comment-584751", "584751", "respond", "119625")'>Reply</a>            </div>
+                            	        	<div class="commentrating clearfix">
+        		<div class="rateresult">0</div>
+        		<a class="ratebtn down_active" id="btn-584751-down" style="opacity:0.3;" title="Vote down! (0 votes)"></a>
+        		<a class="ratebtn up_active" id="btn-584751-up" style="opacity:0.3;" title="Vote up! (0 votes)"></a>
+        	</div>
+        	        </div>
+    </div>
+            </li>
+        </ol>
+                        </div>
+		    <div id="best-comments">
+			<ol id="ratedcomments-overview" class="commentlist">
+					<li class="comment even thread-even depth-1 clearfix ">
+			<span class="commentnumber">1</span>
+			<div class="comment" id="bestcomment-581728">
+			<div class="comment-author">
+				<img alt='' src='http://0.gravatar.com/avatar/e0942b84c0044a0d130a6497fd488a64?s=38&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />								
+				<div class="authormeta">
+					<h3 class="comment-author">Ayoub</h3> 
+					<span class="datetime"><a title="Commentlink #1" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581728">June 7th, 2012 3:17 pm</a></span>
+				</div>
+			</div>
+			<div class="comment-text">
+				<p>This is funny. I see &#8220;?&#8221; in the whole article where you give examples of foreign characters. I am using Chrome on windows.</p>
+<p>Thanks for the article.</p>
+			</div>
+			<div class="commentmeta">
+									<div class="commentrating clearfix">
+						<div class="rateresult positive">&#43;14</div>
+					</div>
+											</div>
+		</div>
+				<li class="comment odd alt thread-odd thread-alt depth-1 clearfix ">
+			<span class="commentnumber">2</span>
+			<div class="comment" id="bestcomment-581820">
+			<div class="comment-author">
+				<img alt='' src='http://1.gravatar.com/avatar/3f8b3c8d4b6dd230c508ceab5b7b6623?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />								
+				<div class="authormeta">
+					<h3 class="comment-author">Andy</h3> 
+					<span class="datetime"><a title="Commentlink #2" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581820">June 8th, 2012 1:26 am</a></span>
+				</div>
+			</div>
+			<div class="comment-text">
+				<p>I do too, Chrome on OS X. Same in Safari and Firefox.</p>
+<p>The irony, it burns.</p>
+			</div>
+			<div class="commentmeta">
+									<div class="commentrating clearfix">
+						<div class="rateresult positive">&#43;9</div>
+					</div>
+											</div>
+		</div>
+				<li class="comment even thread-even depth-1 clearfix ">
+			<span class="commentnumber">3</span>
+			<div class="comment" id="bestcomment-581984">
+			<div class="comment-author">
+				<img alt='' src='http://0.gravatar.com/avatar/29c03bf4ff528e93f6aa611721c65af1?s=38&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />								
+				<div class="authormeta">
+					<h3 class="comment-author">saurabh</h3> 
+					<span class="datetime"><a title="Commentlink #3" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581984">June 9th, 2012 3:02 am</a></span>
+				</div>
+			</div>
+			<div class="comment-text">
+				<p>My guess is article was copy pasted in a non Unicode compliant way. Especially ironic given the content of the article.</p>
+			</div>
+			<div class="commentmeta">
+									<div class="commentrating clearfix">
+						<div class="rateresult positive">&#43;7</div>
+					</div>
+											</div>
+		</div>
+				<li class="comment odd alt thread-odd thread-alt depth-1 clearfix ">
+			<span class="commentnumber">4</span>
+			<div class="comment" id="bestcomment-581465">
+			<div class="comment-author">
+				<img alt='' src='http://1.gravatar.com/avatar/16d0bad600a9d77853e05a38bb9fc2bb?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />								
+				<div class="authormeta">
+					<h3 class="comment-author">Matt Moore</h3> 
+					<span class="datetime"><a title="Commentlink #4" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581465">June 6th, 2012 5:47 am</a></span>
+				</div>
+			</div>
+			<div class="comment-text">
+				<p>Great article. I wish I had it a year ago!</p>
+<p>Here&#8217;s something important to watch our for. So you can have all web elements displaying info in UTF-8. That includes pages to add/edit content. It all looks fine and displays fine. But when you look at the raw data in the database, they characters are messed up. But somehow it still works. </p>
+<p>If using MySQL, you can have a non-utf-8 database, connect to it using your normal connection strings and in the front end it will all seem fine.</p>
+<p>Even if you convert your databases to UTF-8 this will be the case. The key is in the MySQL connection. </p>
+<p>Regularly, this is all you need (using plain old mysql_connect).<br />
+mysql_connect($host,$user,$password) OR DIE(&#8220;Unable to connect to database&#8221;);<br />
+@mysql_select_db($away_db) or die(&#8220;Unable to select database..&#8221;); </p>
+<p>However if you&#8217;re using UTF-8, you MUST append the following 2 lines.<br />
+@mysql_query(&#8220;SET NAMES &#8216;utf8&#8242;&#8221;);<br />
+@mysql_query(&#8220;SET CHARACTER_SET utf8&#8243;);</p>
+<p>Do this, and your characters will display beautifully throughout your system, including in the database. I hope it helps someone who finds themselves stuck as I was a year ago.</p>
+			</div>
+			<div class="commentmeta">
+									<div class="commentrating clearfix">
+						<div class="rateresult positive">&#43;4</div>
+					</div>
+											</div>
+		</div>
+				<li class="comment even thread-even depth-1 clearfix ">
+			<span class="commentnumber">5</span>
+			<div class="comment" id="bestcomment-581610">
+			<div class="comment-author">
+				<img alt='' src='http://1.gravatar.com/avatar/589db442f3788ed9a3ee2f6e2bb3bcc5?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />								
+				<div class="authormeta">
+					<h3 class="comment-author">Lindsay</h3> 
+					<span class="datetime"><a title="Commentlink #5" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581610">June 6th, 2012 11:37 pm</a></span>
+				</div>
+			</div>
+			<div class="comment-text">
+				<p>Using UTF-8 to store and transmit stuff on the web is great, in fact I&#8217;d say it&#8217;s essential nowadays.  However it is also important to use a font that will be able to display the Unicode characters you&#8217;re publishing, most essentially if you&#8217;re working with Southeast Asian languages or other non-Latin character sets.</p>
+<p>There are a number of issues to work around here.  First of all, there are almost no fonts out there that actually cover the full range of Unicode characters, any font that did would be insanely large (at a guess, I&#8217;d say 10s to 100s of MB).  So you have to pick a font that has, at minimum, all of the characters you&#8217;re trying to display.  Such a font could potentially still get too large for @font-face embedding (the smallest usable Simplified Chinese font I&#8217;ve seen was something like 1.5MB).</p>
+<p>In these cases it&#8217;s useful to determine whether your users already have a font installed on their machine that will support the language you&#8217;re displaying, and if so what font (or fonts) is likely to serve this purpose?  This may seem like a step backwards these days but it&#8217;s still a practical alternative to forcing multiple-MB downloads to every user of your site.</p>
+<p>If you do decide to embed a font using @font-face to provide your &#8220;exotic character&#8221; support, be wary of services like Font Squirrel.  Their (admittedly great) optimisation routine explicitly strips out non-essential non-Latin characters.  So if you need to convert to EOT/WOFF or strip out characters, I&#8217;d suggest doing it yourself using the open source tools available for the purpose.</p>
+<p>Then you&#8217;ve of course got issues with older browsers (looking at you IE).  Modern browsers typically will have a &#8220;fallback font&#8221; that is capable of displaying *most* of the UTF-8 characters if a suitable character is not found in the fonts specified in CSS&#8217;s &#8220;font-family&#8221;.  Browsers like IE however can only use a single font for each element.  In effect, if that font lacks a certain character, IE is incapable of falling back to a character from the next font in the &#8220;font-family:&#8221; chain.  It will simply display a box or equivalent &#8220;I can&#8217;t display this&#8221; character.  Another terrible IE feature is that any embedded @font-face fonts will always be downloaded, even if that font-face is never applied to any element.  Thanks!</p>
+<p>There are many other issues surrounding display of non-Latin characters on the web, but the ones above were the core issues that I encountered as part of a team developing a news site for Southeast Asia and Pacific island nations.</p>
+			</div>
+			<div class="commentmeta">
+									<div class="commentrating clearfix">
+						<div class="rateresult positive">&#43;4</div>
+					</div>
+											</div>
+		</div>
+				<li class="comment odd alt thread-odd thread-alt depth-1 clearfix ">
+			<span class="commentnumber">6</span>
+			<div class="comment" id="bestcomment-581462">
+			<div class="comment-author">
+				<img alt='' src='http://0.gravatar.com/avatar/2b5281974a45573daa6409ce4478b40d?s=38&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />								
+				<div class="authormeta">
+					<h3 class="comment-author">Joe Larson</h3> 
+					<span class="datetime"><a title="Commentlink #6" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581462">June 6th, 2012 5:32 am</a></span>
+				</div>
+			</div>
+			<div class="comment-text">
+				<p>A few of useful sites that help you explore unicode:</p>
+<p><a href="http://unicodinator.com/" rel="nofollow">http://unicodinator.com/</a> &#8211; Unicodinator, a visual unicode navigator<br />
+<a href="http://graphemica.com/" rel="nofollow">http://graphemica.com/</a> &#8211; For people who ♥ letters, numbers, punctuation, &amp; co.<br />
+<a href="http://unicode.martinleopold.com/" rel="nofollow">http://unicode.martinleopold.com/</a> &#8211; Explore Unicode</p>
+			</div>
+			<div class="commentmeta">
+									<div class="commentrating clearfix">
+						<div class="rateresult positive">&#43;3</div>
+					</div>
+											</div>
+		</div>
+				<li class="comment even thread-even depth-1 clearfix ">
+			<span class="commentnumber">7</span>
+			<div class="comment" id="bestcomment-581707">
+			<div class="comment-author">
+				<img alt='' src='http://1.gravatar.com/avatar/70ab04d69434d43f96821890fdad1145?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />								
+				<div class="authormeta">
+					<h3 class="comment-author">Dylan Valade</h3> 
+					<span class="datetime"><a title="Commentlink #7" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581707">June 7th, 2012 12:30 pm</a></span>
+				</div>
+			</div>
+			<div class="comment-text">
+				<p>That was character information overload.  My big takeaway is why I need a UTF-8 meta tag in my webpages.  Thanks for research.</p>
+			</div>
+			<div class="commentmeta">
+									<div class="commentrating clearfix">
+						<div class="rateresult positive">&#43;3</div>
+					</div>
+											</div>
+		</div>
+				<li class="comment odd alt thread-odd thread-alt depth-1 clearfix ">
+			<span class="commentnumber">8</span>
+			<div class="comment" id="bestcomment-581477">
+			<div class="comment-author">
+				<img alt='' src='http://1.gravatar.com/avatar/d150f0e4580561e4062a51c06df8f8a1?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />								
+				<div class="authormeta">
+					<h3 class="comment-author">Dustan Curtis</h3> 
+					<span class="datetime"><a title="Commentlink #8" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581477">June 6th, 2012 6:51 am</a></span>
+				</div>
+			</div>
+			<div class="comment-text">
+				<p>&#8220;All About Unicode, UTF8 &amp; Character Sets&#8221;</p>
+<p>Am I the only one who gets excited by that title?</p>
+			</div>
+			<div class="commentmeta">
+									<div class="commentrating clearfix">
+						<div class="rateresult positive">&#43;2</div>
+					</div>
+											</div>
+		</div>
+				<li class="comment even thread-even depth-1 clearfix ">
+			<span class="commentnumber">9</span>
+			<div class="comment" id="bestcomment-582433">
+			<div class="comment-author">
+				<img alt='' src='http://1.gravatar.com/avatar/d81edfb9d0b77a719839f4782f1c0081?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />								
+				<div class="authormeta">
+					<h3 class="comment-author">Paul Tero</h3> 
+					<span class="datetime"><a title="Commentlink #9" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-582433">June 12th, 2012 5:06 am</a></span>
+				</div>
+			</div>
+			<div class="comment-text">
+				<p>That is very ironic. The article was written directly into WordPress and I checked it many times while writing it. So must be something in the publishing &#8211; I&#8217;ll ask. Sorry about that &#8211; though it is quite funny.</p>
+			</div>
+			<div class="commentmeta">
+									<div class="commentrating clearfix">
+						<div class="rateresult positive">&#43;2</div>
+					</div>
+											</div>
+		</div>
+				<li class="comment odd alt thread-odd thread-alt depth-1 clearfix ">
+			<span class="commentnumber">10</span>
+			<div class="comment" id="bestcomment-581736">
+			<div class="comment-author">
+				<img alt='' src='http://0.gravatar.com/avatar/64ee7a124a5db8fdac3464aafa5e838c?s=38&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />								
+				<div class="authormeta">
+					<h3 class="comment-author">Tomas Kapler</h3> 
+					<span class="datetime"><a title="Commentlink #10" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581736">June 7th, 2012 4:08 pm</a></span>
+				</div>
+			</div>
+			<div class="comment-text">
+				<p>Great article &#8211; many developers and designers from US i know simply do not understand this problem, as they have never met anythng else then that 127 iso chars. For us who use other native language with chars like ěščřžýáíéúů this is daily business. So very often i need to e.g. solve bugs with US scripts, where developer simply did not use multibyte compatible functions and they do not work as expected.<br />
+There is also one other not mentioned problem &#8211; the characters must be supported by font &#8211; (and properly) &#8211; e.g. from &gt;500 google web fonts only 180 report to know even just extended latin chars, and even from them about 30 % got some wrong / missing characters.<br />
+P.S.: by the way &#8211; your russian azbuka texts here are replaced with ??? &#8211; nic example of what are writing about</p>
+			</div>
+			<div class="commentmeta">
+									<div class="commentrating clearfix">
+						<div class="rateresult positive">&#43;2</div>
+					</div>
+											</div>
+		</div>
+				<li class="comment even thread-even depth-1 clearfix ">
+			<span class="commentnumber">11</span>
+			<div class="comment" id="bestcomment-581810">
+			<div class="comment-author">
+				<img alt='' src='http://1.gravatar.com/avatar/96dbaa7c6dae1f0466ae1aef0762402c?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />								
+				<div class="authormeta">
+					<h3 class="comment-author">Jabe</h3> 
+					<span class="datetime"><a title="Commentlink #11" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-581810">June 8th, 2012 12:38 am</a></span>
+				</div>
+			</div>
+			<div class="comment-text">
+				<p>Please keep in mind that Unicode does not &#8220;just solve&#8221; all text related problems. Read up on Unicode Normalization and why &#8220;ä&#8221; != &#8220;ä&#8221; (&#8220;\x00E4&#8243; != &#8220;\x0061\x0308&#8243;), depending on your favorite programming language.</p>
+			</div>
+			<div class="commentmeta">
+									<div class="commentrating clearfix">
+						<div class="rateresult positive">&#43;2</div>
+					</div>
+											</div>
+		</div>
+				<li class="comment odd alt thread-odd thread-alt depth-1 clearfix ">
+			<span class="commentnumber">12</span>
+			<div class="comment" id="bestcomment-582285">
+			<div class="comment-author">
+				<img alt='' src='http://0.gravatar.com/avatar/6d40a8d4540dac9f6f98baa60e3b7acd?s=38&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />								
+				<div class="authormeta">
+					<h3 class="comment-author">richard clark</h3> 
+					<span class="datetime"><a title="Commentlink #12" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-582285">June 11th, 2012 5:33 am</a></span>
+				</div>
+			</div>
+			<div class="comment-text">
+				<p>Hmm.  I am afraid the bit around 8859-1 etc is nothing like accurate.  I should know &#8211; I proposed it initially many years ago,&#8230;..<br />
+Originally, we dealt with 7 bit codes.  The eighth bit was used as a parity check for those noisy old modems, or even when we moved to digital, the US had a 56kbit/s path (8k sampling rate and &#8211;7&#8211;bits).  So things like IBM&#8217;s code table 437 were designed to work so you could swap 7 bit code pages in and out, preserving the all important control characters (they controlled the teletypes and, in band, devices like modems) irrespective of which 7 bit table was in use.  ISO 2022 governed how you did this, and invented &#8216;Escape sequences&#8217;  to control things (especially things with parameters, such as colour changes) as devices grew more complicated&#8230;</p>
+<p>So when we proposed 8859 as an 8 bit code, we needed an easy way to allow us to map in the old world of 7 bit.  We did this by leaving the range 128-139 clear for extra &#8216;control&#8217; characters &#8211; I was responsible for standardising Prestel, for example that used this mechanism, and the actual code tables came primarily from contributions to and from Digital Equipment&#8217;s VT100 and VT220 VDUs.  So 8859-1 (familiar to HTML users?) was the first version of this new exciting 8 bit code.  Needless to say Microsoft saw the gaps in the range 128-139, and ignoring the standard, filled them in with text characters, and Windows 1251 (and a fair amount of hatred for MS ignorance, or deliberate ignoring of standards) was born.<br />
+I then decided it might be a good idea to use the code extension for a better way to compress images in band, and guess what came next&#8230; JPEG&#8230;..</p>
+			</div>
+			<div class="commentmeta">
+									<div class="commentrating clearfix">
+						<div class="rateresult positive">&#43;1</div>
+					</div>
+											</div>
+		</div>
+				<li class="comment even thread-even depth-1 clearfix ">
+			<span class="commentnumber">13</span>
+			<div class="comment" id="bestcomment-582260">
+			<div class="comment-author">
+				<img alt='' src='http://0.gravatar.com/avatar/a538081473724de398258d15c094d0d1?s=38&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />								
+				<div class="authormeta">
+					<h3 class="comment-author">jordi</h3> 
+					<span class="datetime"><a title="Commentlink #13" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-582260">June 10th, 2012 11:38 pm</a></span>
+				</div>
+			</div>
+			<div class="comment-text">
+				<p>great! When I started creatin webpages I soon saw the arising problem with the german ä and ö &#8216;s. So I was looking around and the decided to use UTF8. I didnt think much about other solutions, just wanted to see my pages correct wherever they are displayed. Please encourage people to make their pages correct for ALL users! Thanks.</p>
+			</div>
+			<div class="commentmeta">
+									<div class="commentrating clearfix">
+						<div class="rateresult positive">&#43;1</div>
+					</div>
+											</div>
+		</div>
+				<li class="comment odd alt thread-odd thread-alt depth-1 clearfix ">
+			<span class="commentnumber">14</span>
+			<div class="comment" id="bestcomment-582424">
+			<div class="comment-author">
+				<img alt='' src='http://1.gravatar.com/avatar/700413df1bad9a268fc330b07e567a31?s=38&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />								
+				<div class="authormeta">
+					<h3 class="comment-author">Andy</h3> 
+					<span class="datetime"><a title="Commentlink #14" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-582424">June 12th, 2012 3:48 am</a></span>
+				</div>
+			</div>
+			<div class="comment-text">
+				<p>UTF-8 is not a character set. It is an *encoding* of the Unicode character set.  I suspect that this error is responsible for much of the misunderstanding that surrounds an essentially simple idea.</p>
+			</div>
+			<div class="commentmeta">
+									<div class="commentrating clearfix">
+						<div class="rateresult positive">&#43;1</div>
+					</div>
+											</div>
+		</div>
+				<li class="comment even thread-even depth-1 clearfix ">
+			<span class="commentnumber">15</span>
+			<div class="comment" id="bestcomment-583000">
+			<div class="comment-author">
+				<img alt='' src='http://0.gravatar.com/avatar/24e08a9ea84deb17ae121074d0f17125?s=38&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D38&amp;r=G' class='avatar avatar-38 photo' height='38' width='38' />								
+				<div class="authormeta">
+					<h3 class="comment-author">Mathias Bynens</h3> 
+					<span class="datetime"><a title="Commentlink #15" href="http://coding.smashingmagazine.com/2012/06/06/all-about-unicode-utf8-character-sets/#comment-583000">June 18th, 2012 12:15 am</a></span>
+				</div>
+			</div>
+			<div class="comment-text">
+				<p>For those interested, this is explained in more detail here: <a href="http://mathiasbynens.be/notes/javascript-encoding" rel="nofollow">http://mathiasbynens.be/notes/javascript-encoding</a></p>
+			</div>
+			<div class="commentmeta">
+									<div class="commentrating clearfix">
+						<div class="rateresult positive">&#43;1</div>
+					</div>
+											</div>
+		</div>
+					</ol>
+				    </div>
+	</div>
+
+
+<div id="respond">
+
+    <h3>Leave a Comment</h3>
+
+    <p class="desc">Yay! You've decided to leave a comment. That's fantastic! Please keep in mind that comments are moderated and <code>rel="nofollow"</code> is in use. So, please do not use a spammy keyword or a domain as your name, or it will be deleted. Let's have a personal and meaningful conversation instead. Thanks for dropping by!</p>
+
+        
+        
+    <form action="http://coding.smashingmagazine.com/wp-comments-post.php" method="post" id="commentform">
+                
+        <div class="clearfix">
+            <p class="input-half">
+                <label for="comment_author">Your name <span class="required">*</span></label>
+                <input type="text" name="author" id="comment_author" value="" tabindex="1" class="input" />
+            </p>
+
+            <p class="input-half">
+                <label for="email">Your email <span class="required">*</span></label>
+                <input type="text" name="email" id="email" value="" tabindex="2" class="input" />
+            </p>
+        </div>
+                
+        <div id="message-box">
+            <div class="cancel-comment-reply right">
+                <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2012/06/06/all-about-unicode-utf8-character-sets/#respond" style="display:none;">Click here to cancel reply.</a></small>
+            </div>
+            <label for="comment">Your message <span class="required">*</span></label>
+            <textarea name="comment" id="comment" rows="10" tabindex="4" class="input textarea"></textarea>
+        </div>
+
+        <p id="submit-form"><input name="submit" type="submit" value="Submit comment" /><input type='hidden' name='comment_post_ID' value='119625' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p>
+                <p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="92f8d7abe5" /></p>    </form>
+        </div>
+
+					</div><!-- .col.main -->								
+				</div><!-- .grid -->
+				<p><a href="#top" class="backtotop" title="Jump to the top of the page">&uarr; Back to top</a></p>
+			</div><!-- .fluid -->
+		</div><!-- #container -->
+			<div id="wpsidebar">	
+		<div class="col side">
+			<div class="sm-search wp-search-form">			
+				<form method="get" action="http://www.smashingmagazine.com/search-results/" target="_top">
+					<span class="declare">Search on Smashing Magazine</span>
+					<input name="q" type="text" placeholder="e.g. Responsive design" />
+					<button class="search_submit" type="submit"><span class="first-type">Search</span><span class="last-type">Go!</span></button>
+					<input type="hidden" name="cx" value="partner-pub-6779860845561969:5884617103">
+					<input type="hidden" name="cof" value="FORID:10">
+					<input type="hidden" name="ie" value="UTF-8">
+				</form>
+			</div>
+			<div class="ed spnsrlistwrapper">
+					  			<span class="declare">Advertisement</span>
+	  			<span class="awithus"><a href="mailto:&#97;&#100;&#118;&#101;&#114;&#116;&#105;&#115;&#105;&#110;&#103;&#64;&#115;&#109;&#97;&#115;&#104;&#105;&#110;&#103;&#109;&#97;&#103;&#97;&#122;&#105;&#110;&#101;&#46;&#99;&#111;&#109;" title="Advertise with us!" class="sprite ed-us">Advertise with us!</a></span>
+							<div id="spnsrlisttarget"></div><!-- /#spnsrlisttarget -->
+		</div><!-- /.ed.spnsrlistwrapper -->
+		<div class="inner">
+		
+										<div class="textwidget"><div class="sidebartabs"><div id="smashing-daily" class="smashingwidget"><h3><a href="http://www.smashingmagazine.com/tag/smashing-daily/"><span>Smashing Daily</span><img src="http://www.smashingmagazine.com/files/smashing-widget/v006/img/sm-highlights.png" alt="Smashing Daily"></a></h3>
+<p>A brand new series on Smashing Magazine, where we highlight and curate the most interesting discussions, tools, techniques and articles that have been published recently and present them in a nice compact overview.</p>
+<ul class="topiclist">
+<li><a href="http://www.smashingmagazine.com/smashing-daily-29-retina-pixels-color-management/">Smashing Daily #29 (22.06)</a><p>This weekend The Smashing Daily has valuable resources and articles for designers: styleguides, design systems, visuals on retina displays, and The Incredible Descriptive Camera!</p></li>
+<li><a href="http://www.smashingmagazine.com/smashing-daily-28-hyphens-subpixels-shiny-things/">Smashing Daily #28 (21.06)</a><p>An incredible article with an almost invisible (but very important) technique, articles on JavaScript, CSS, accessibility, design and workflow, an an amazing collection of shiny things.</p></li>
+<li><a href="http://www.smashingmagazine.com/smashing-daily-27-css-browsers-color/">Smashing Daily #27 (20.06)</a><p> 
+The future of the Web, the future people of the Web, good CSS, an argument for dumber devices, browser and feature detection, an incredible color tool, and more.</p></li>
+</ul></div><!-- /#smashing-daily --></div></div>
+				
+					
+	
+			<div id="sidebarspecialtarget"></div><!-- /#sidebarspecialtarget -->
+			<div class="sidebar-smash-box smashingbook-printed">			<div class="textwidget"><a href="http://www.smashingbook.com"><img src=" http://media.smashingmagazine.com/wp-content/uploads/2012/03/small_cover.png" alt="Smashing Printed Books"></a>
+				<p><strong>Get Your Smashing Book #3!</strong><br>This book is the best printed book we've produced so far: it is a valuable, cutting-edge, high-quality book that any Web designer should have on their bookshelf. <strong><a href="http://www.smashingbook.com"> Get your book now: printed or eBook!</a></strong></p></div>
+		</div><!-- /.smashingbook-printed -->
+			<div class="sidebartabs">
+				<div id="newsletter_widget" class="smashingwidget">
+					<h3><a href="http://www.smashingmagazine.com/the-smashing-newsletter/"><span>The Smashing Newsletter</span><img src="http://media.smashingmagazine.com/wp-content/uploads/files/smashing-widget/v006/img/smnl.png" alt="Smashing Newsletter"></a></h3>
+					<div id="mc_embed_signup" class="sm-search">
+						<p>Subscribe to our email newsletter for useful tips and valuable resources, sent out every second Tuesday.</p>
+						<form action="http://smashingmagazine.us1.list-manage1.com/subscribe/post?u=16b832d9ad4b28edf261f34df&amp;id=a1666656e0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate">
+							<input name="EMAIL" type="text" placeholder="email address" />
+							<button class="search_submit" type="submit"><span class="first-type">Subscribe</span></button>
+							<div class="clearfix">
+							<div class="num-subscribers"><script type="text/javascript" src="http://smashingmagazine.us1.list-manage1.com/subscriber-count?b=34&#038;u=e768e688-36c3-4c2d-88fa-982d9d3f254b&#038;id=a1666656e0"></script></div>
+							</div>
+						</form>
+					</div>
+				</div><!-- /#network_widget -->
+			</div><!-- /.sidebartabs -->
+
+			<div class="sidebar-smash-box smashingmag-conference">			<div class="textwidget"><a href="http://lanyrd.com/profile/smashingmag/"><img src="http://provide.smashingmagazine.com/fdb-2012.jpg" width="100" height="100" alt="Conference" title="Conference"></a>
+<p><strong>Let's meet!</strong><br />Smashing Magazine's editor-in-chief Vitaly Friedman will be speaking at the <strong>Feed The Brain</strong> conference in Venice, Italy. <strong><a href="http://lanyrd.com/profile/smashingmag/">Let's grab a beer</a></strong>!</p>
+</div>
+		</div><!-- /.smashingmag-conference -->			
+			<div class="sidebartabs">
+				<div id="jobs" class="smashingwidget">
+  					<h3><a href="http://jobs.smashingmagazine.com/?pk_campaign=sm&amp;piwik_kwd=widget"><span>Smashing Job Board</span><img src="http://www.smashingmagazine.com/files/smashing-widget/v006/img/sm-jobs.png" alt="Smashing Jobs"></a></h3>
+					<ul class="topiclist">
+						<li style="display:none;"></li>
+						<li class="clearfix"><a href="http://feedproxy.google.com/~r/smjobs/~3/2MJN_rgOJxs/1996128">Sr. PhP Developer - TheraSim Inc. - (Raleigh Durham, NC) - FullTime</a><p>Position: Senior PhP Developer/Software Engineer Educational Requirements: Masters in Computer Science or equivalent experience Requirements 5&#8230;</p></li><li class="clearfix"><a href="http://feedproxy.google.com/~r/smjobs/~3/6iaEXS9FSgA/1996011">Senior Digital Designer - The Cloud and Compass - (London, UK) - FullTime</a><p>Job Specification Brief We are looking for a Senior Digital Designer to join The Cloud and Compass team. Listed as one of NMA’s ‘ones to watch’&#8230;</p></li>					</ul>
+					<p class="view-more"><a href="http://jobs.smashingmagazine.com?pk_campaign=sm&amp;piwik_kwd=widget">View more job openings&hellip;</a></p>
+				</div><!-- /#jobs -->
+			</div><!-- /.sidebartabs -->
+			
+			<div class="sidebar-smash-box smashingmag-meetup">			<div class="textwidget"></div>
+		</div><!-- /.smashingmag-meetup -->					</div><!-- /.inner -->
+
+		<div class="sidebar-smash-box smashingmag-promo-field">			<div class="textwidget"><a href="http://www.smashingmagazine.com/ebooks/"><img src="http://media.smashingmagazine.com/uploads/2012/01/best-of-no-150px.png" alt="Smashing Anniversary eBook"></a>
+<p><strong>Free eBook: "Best of Smashing Magazine"</strong><br />We've got a gift for you! To celebrate our birthday, we've released a free eBook with best articles published here on Smashing Magazine over all these years. In PDF, ePUB and Mobi. <strong><a href="http://www.smashingmagazine.com/ebooks/">Get it now for free!</a></strong></p></div>
+		</div><!-- /.smashingmag-promo-field -->		
+		<div class="sidebartabs">
+			<div id="smashing-highlights" class="smashingwidget">
+							<div class="textwidget"><h3><a href="http://www.smashingmagazine.com/smashing-highlights"><span>Smashing Highlights</span><img src="http://www.smashingmagazine.com/files/smashing-widget/v006/img/sm-highlights.png" alt="Smashing Highlights"></a></h3>
+<ul class="topiclist">
+<li><a href="http://coding.smashingmagazine.com/2011/03/04/in-search-of-the-perfect-captcha/">In Search Of The Perfect CAPTCHA</a><p>CAPTCHAs, or Completely Automated Public Turing Tests to Tell Computers and Humans Apart, exist to ensure that user input has not been generated by a computer. These peculiar puzzles are commonly used on the Web to protect registration and comment forms from spam.  <a href="http://coding.smashingmagazine.com/2011/03/04/in-search-of-the-perfect-captcha/">Read more...</a></p></li>
+<li><a href="http://www.smashingmagazine.com/2010/10/22/how-to-make-innovative-ideas-happen/">How To Make Innovative Ideas Happen</a><p>In one of his recent presentations, Frans Johansson explained why groundbreaking innovators generate and execute far more ideas than their counterparts. After watching his presentation, my thoughts began to surface about how meaningful the presentation was regardless of a persons industry, culture, field or discipline. <a href="http://www.smashingmagazine.com/2010/10/22/how-to-make-innovative-ideas-happen/">Read more...</a></p></li>
+<li><a href="http://www.smashingmagazine.com/2011/10/28/useful-coding-workflow-tools-for-web-designers-developers/">Useful Coding Tools and JavaScript Libraries For Web Developers</a><p>You know that we have a traditional habit of regularly researching the latest resources, tools and services out there on the Web, as productivity is a crucial asset of professional Web designers and developers. We could, and should, all integrate workflow optimization into our working practices. <a href="http://www.smashingmagazine.com/2011/10/28/useful-coding-workflow-tools-for-web-designers-developers/">Read more...</a></p></li>
+</ul></div>
+						<p class="view-more"><a href="http://www.smashingmagazine.com/smashing-highlights/">View more articles&hellip;</a></p>
+			</div><!-- /#smashing-highlights -->
+		</div><!-- /.sidebartabs -->
+		
+		<div class="two clearfix">
+			<div class="left">
+							<div class="textwidget"><div class="inner popular-posts-area">
+	<h2 class="popular">Tags</h2>
+<ul class="popular-list sidelist">
+<li><a href="http://www.smashingmagazine.com/tag/android/">Android</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/branding/">Branding</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/business/">Business</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/business-card/">Business Card</a></li>
+<li><a href="http://coding.smashingmagazine.com/tag/captcha/">Captcha</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/cheat-sheets/">Cheat Sheets</a></li>
+<li><a href="http://coding.smashingmagazine.com/tag/Essentials/">Coding Essentials</a></li>
+<li><a href="http://www.smashingmagazine.com/content-strategy-storytelling/">Content Strategy</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/conferences/">Conferences</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/copyright/">Copyright</a></li>
+<li><a href="http://coding.smashingmagazine.com/tag/css/">CSS</a> &amp; <a href="http://coding.smashingmagazine.com/tag/css3/">CSS3</a></li>
+<li><a href="http://www.smashingmagazine.com/web-design-essentials-examples-and-best-practices/">Design Best Practices</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/legacy/">Design Legacy</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/downloads/">Downloads</a></li>
+<li><a href="http://uxdesign.smashingmagazine.com/tag/e-commerce/">E-Commerce</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/email/">Email</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/errors/">Errors</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/Facebook/">Facebook</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/Fireworks/">Fireworks</a></li>
+<li><a href="http://uxdesign.smashingmagazine.com/tag/forms/">Forms</a></li>
+<li><a href="http://coding.smashingmagazine.com/tag/frameworks/">Frameworks</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/freebies/">Freebies</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/free-fonts/">Free Fonts</a></li>
+<li><a href="http://coding.smashingmagazine.com/tag/HTML/">HTML</a> &amp; <a href="http://coding.smashingmagazine.com/tag/HTML5/">HTML5</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/icons/">Icons</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/innovation/">Innovation</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/illustrator/">Illustrator</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/indesign/">InDesign</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/inspiration/">Inspiration</a></li>
+<li><a href="http://coding.smashingmagazine.com/tag/internet-explorer/">Internet Explorer</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/ipad/">iPad</a> &amp; <a href="http://www.smashingmagazine.com/tag/iPhone/">iPhone</a></li>
+<li><a href="http://coding.smashingmagazine.com/tag/javascript/">JavaScript</a></li>
+<li><a href="http://coding.smashingmagazine.com/tag/jquery/">jQuery</a></li>
+<li><a href="http://coding.smashingmagazine.com/tag/layouts/">Layouts</a></li>
+<li><a href="http://coding.smashingmagazine.com/tag/linux/">Linux</a></li>
+<li><a href="http://www.smashingmagazine.com/guidelines-for-mobile-web-development/">Mobile</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/navigation/">Navigation</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/pdf/">PDF</a></li>
+<li><a href="http://coding.smashingmagazine.com/tag/performance/">Performance</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/photography/">Photography</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/photoshop/">Photoshop</a></li>
+<li><a href="http://coding.smashingmagazine.com/tag/PHP/">PHP</a></li>
+<li><a href="http://www.smashingmagazine.com/portfolio-web-design-showcases/">Portfolios</a></li>
+<li><a href="http://coding.smashingmagazine.com/tag/plugins/">Plugins</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/print/">Print</a></li>
+<li><a href="http://uxdesign.smashingmagazine.com/tag/prototyping/">Prototyping</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/psd/">PSD</a></li>
+<li><a href="http://uxdesign.smashingmagazine.com/tag/psychology/">Psychology</a></li>
+<li><a href="http://www.smashingmagazine.com/responsive-web-design-guidelines-tutorials/">Responsive Design</a></li>
+<li><a href="http://coding.smashingmagazine.com/tag/ruby-on-rails/">Ruby on Rails</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/search/">Search</a></li>
+<li><a href="http://coding.smashingmagazine.com/tag/security/">Security</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/seo/">SEO</a></li>
+<li><a href="http://www.smashingmagazine.com/back-end-server-administration-php-guidelines/">Servers</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/showcases/">Showcases</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/studies/">Studies</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/techniques/">Techniques</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/templates/">Templates</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/textures/">Textures</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/themes/">Themes</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/tools/">Tools</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/tutorials/">Tutorials</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/typefaces/">Typefaces</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/typography/">Typography</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/twitter/">Twitter</a></li>
+<li><a href="http://uxdesign.smashingmagazine.com/tag/ui/">UI Design</a></li>
+<li><a href="http://uxdesign.smashingmagazine.com/tag/usability/">Usability</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/useful/">Useful Resources</a></li>
+<li><a href="http://uxdesign.smashingmagazine.com/tag/user-experience/">User Experience</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/vectors/">Vectors</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/vintage/">Vintage</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/wallpapers/">Wallpapers</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/web-design/">Web Design</a></li>
+<li><a href="http://www.smashingmagazine.com/tag/wireframing/">Wireframing</a></li>
+<li><a href="http://wp.smashingmagazine.com/tag/themes/">WordPress Themes</a></li>
+<li><a href="http://wp.smashingmagazine.com/tag/plugins/">WordPress Plugins</a></li>
+</ul>
+</div></div>
+					</div><!-- /.left -->
+			<div class="right">
+				<div id="twitter">
+					<div class="inner">
+						<h2 class="icon twitter">Twitter</h2>
+						<a href="http://twitter.com/smashingmag" class="follow-us">Follow Us</a></div>
+						<ul id="tweetlist">
+							<li style="display:none;"></li>
+							<li class="twitter-item"> A good reminder on Ordering CSS3 Properties by <a href="http://twitter.com/chriscoyier" class="twitter-user">@chriscoyier</a> - <a href="http://t.co/NejAm6s6">http://t.co/NejAm6s6</a> <a href="http://twitter.com/smashingmag/statuses/216858221401481216" class="tweet-status" title="2012-06-24T13:40:00+02:00"></a></li><li class="twitter-item"> 21 Fresh Free Fonts for Graphic and Web Designers - <a href="http://t.co/0eHTfOKp">http://t.co/0eHTfOKp</a> <a href="http://twitter.com/smashingmag/statuses/216818011213004800" class="tweet-status" title="2012-06-24T11:00:00+02:00"></a></li><li class="twitter-item"> On SmashingMag: All About Unicode, UTF8 &amp; Character Sets - <a href="http://t.co/ficz6KlF">http://t.co/ficz6KlF</a> <a href="http://twitter.com/smashingmag/statuses/216809270577078272" class="tweet-status" title="2012-06-24T10:25:00+02:00"></a></li><li class="twitter-item"> Free and Premium Weather Forecast Icons Sets - <a href="http://t.co/i6es0mFs">http://t.co/i6es0mFs</a> <a href="http://twitter.com/smashingmag/statuses/216648051627012096" class="tweet-status" title="2012-06-23T23:44:00+02:00"></a></li><li class="twitter-item"> Another interesting deal: a designer toolkit with 60,000 items - <a href="http://t.co/ONwxu5xf">http://t.co/ONwxu5xf</a> - Don't deals ruin regular prices?… <a href="http://twitter.com/#search?q=smprice" class="twitter-link">#smprice</a> <a href="http://twitter.com/smashingmag/statuses/216634853129588736" class="tweet-status" title="2012-06-23T22:52:00+02:00"></a></li><li class="twitter-item"> Looks interesting: Off Canvas Layouts templates based on @lukew's Off Canvas Pattern - <a href="http://t.co/am6CuTDq">http://t.co/am6CuTDq</a> <a href="http://twitter.com/smashingmag/statuses/216632885128597504" class="tweet-status" title="2012-06-23T22:44:00+02:00"></a></li>						</ul>
+					</div><!-- /#twitter -->
+					<div class="ed sidebared">
+						<div id="sidebaredtarget"></div>
+					</div><!-- /.ed.sidebared -->
+					<div class="ed sidebared">
+						<div id="sidebaredthreetarget"></div>
+					</div>
+					<div class="inner interact-area">
+						<h2 class="icon interact">Connect</h2>
+						<ul class="interact-list sidelist">
+							<li><a href="/about/">About us</a></li>
+							<li><a href="/contact/">Contact us</a></li>
+							<li><a href="/publishing-policy/">Publishing Policy</a></li>
+							<li><a href="/the-smashing-newsletter/">Email Newsletter</a></li>
+							<li><a href="/how-to-become-a-smashing-magazine-author/">Become an Author</a></li>	<li><a href="/the-smashing-newsletter/">Smashing Newsletter</a></li>
+							<li><a href="http://www.noupe.com">Noupe Design Blog</a></li>
+							<li class="twitter"><a href="http://twitter.com/smashingmag">Follow us on Twitter</a></li>
+							<li class="facebook"><a href="http://www.facebook.com/smashmag">Join us on Facebook</a></li>
+							<li class="rss"><a href="http://rss1.smashingmagazine.com/feed/">Subscribe to RSS-Feed</a></li>
+						</ul>
+					</div>
+				</div><!-- /.right -->
+			</div><!-- /.two -->
+		</div><!-- .col.ads -->
+	</div>		<div id="footer">
+			<div id="the-smashing-cat">
+				<a href="http://www.smashingmagazine.com/about/"><img title="The Smashing Cat" alt="The Smashing Cat" src="http://media.smashingmagazine.com/themes/smashingv4/images/smashing-cat.png"></a>
+			</div> 
+	            <div class="contribute">
+	                <h4>Best of Design</h4>
+				<ul>
+					<li><a href="http://www.smashingmagazine.com/responsive-web-design-guidelines-tutorials/">Responsive Design</a></li>
+					<li><a href="http://www.smashingmagazine.com/professional-photoshop-techniques-tutorials/">Photoshop</a></li>
+					<li><a href="http://www.smashingmagazine.com/typography-guidelines-and-references/">Typography</a></li>
+					<li><a href="http://www.smashingmagazine.com/guidelines-for-mobile-web-development/">Mobile Design</a></li>
+					<li><a href="http://www.smashingmagazine.com/usability-and-user-experience/">Usability and UX</a></li>
+					<li><a href="http://www.smashingmagazine.com/web-design-essentials-examples-and-best-practices/">Web Design Showcases</a></li>
+				</ul>
+	            </div>
+	            <div class="contribute">
+	                <h4>Best of Coding</h4>
+				<ul>
+					<li><a href="http://www.smashingmagazine.com/learning-javascript-essentials-guidelines-tutorials/">JavaScript &amp; jQuery</a></li>
+					<li><a href="http://www.smashingmagazine.com/learning-wordpress-useful-wordpress-tips-tutorials/">WordPress Techniques</a></li>
+					<li><a href="http://www.smashingmagazine.com/coding-with-html5-tutorials-guidelines/">HTML5 Tutorials</a></li>
+					<li><a href="http://www.smashingmagazine.com/mastering-css-principles-comprehensive-reference-guide/">CSS</a>, <a href="http://www.smashingmagazine.com/learning-css3-useful-reference-guide/">CSS3</a></li>
+					<li><a href="http://www.smashingmagazine.com/time-savers-tools-useful-services-web-design/">Useful Time Savers</a></li>
+					<li><a href="http://www.smashingmagazine.com/bored-the-curious-side-of-smashing-magazine/">Bored?</a></li>
+				</ul>
+	            </div>
+	            <div class="contribute our-content">
+	                <h4>Smashing Hub</h4>
+	                <ul>
+	                    <li><a href="http://www.smashingmagazine.com">Smashing Magazine</a></li>
+	                    <li><a href="http://www.smashingmagazine.com/books/">Smashing Books</a></li>
+	                    <li><a href="http://www.smashingmagazine.com/ebooks/">Smashing eBooks</a></li>
+	                    <li><a href="http://www.smashingmagazine.com/the-smashing-newsletter/">Smashing Email Newsletter</a></li>
+	                    <li><a href="http://shop.smashingmagazine.com">Smashing Shop</a></li>
+	                    <li><a href="http://jobs.smashingmagazine.com/">Smashing Job Board</a></li>
+	                </ul>
+	            </div>
+	            <div class="contribute">
+	                <h4>Other Resources</h4>
+	                <ul>
+	                    <li><a href="http://www.smashingmagazine.com/2011/09/08/to-five-smashing-years-and-a-free-anniversary-ebook-treat/">Free Anniversary eBook</a></li>
+	                    <li><a href="http://www.smashingmagazine.com/smashing-book-1/">Smashing Book 1 in HTML</a></li>
+	                    <li><a href="http://www.smashingmagazine.com/the-lost-files/">Smashing Book 2 Extras</a></li>
+	                    <li><a href="http://www.smashingmagazine.com/publishing-policy/">Publishing Policy</a></li>
+	                    <li><a href="http://www.smashingmagazine.com/about/">About us</a></li>
+	                    <li><a href="http://www.smashingmagazine.com/contact/">Contact us</a></li>
+	                </ul>
+		    </div>
+		    <p class="statement"><em>With a commitment to quality content for the design community.</em><br /><a href="http://www.smashingmagazine.com/about/">Smashing Media GmbH</a>. Made in Germany. 2006-2012.</p>
+		</div>
+		<!-- Anfang Bannersammelstelle -->
+<script type='text/javascript'>/* <![CDATA[ */  ads_init();   /* ]]> */ </script>
+<script type="text/javascript" src="http://auslieferung.commindo-media-ressourcen.de/www/delivery/spcjs.php?id=4&amp;block=1&amp;blockcampaign=1&amp;withtext=1"></script>
+	<script type='text/javascript'>/* <![CDATA[ */  ads_display();   /* ]]> */ </script>
+<!-- Ende Bannersammelstelle -->
+					<script type="text/javascript">
+				setTimeout(function(){var a=document.createElement("script");
+				var b=document.getElementsByTagName('script')[0];
+				a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0011/1125.js";
+				a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+			</script>
+			<script src="//static.getclicky.com/js" type="text/javascript"></script>
+			<script type="text/javascript">
+				try{ clicky.init(66569468); }catch(e){}
+			</script>
+			</body>
+</html>

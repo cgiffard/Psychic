@@ -1,7 +1,7 @@
 {
   "author": "Christopher Giffard <christopher.giffard@cgiffard.com>",
   "name": "Psychic",
-  "description": "Extracts content and semantic data from raw HTML.",
+  "description": "Discovers and extracts content and semantic data from raw HTML.",
   "version": "0.0.1",
   "homepage": "https://github.com/cgiffard/Psychic",
   "repository": {
