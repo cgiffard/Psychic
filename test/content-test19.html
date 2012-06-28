@@ -1,0 +1,2262 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=1060">
+  
+  <title>A look inside Leap Motion, the 3D gesture control that's like Kinect on steroids | The Verge</title>
+  
+  <link rel="alternate" type="application/rss+xml" title="The Verge - All Posts" href="/rss/index.xml" />
+  <link rel="shortcut icon" href="http://cdn1.sbnation.com/images/verge/favicon.v60c06a7.ico" />
+  <link rel="apple-touch-icon" href="/images/verge/apple-touch-icon.png" />
+  
+
+  
+  <meta name="application-name" content="The Verge" />
+  <meta name="msapplication-starturl" content="/"/>
+  <meta content="name=Products; action-uri=/products; icon-uri=http://cdn1.sbnation.com/images/verge/favicon.v60c06a7.ico" name="msapplication-task" />
+  <meta content="name=Reviews; action-uri=/reviews; icon-uri=http://cdn1.sbnation.com/images/verge/favicon.v60c06a7.ico" name="msapplication-task" />
+  <meta content="name=Features; action-uri=/features; icon-uri=http://cdn1.sbnation.com/images/verge/favicon.v60c06a7.ico" name="msapplication-task" />
+  <meta content="name=Show; action-uri=/on-the-verge; icon-uri=http://cdn1.sbnation.com/images/verge/favicon.v60c06a7.ico" name="msapplication-task" />
+  <meta content="name=Forums; action-uri=/forums; icon-uri=http://cdn1.sbnation.com/images/verge/favicon.v60c06a7.ico" name="msapplication-task" />
+
+  
+  <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
+
+  <link href="http://cdn1.sbnation.com/stylesheets/verge.v90fa3f862b0ef04d.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://cdn1.sbnation.com/stylesheets/verge_print.v1b29cc9f628ccb4a.css" media="print" rel="stylesheet" type="text/css" />
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
+
+<script type="text/javascript">
+  var $j = jQuery.noConflict();
+</script>
+
+  <script src="http://cdn3.sbnation.com/javascripts/verge.v7cff1b8dae41db0b.js" type="text/javascript"></script>
+  
+
+  
+  <script type="text/javascript" src="http://ox-d.sbnation.com/w/1.0/jstag"></script><script type="text/javascript">
+//<![CDATA[
+
+        SBN.OpenX = new OXH();
+        SBN.OpenX.addContentTopic(17, 'Interior Page');
+SBN.OpenX.addVariable('network', 'verge');
+SBN.OpenX.addVariable('entry_type', 'article');
+SBN.OpenX.addVariable('label', '5,39');
+SBN.OpenX.addVariable('tag', 'motion,motion control,kinect,gestures,leap,hands-free,leap motion');      
+        
+              SBN.Campaigns.Components.logActivation(
+                1928, 
+                188, 
+                'ad-hoc'
+              );
+            
+
+              SBN.Campaigns.Components.activeComponentContext().each(function(pair) {
+                SBN.OpenX.addVariable(pair.key, pair.value);
+              });
+            
+
+              SBN.OpenX.addGroups([9986]);
+              SBN.OpenX.addUnits([]);
+              SBN.OpenX.fetchAds();
+            
+      
+//]]>
+</script>
+  
+    <script src="http://cdn0.sbnation.com/javascripts/app/hub_posts.v7b2beb6.js" type="text/javascript"></script>
+  
+    <script src="http://cdn0.sbnation.com/javascripts/vendor/livepipe/window.vd8517f9.js" type="text/javascript"></script>
+  
+    <script src="http://cdn2.sbnation.com/javascripts/vendor/shortcuts.va1bc92f.js" type="text/javascript"></script>
+  
+    <script src="http://cdn2.sbnation.com/javascripts/lib/posts.vfa83a5f.js" type="text/javascript"></script>
+    
+
+  <!--[if lte IE 8]>
+  <script>
+  document.createElement('header');
+  document.createElement('nav');
+  document.createElement('section');
+  document.createElement('article');
+  document.createElement('aside');
+  document.createElement('footer');
+  document.createElement('hgroup');
+  </script>
+  <link href="http://cdn2.sbnation.com/stylesheets/verge/hacks/ie8-and-under.vaefcdd50d93025a7.css" media="screen" rel="stylesheet" type="text/css" />
+  <![endif]-->
+
+   <!--[if lt IE 8]>
+  <link href="http://cdn1.sbnation.com/stylesheets/verge/hacks/ie7.v154b64e.css" media="screen" rel="stylesheet" type="text/css" />
+  <![endif]-->
+
+  <script type="text/javascript" src="http://fonts.sbnation.com/wvq7oai.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  
+
+  <script type="text/javascript">
+		FastInit.addOnLoad(function(){
+      var lenovo_buynow = {
+  'http://www.theverge.com/products/thinkpad-tablet-3g/3114': {'click':'http://ad.doubleclick.net/clk;258144168;82121759;n', 'view':'http://ad.doubleclick.net/jump/N5249.896837.THEVERGE.COM/B6483913.22;sz=1x1;ord=[timestamp]?'},
+  'http://www.theverge.com/products/ideapad-a1/2499': {'click':'http://ad.doubleclick.net/clk;258144162;82121724;z', 'view':'http://ad.doubleclick.net/jump/N5249.896837.THEVERGE.COM/B6483913.14;sz=1x1;ord=[timestamp]?'},
+  'http://www.theverge.com/products/thinkpad-t420/677': {'click':'http://ad.doubleclick.net/clk;258144157;82121752;e', 'view':'http://ad.doubleclick.net/jump/N5249.896837.THEVERGE.COM/B6483913.20;sz=1x1;ord=[timestamp]?'},
+  'FIXMEhttp://www.theverge.com/products/thinkpad-edge-e430/4498': {'click':'FIXME', 'view':'FIXME'},
+  'http://www.theverge.com/products/thinkpad-x220/792': {'click':'http://ad.doubleclick.net/clk;258144167;82121768;m', 'view':'http://ad.doubleclick.net/jump/N5249.896837.THEVERGE.COM/B6483913.24;sz=1x1;ord=[timestamp]?'},
+  'http://www.theverge.com/products/ideapad-u300s/2480': {'click':'http://ad.doubleclick.net/clk;258144158;82121764;i', 'view':'http://ad.doubleclick.net/jump/N5249.896837.THEVERGE.COM/B6483913.23;sz=1x1;ord=[timestamp]?'},
+  'http://www.theverge.com/products/ideapad-z570/616': {'click':'http://ad.doubleclick.net/clk;258144165;82121771;e', 'view':'http://ad.doubleclick.net/jump/N5249.896837.THEVERGE.COM/B6483913.25;sz=1x1;ord=[timestamp]?'},
+  'http://www.theverge.com/products/g570/501': {'click':'http://ad.doubleclick.net/clk;258144160;82121734;y', 'view':'http://ad.doubleclick.net/jump/N5249.896837.THEVERGE.COM/B6483913.16;sz=1x1;ord=[timestamp]?'},
+  'http://www.theverge.com/products/g770/529': {'click':'http://ad.doubleclick.net/clk;258144155;82121739;h', 'view':'http://ad.doubleclick.net/jump/N5249.896837.THEVERGE.COM/B6483913.17;sz=1x1;ord=[timestamp]?'},
+  'http://www.theverge.com/products/ideapad-s205/566': {'click':'http://ad.doubleclick.net/clk;258144166;82121745;g', 'view':'http://ad.doubleclick.net/jump/N5249.896837.THEVERGE.COM/B6483913.19;sz=1x1;ord=[timestamp]?'},
+  'http://www.theverge.com/products/thinkpad-x1/723': {'click':'http://ad.doubleclick.net/clk;258144153;82121756;e', 'view':'http://ad.doubleclick.net/jump/N5249.896837.THEVERGE.COM/B6483913.21;sz=1x1;ord=[timestamp]?'},
+  'http://www.theverge.com/products/thinkpad-edge-e530/4512': {'click':'http://ad.doubleclick.net/clk;258144151;82121729;c', 'view':'http://ad.doubleclick.net/jump/N5249.896837.THEVERGE.COM/B6483913.15;sz=1x1;ord=[timestamp]?'}
+};
+var which_lenovo_buynow = lenovo_buynow[window.location];
+if (which_lenovo_buynow) {
+    $j('.product-about')
+	.append('<div style="text-align: right; margin-top: 10px; margin-right: 10px;">'+
+              '<a target="_blank" href="' + which_lenovo_buynow['click'] + '">'+
+              '<img src="http://assets.sbnation.com.s3.amazonaws.com/ads/lenovo/lenovo_buy_it_now.png" width="114" height="50" />'+
+              '<img src="' + which_lenovo_buynow['view'] + '" width="1" height="1" />'+
+		'</a></div>');
+};
+    });
+  </script>
+  
+
+
+
+  
+    <meta name="google-site-verification" content="TYyhlycNMOtUSht2aoB7heWTK8m-H45_YJizKavkO8s" />
+
+<meta name="msvalidate.01" content="D385D0326A3AE144205C298DB34B4E94" />
+
+<META name="y_key" content="0184e2558f89b639" />
+
+<meta name="google-site-verification" content="tDoQLOfV4VmPZrTuSNDQnSyTfhgDRlOMaXgYQ0Bb9Bc" />
+
+<style>
+
+article quote em:before {
+content: none;
+}
+
+</style>
+    <meta name="description" content="Leap Motion's not the household name Kinect is, but it should be &amp;amp;mdash; the company's motion-tracking system is more powerful, more accurate, smaller, cheaper, and just more impressive. Leap CTO..." />
+<link rel="canonical" href="http://www.theverge.com/2012/6/26/3118592/leap-motion-gesture-controls" />
+<meta property="og:description" content="Leap Motion's not the household name Kinect is, but it should be &amp;mdash; the company's motion-tracking system is more powerful, more accurate, smaller, cheaper, and just more impressive. Leap CTO..." />
+<meta property="fb:app_id" content="179668695452017" />
+<meta property="og:image" content="http://cdn1.sbnation.com/entry_photo_images/4476160/Still_for_article-hero_large_large.jpg" />
+<meta property="og:site_name" content="The Verge" />
+<meta property="og:title" content="A look inside Leap Motion, the 3D gesture control that's like Kinect on steroids" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.theverge.com/2012/6/26/3118592/leap-motion-gesture-controls" />
+
+        <meta name="sailthru.title" content="A look inside Leap Motion, the 3D gesture control that's like Kinect on steroids" />
+        <meta name="sailthru.tags" content="general,general,the-verge" />
+        <meta name="sailthru.date" content="2012-06-26" />
+        <meta name="sailthru.description" content="Leap Motion's not the household name Kinect is, but it should be &amp;mdash; the company's motion-tracking system is more powerful, more accurate, smaller, cheaper, and just more impressive. Leap CTO..." />
+      
+
+        <link rel="image_src" href="http://cdn1.sbnation.com/entry_photo_images/4476160/Still_for_article-hero_large_large.jpg" type="image/jpeg" data-width="300" data-height="250"  />
+      
+  
+
+  
+
+  
+
+</head>
+
+
+  
+<!--[if lt IE 7 ]> <body id="verge" class="ie6 desktop-layout hub-frontpage"> <![endif]-->
+<!--[if IE 7 ]>    <body id="verge" class="ie7 desktop-layout hub-frontpage"> <![endif]-->
+<!--[if IE 8 ]>    <body id="verge" class="ie8 desktop-layout hub-frontpage"> <![endif]-->
+<!--[if IE 9 ]>    <body id="verge" class="ie9 desktop-layout hub-frontpage"> <![endif]-->
+<!--[if gt IE 9]>  <body id="verge" class="ie10 desktop-layout hub-frontpage"> <![endif]-->
+<!--[if !IE]><!--> <body id="verge" class="desktop-layout hub-frontpage"> <!--<![endif]-->
+  
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26533115-1']);
+  _gaq.push(['_trackPageview']);
+
+  
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+<script type="text/javascript">
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "7976662" });
+  (function() {
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+    el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  <img src="http://b.scorecardresearch.com/p?c1=2&c2=7976662&cv=2.0&cj=1" />
+</noscript>
+
+
+
+<script src="http://tags.crwdcntrl.net/c/1198/cc_af.js"></script>
+
+
+
+<div id="super">
+  <div id="network-bar" class="row clearfix">
+  <div class="user column grid_2 clearfix not-logged-in">
+    
+      <div class="tab">
+        <a href="/login">Log In</a>
+        &nbsp;or&nbsp;
+        <a href="/account/setup">Join</a>
+      </div>
+    
+  </div>
+  <div class="breaking-news column grid_7">
+    
+      
+        <p>
+          <strong>Breaking:</strong>
+          
+            <a href="http://www.theverge.com/2012/6/25/3114649/on-the-verge-007-levar-burton-alexis-ohanian-tim-wu">On The Verge, Episode 007: LeVar Burton, Alexis Ohanian, Tim Wu</a>
+          
+        </p>
+      
+    
+  </div>
+
+  <div class="column grid_3">
+
+  </div>
+
+  <div id="network-compare">
+    <a id="comparison-indicator" href="" title="See product comparison">Compare (<em>0</em>)</a>
+    <a id="clear-comparison-bucket" href="" title="Clear comparison bucket">Clear</a>
+  </div>
+  <a id="back-to-top" href="http://www.theverge.com/" title="Back to top"><img alt="Triangle-netbar" src="http://cdn1.sbnation.com/images/verge/triangle-netbar.v1e4409a.png" /></a>
+
+  <div id="network-bar-flash">FLASH DANCE!</div>
+
+</div>
+
+  
+  
+
+  
+  
+<div id="leaderboard_ad" class="leaderboard-ad">
+  
+            
+            <div id="open_x_ad_unit_1801">
+              <script type="text/javascript">
+              SBN.OpenX.showAd(96673);
+              </script>
+            </div>
+          
+</div>
+
+
+
+  <div id="container">
+    
+    
+
+<header class="collapsed clearfix">
+
+  <a href="http://www.theverge.com/" class="logo"><img alt="Verge_logo_white_110" height="19" src="http://cdn2.sbnation.com/images/verge/globals/logos/verge_logo_white_110.v4a4fd53.png" width="110" /></a>
+  
+  <nav>
+    <ul class="clearfix" id="nav-list">
+      <li id="nav-products" class="nav-tab has-dropdown clearfix">
+        <h2><a href="http://www.theverge.com/products">Products</a></h2>
+        <div class="dropdown clearfix" data-nav-dropdown="">
+  <ul class="primary">
+    
+      
+      <li data-flip="3"><a href="http://www.theverge.com/products/categories/cellphones/3">Cellphones</a></li>
+    
+      
+      <li data-flip="8"><a href="http://www.theverge.com/products/categories/tablets/8">Tablets</a></li>
+    
+      
+      <li data-flip="6"><a href="http://www.theverge.com/products/categories/laptops/6">Laptops</a></li>
+    
+      
+      <li data-flip="1"><a href="http://www.theverge.com/products/categories/all-in-ones/1">All-in-ones</a></li>
+    
+      
+      <li data-flip="4"><a href="http://www.theverge.com/products/categories/desktops/4">Desktops</a></li>
+    
+      
+      <li data-flip="2"><a href="http://www.theverge.com/products/categories/cameras/2">Cameras</a></li>
+    
+      
+      <li data-flip="5"><a href="http://www.theverge.com/products/categories/e-readers/5">E-readers</a></li>
+    
+      
+      <li data-flip="12"><a href="http://www.theverge.com/products/categories/gaming/12">Gaming</a></li>
+    
+      
+      <li data-flip="31"><a href="http://www.theverge.com/products/categories/television/31">Television</a></li>
+    
+      
+      <li data-flip="17"><a href="http://www.theverge.com/products/categories/home-theater/17">Home Theater</a></li>
+    
+      
+      <li data-flip="24"><a href="http://www.theverge.com/products/categories/headphones-headsets/24">Headphones / Headsets</a></li>
+    
+      
+      <li data-flip="56"><a href="http://www.theverge.com/products/categories/speakers-docks/56">Speakers / Docks</a></li>
+    
+      
+      <li data-flip="7"><a href="http://www.theverge.com/products/categories/pmps/7">PMPs</a></li>
+    
+      
+      <li data-flip="50"><a href="http://www.theverge.com/products/categories/displays/50">Displays</a></li>
+    
+      
+      <li data-flip="61"><a href="http://www.theverge.com/products/categories/storage/61">Storage</a></li>
+    
+      
+      <li data-flip="63"><a href="http://www.theverge.com/products/categories/modems/63">Modems</a></li>
+    
+      
+      <li data-flip="58"><a href="http://www.theverge.com/products/categories/input-devices/58">Input Devices</a></li>
+    
+      
+      <li data-flip="27"><a href="http://www.theverge.com/products/categories/misc/27">Misc.</a></li>
+    
+  </ul>
+  
+    
+    <div class="secondary" data-flip="3">
+      <h4>Recent Cellphones</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/products/optimus-it/5821">Optimus it</a></li>
+        
+          <li><a href="http://www.theverge.com/products/jitterbug-plus/5816">Jitterbug Plus</a></li>
+        
+          <li><a href="http://www.theverge.com/products/galaxy-s-iii-t-mobile/5815">Galaxy S III (T-Mobile)</a></li>
+        
+          <li><a href="http://www.theverge.com/products/galaxy-s-iii-verizon/5807">Galaxy S III (Verizon)</a></li>
+        
+          <li><a href="http://www.theverge.com/products/galaxy-s-iii-at-t/5802">Galaxy S III (AT&T)</a></li>
+        
+          <li><a href="http://www.theverge.com/products/galaxy-s-iii-sprint/5801">Galaxy S III (Sprint)</a></li>
+        
+          <li><a href="http://www.theverge.com/products/xperia-tipo/5789">Xperia tipo</a></li>
+        
+          <li><a href="http://www.theverge.com/products/xperia-ion-hspa/5788">Xperia ion HSPA</a></li>
+        
+          <li><a href="http://www.theverge.com/products/xperia-miro/5787">Xperia miro</a></li>
+        
+          <li><a href="http://www.theverge.com/products/duraxt/5781">DuraXT</a></li>
+        
+      </ul>
+      <a href='http://www.theverge.com/products/categories/cellphones/3' class='see-all'>See All</a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="8">
+      <h4>Recent Tablets</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/products/surface-for-windows-8-pro/5800">Surface for Windows 8 Pro</a></li>
+        
+          <li><a href="http://www.theverge.com/products/surface-for-windows-rt/5799">Surface for Windows RT</a></li>
+        
+          <li><a href="http://www.theverge.com/products/lepad-a2107/5796">LePad A2107</a></li>
+        
+          <li><a href="http://www.theverge.com/products/transformer-book-11-6-inch/5723">Transformer Book (11.6-inch)</a></li>
+        
+          <li><a href="http://www.theverge.com/products/tablet-810/5722">Tablet 810</a></li>
+        
+          <li><a href="http://www.theverge.com/products/tablet-600/5718">Tablet 600</a></li>
+        
+          <li><a href="http://www.theverge.com/products/iconia-w700/5717">Iconia W700</a></li>
+        
+          <li><a href="http://www.theverge.com/products/iconia-w510/5716">Iconia W510</a></li>
+        
+          <li><a href="http://www.theverge.com/products/at300/5680">AT300</a></li>
+        
+          <li><a href="http://www.theverge.com/products/marquispad-mp977/5639">MarquisPad MP977</a></li>
+        
+      </ul>
+      <a href='http://www.theverge.com/products/categories/tablets/8' class='see-all'>See All</a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="6">
+      <h4>Recent Laptops</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/products/xps-15-2012/5819">XPS 15 (2012)</a></li>
+        
+          <li><a href="http://www.theverge.com/products/xps-14-2012/5818">XPS 14 (2012)</a></li>
+        
+          <li><a href="http://www.theverge.com/products/n56vm/5814">N56VM</a></li>
+        
+          <li><a href="http://www.theverge.com/products/envy-13/5797">Envy 13</a></li>
+        
+          <li><a href="http://www.theverge.com/products/vostro-3560/5790">Vostro 3560</a></li>
+        
+          <li><a href="http://www.theverge.com/products/macbook-pro-with-retina-display/5782">MacBook Pro with Retina display</a></li>
+        
+          <li><a href="http://www.theverge.com/products/t61p/5780">T61p</a></li>
+        
+          <li><a href="http://www.theverge.com/products/macbook-pro-15-inch-mid-2012/5779">MacBook Pro (15-inch, mid 2012)</a></li>
+        
+          <li><a href="http://www.theverge.com/products/macbook-pro-13-inch-mid-2012/5778">MacBook Pro (13-inch, mid 2012)</a></li>
+        
+          <li><a href="http://www.theverge.com/products/macbook-air-13-inch-mid-2012/5777">MacBook Air (13-inch, mid 2012)</a></li>
+        
+      </ul>
+      <a href='http://www.theverge.com/products/categories/laptops/6' class='see-all'>See All</a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="1">
+      <h4>Recent All-in-ones</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/products/vaio-vpcj249j/5765">VAIO VPCJ249J</a></li>
+        
+          <li><a href="http://www.theverge.com/products/lx830/5738">LX830</a></li>
+        
+          <li><a href="http://www.theverge.com/products/vaio-l-mid-2012/5731">VAIO L (mid 2012)</a></li>
+        
+          <li><a href="http://www.theverge.com/products/transformer-aio/5727">Transformer AiO</a></li>
+        
+          <li><a href="http://www.theverge.com/products/aspire-5600u/5714">Aspire 5600U</a></li>
+        
+          <li><a href="http://www.theverge.com/products/aspire-7600u/5712">Aspire 7600U</a></li>
+        
+          <li><a href="http://www.theverge.com/products/optiplex-9010/5700">Optiplex 9010</a></li>
+        
+          <li><a href="http://www.theverge.com/products/inspiron-one-20/5694">Inspiron One 20</a></li>
+        
+          <li><a href="http://www.theverge.com/products/inspiron-one-23/5693">Inspiron One 23</a></li>
+        
+          <li><a href="http://www.theverge.com/products/xps-one-27/5692">XPS One 27</a></li>
+        
+      </ul>
+      <a href='http://www.theverge.com/products/categories/all-in-ones/1' class='see-all'>See All</a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="4">
+      <h4>Recent Desktops</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/products/mac-pro-dual-processor-2012/5784">Mac Pro (Dual Processor, 2012)</a></li>
+        
+          <li><a href="http://www.theverge.com/products/mac-pro-single-processor-2012/5783">Mac Pro (Single Processor, 2012)</a></li>
+        
+          <li><a href="http://www.theverge.com/products/intense-pc/5735">Intense PC</a></li>
+        
+          <li><a href="http://www.theverge.com/products/rog-cg8580/5627">ROG CG8580</a></li>
+        
+          <li><a href="http://www.theverge.com/products/thinkcentre-m72e/5603">ThinkCentre M72e</a></li>
+        
+          <li><a href="http://www.theverge.com/products/thinkcentre-m92p/5602">ThinkCentre M92p</a></li>
+        
+          <li><a href="http://www.theverge.com/products/pavilion-hpe-h9-phoenix-mid-2012/5565">Pavilion HPE h9 Phoenix (mid 2012)</a></li>
+        
+          <li><a href="http://www.theverge.com/products/pavilion-hpe-h8/5564">Pavilion HPE h8</a></li>
+        
+          <li><a href="http://www.theverge.com/products/predator-g3-2012/5558">Predator G3 (2012)</a></li>
+        
+          <li><a href="http://www.theverge.com/products/dx4860-ur14p/5557">DX4860-UR14P</a></li>
+        
+      </ul>
+      <a href='http://www.theverge.com/products/categories/desktops/4' class='see-all'>See All</a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="2">
+      <h4>Recent Cameras</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/products/z2300/5822">Z2300</a></li>
+        
+          <li><a href="http://www.theverge.com/products/eos-rebel-t4i/5771">EOS Rebel T4i</a></li>
+        
+          <li><a href="http://www.theverge.com/products/cyber-shot-rx100/5749">Cyber-shot RX100</a></li>
+        
+          <li><a href="http://www.theverge.com/products/k-30/5674">K-30</a></li>
+        
+          <li><a href="http://www.theverge.com/products/alpha-a37/5666">Alpha A37</a></li>
+        
+          <li><a href="http://www.theverge.com/products/nex-f3/5665">NEX-F3</a></li>
+        
+          <li><a href="http://www.theverge.com/products/finepix-xp170/5605">FinePix XP170</a></li>
+        
+          <li><a href="http://www.theverge.com/products/tg-1-ihs/5604">TG-1 iHS</a></li>
+        
+          <li><a href="http://www.theverge.com/products/handycam-hdr-gw77v/5560">Handycam HDR-GW77V</a></li>
+        
+          <li><a href="http://www.theverge.com/products/nx1000/5540">NX1000</a></li>
+        
+      </ul>
+      <a href='http://www.theverge.com/products/categories/cameras/2' class='see-all'>See All</a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="5">
+      <h4>Recent E-readers</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/products/nook-simple-touch-with-glowlight/5518">Nook Simple Touch with GlowLight</a></li>
+        
+          <li><a href="http://www.theverge.com/products/jin-yong-reader/5068">Jin Yong Reader</a></li>
+        
+          <li><a href="http://www.theverge.com/products/ereader/5015">eReader</a></li>
+        
+          <li><a href="http://www.theverge.com/products/cybook-odyssey/4963">Cybook Odyssey</a></li>
+        
+          <li><a href="http://www.theverge.com/products/hanvon-c18/4889">Hanvon C18</a></li>
+        
+          <li><a href="http://www.theverge.com/products/bambook-sunflower/4780">Bambook Sunflower</a></li>
+        
+          <li><a href="http://www.theverge.com/products/jetbook-color/4312">Jetbook Color</a></li>
+        
+          <li><a href="http://www.theverge.com/products/kyobo-e-reader/4115">Kyobo e-Reader</a></li>
+        
+          <li><a href="http://www.theverge.com/products/raboo/2597">Raboo</a></li>
+        
+          <li><a href="http://www.theverge.com/products/mm3280/2591">MM3280</a></li>
+        
+      </ul>
+      <a href='http://www.theverge.com/products/categories/e-readers/5' class='see-all'>See All</a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="12">
+      <h4>Recent Gaming</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/products/3ds-ll/5809">3DS LL</a></li>
+        
+          <li><a href="http://www.theverge.com/products/3ds-xl/5808">3DS XL</a></li>
+        
+          <li><a href="http://www.theverge.com/products/free-fighter/5751">Free Fighter</a></li>
+        
+          <li><a href="http://www.theverge.com/products/playpad/5737">PlayPad</a></li>
+        
+          <li><a href="http://www.theverge.com/products/playpad-pro/5736">PlayPad Pro</a></li>
+        
+          <li><a href="http://www.theverge.com/products/wii-u-pro-controller/5711">Wii U Pro Controller</a></li>
+        
+          <li><a href="http://www.theverge.com/products/neogeo-x/5388">NeoGeo X</a></li>
+        
+          <li><a href="http://www.theverge.com/products/onlive-universal-wireless-controller/5218">OnLive Universal Wireless Controller</a></li>
+        
+          <li><a href="http://www.theverge.com/products/tablet-wireless-bluetooth-controller/5050">Tablet Wireless Bluetooth Controller</a></li>
+        
+          <li><a href="http://www.theverge.com/products/ion/4921">Ion</a></li>
+        
+      </ul>
+      <a href='http://www.theverge.com/products/categories/gaming/12' class='see-all'>See All</a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="31">
+      <h4>Recent Television</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/products/lc-90le745u/5798">LC-90LE745U</a></li>
+        
+          <li><a href="http://www.theverge.com/products/m2382/5691">M2382</a></li>
+        
+          <li><a href="http://www.theverge.com/products/m2752/5690">M2752</a></li>
+        
+          <li><a href="http://www.theverge.com/products/dm2752/5689">DM2752</a></li>
+        
+          <li><a href="http://www.theverge.com/products/smart-tv-with-google-tv-g2-series-55-inch/5644">Smart TV with Google TV G2 Series (55-inch)</a></li>
+        
+          <li><a href="http://www.theverge.com/products/regza-55xs5/5630">Regza 55XS5</a></li>
+        
+          <li><a href="http://www.theverge.com/products/beoplay-v1-40/5585">BeoPlay V1 40</a></li>
+        
+          <li><a href="http://www.theverge.com/products/beoplay-v1-32/5583">BeoPlay V1 32</a></li>
+        
+          <li><a href="http://www.theverge.com/products/e425bv-fhdd/5488">E425BV-FHDD</a></li>
+        
+          <li><a href="http://www.theverge.com/products/k71-smart-tv/5482">K71 Smart TV</a></li>
+        
+      </ul>
+      <a href='http://www.theverge.com/products/categories/television/31' class='see-all'>See All</a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="17">
+      <h4>Recent Home Theater</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/products/co-star/5820">Co-Star</a></li>
+        
+          <li><a href="http://www.theverge.com/products/tv-plus/5811">@TV plus</a></li>
+        
+          <li><a href="http://www.theverge.com/products/movienite-plus/5785">MovieNite Plus</a></li>
+        
+          <li><a href="http://www.theverge.com/products/pro8300/5672">Pro8300</a></li>
+        
+          <li><a href="http://www.theverge.com/products/media-link-hd/5613">Media Link HD</a></li>
+        
+          <li><a href="http://www.theverge.com/products/pled-w200/5559">PLED-W200</a></li>
+        
+          <li><a href="http://www.theverge.com/products/nasne/5529">Nasne</a></li>
+        
+          <li><a href="http://www.theverge.com/products/roku-hd-2012/5512">Roku HD (2012)</a></li>
+        
+          <li><a href="http://www.theverge.com/products/bd-em53c/5416">BD-EM53C</a></li>
+        
+          <li><a href="http://www.theverge.com/products/bd-em59c/5414">BD-EM59C</a></li>
+        
+      </ul>
+      <a href='http://www.theverge.com/products/categories/home-theater/17' class='see-all'>See All</a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="24">
+      <h4>Recent Headphones / Headsets</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/products/bt/5795">BT</a></li>
+        
+          <li><a href="http://www.theverge.com/products/cl/5794">CL</a></li>
+        
+          <li><a href="http://www.theverge.com/products/ae/5793">AE</a></li>
+        
+          <li><a href="http://www.theverge.com/products/ni/5786">NI</a></li>
+        
+          <li><a href="http://www.theverge.com/products/afterglow-gaming-headset/5770">Afterglow Gaming Headset</a></li>
+        
+          <li><a href="http://www.theverge.com/products/a50/5743">A50</a></li>
+        
+          <li><a href="http://www.theverge.com/products/pulse-wireless-stereo-headset-elite-edition/5710">Pulse Wireless Stereo Headset Elite Edition</a></li>
+        
+          <li><a href="http://www.theverge.com/products/fidelio-m1/5705">Fidelio M1</a></li>
+        
+          <li><a href="http://www.theverge.com/products/radio-silenz/5679">Radio Silenz</a></li>
+        
+          <li><a href="http://www.theverge.com/products/ear-force-xp400/5671">Ear Force XP400</a></li>
+        
+      </ul>
+      <a href='http://www.theverge.com/products/categories/headphones-headsets/24' class='see-all'>See All</a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="56">
+      <h4>Recent Speakers / Docks</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/products/fidelio-aw3000/5709">Fidelio AW3000</a></li>
+        
+          <li><a href="http://www.theverge.com/products/fidelio-aw5000/5708">Fidelio AW5000</a></li>
+        
+          <li><a href="http://www.theverge.com/products/fidelio-aw9000/5707">Fidelio AW9000</a></li>
+        
+          <li><a href="http://www.theverge.com/products/fidelio-primo-ds9100w/5706">Fidelio Primo DS9100W</a></li>
+        
+          <li><a href="http://www.theverge.com/products/sub/5676">Sub</a></li>
+        
+          <li><a href="http://www.theverge.com/products/aris-wireless-speaker-system-for-windows/5628">ARIS Wireless Speaker System for Windows</a></li>
+        
+          <li><a href="http://www.theverge.com/products/beoplay-a3/5584">Beoplay A3</a></li>
+        
+          <li><a href="http://www.theverge.com/products/ibase-dock-station/5580">iBase Dock Station</a></li>
+        
+          <li><a href="http://www.theverge.com/products/big-jambox/5572">Big Jambox</a></li>
+        
+          <li><a href="http://www.theverge.com/products/idm5/5566">iDM5</a></li>
+        
+      </ul>
+      <a href='http://www.theverge.com/products/categories/speakers-docks/56' class='see-all'>See All</a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="7">
+      <h4>Recent PMPs</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/products/clie-peg-t675c/5617">Clie PEG-T675C</a></li>
+        
+          <li><a href="http://www.theverge.com/products/galaxy-player-70-plus/5302">Galaxy Player 70 Plus</a></li>
+        
+          <li><a href="http://www.theverge.com/products/galaxy-player-4-2/5262">Galaxy Player 4.2</a></li>
+        
+          <li><a href="http://www.theverge.com/products/nomad-jukebox/5100">Nomad Jukebox</a></li>
+        
+          <li><a href="http://www.theverge.com/products/walkman-b170-series/5013">Walkman B170 series</a></li>
+        
+          <li><a href="http://www.theverge.com/products/z2-plenue/5011">Z2 Plenue</a></li>
+        
+          <li><a href="http://www.theverge.com/products/smart-goggles/4841">Smart Goggles</a></li>
+        
+          <li><a href="http://www.theverge.com/products/inpulse-smartwatch/4344">inPulse Smartwatch</a></li>
+        
+          <li><a href="http://www.theverge.com/products/iaudio-10/3712">iAudio 10</a></li>
+        
+          <li><a href="http://www.theverge.com/products/galaxy-player-5/3687">Galaxy Player 5</a></li>
+        
+      </ul>
+      <a href='http://www.theverge.com/products/categories/pmps/7' class='see-all'>See All</a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="50">
+      <h4>Recent Displays</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/products/tb750-24-inch/5812">TB750 (24-inch)</a></li>
+        
+          <li><a href="http://www.theverge.com/products/sb750-24-inch/5810">SB750 (24-inch)</a></li>
+        
+          <li><a href="http://www.theverge.com/products/lt2323z/5609">LT2323z</a></li>
+        
+          <li><a href="http://www.theverge.com/products/vx2460h-led/5578">VX2460H-LED</a></li>
+        
+          <li><a href="http://www.theverge.com/products/b243pwl/5577">B243PWL</a></li>
+        
+          <li><a href="http://www.theverge.com/products/e2450swd/5545">e2450Swd</a></li>
+        
+          <li><a href="http://www.theverge.com/products/e2250swdn/5543">e2250Swdn</a></li>
+        
+          <li><a href="http://www.theverge.com/products/on-lap-1302/5392">On-Lap 1302</a></li>
+        
+          <li><a href="http://www.theverge.com/products/s230hl-abii/5376">S230HL Abii</a></li>
+        
+          <li><a href="http://www.theverge.com/products/s230hl-abd/5375">S230HL Abd</a></li>
+        
+      </ul>
+      <a href='http://www.theverge.com/products/categories/displays/50' class='see-all'>See All</a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="61">
+      <h4>Recent Storage</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/products/2big-nas/5661">2big NAS</a></li>
+        
+          <li><a href="http://www.theverge.com/products/esata-hub-thunderbolt/5481">eSATA Hub Thunderbolt</a></li>
+        
+          <li><a href="http://www.theverge.com/products/pogoplug-classic/5453">Pogoplug Classic</a></li>
+        
+          <li><a href="http://www.theverge.com/products/pogoplug-series-4/5452">Pogoplug Series 4</a></li>
+        
+          <li><a href="http://www.theverge.com/products/pogoplug-mobile/5451">Pogoplug Mobile</a></li>
+        
+          <li><a href="http://www.theverge.com/products/my-book-thunderbolt-duo/5385">My Book Thunderbolt Duo</a></li>
+        
+          <li><a href="http://www.theverge.com/products/rugged-portable-thunderbolt/4993">Rugged Portable Thunderbolt</a></li>
+        
+          <li><a href="http://www.theverge.com/products/lightfoot-thunderbolt/4962">Lightfoot Thunderbolt </a></li>
+        
+          <li><a href="http://www.theverge.com/products/g-raid-thunderbolt/4835">G-Raid (Thunderbolt)</a></li>
+        
+          <li><a href="http://www.theverge.com/products/thunderbolt-ssd/4789">Thunderbolt SSD</a></li>
+        
+      </ul>
+      <a href='http://www.theverge.com/products/categories/storage/61' class='see-all'>See All</a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="63">
+      <h4>Recent Modems</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/products/sch-lc11/5669">SCH-LC11</a></li>
+        
+          <li><a href="http://www.theverge.com/products/jetpack-4g-lte-mifi-4620l/5553">Jetpack 4G LTE MiFi 4620L</a></li>
+        
+      </ul>
+      <a href='http://www.theverge.com/products/categories/modems/63' class='see-all'>See All</a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="58">
+      <h4>Recent Input Devices</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/products/g600-mmo-gaming-mouse/5791">G600 MMO Gaming Mouse</a></li>
+        
+          <li><a href="http://www.theverge.com/products/kone-xtd/5767">Kone XTD</a></li>
+        
+          <li><a href="http://www.theverge.com/products/lua/5766">Lua</a></li>
+        
+          <li><a href="http://www.theverge.com/products/wireless-solar-keyboard-k760-for-mac/5695">Wireless Solar Keyboard K760 for Mac</a></li>
+        
+          <li><a href="http://www.theverge.com/products/sphere-glow/5682">Sphere Glow</a></li>
+        
+          <li><a href="http://www.theverge.com/products/pogo-sketch-plus/5598">Pogo Sketch Plus</a></li>
+        
+          <li><a href="http://www.theverge.com/products/alupen-pro/5597">AluPen Pro</a></li>
+        
+          <li><a href="http://www.theverge.com/products/model-s/5596">Model S</a></li>
+        
+          <li><a href="http://www.theverge.com/products/ipen/5595">iPen</a></li>
+        
+          <li><a href="http://www.theverge.com/products/architect-stylus/5594">Architect Stylus</a></li>
+        
+      </ul>
+      <a href='http://www.theverge.com/products/categories/input-devices/58' class='see-all'>See All</a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="27">
+      <h4>Recent Misc.</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/products/ds1/5721">DS1</a></li>
+        
+          <li><a href="http://www.theverge.com/products/g-shock-gb-6900/5675">G-Shock GB-6900</a></li>
+        
+          <li><a href="http://www.theverge.com/products/swivl-it/5599">Swivl-it</a></li>
+        
+          <li><a href="http://www.theverge.com/products/aria/5551">Aria</a></li>
+        
+          <li><a href="http://www.theverge.com/products/smartwatch/5383">SmartWatch</a></li>
+        
+          <li><a href="http://www.theverge.com/products/pogo-desktop-dock/5238">Pogo Desktop Dock</a></li>
+        
+          <li><a href="http://www.theverge.com/products/nike-fuelband/5127">Nike+ FuelBand</a></li>
+        
+          <li><a href="http://www.theverge.com/products/gus-ii/4909">GUS II</a></li>
+        
+          <li><a href="http://www.theverge.com/products/juc600/4902">JUC600</a></li>
+        
+          <li><a href="http://www.theverge.com/products/powertrekk/4886">Powertrekk</a></li>
+        
+      </ul>
+      <a href='http://www.theverge.com/products/categories/misc/27' class='see-all'>See All</a>
+    </div>
+  
+</div>
+
+      </li>
+      <li id="nav-reviews" class="nav-tab has-dropdown clearfix">
+        <h2><a href="http://www.theverge.com/reviews">Reviews</a></h2>
+        <div class="dropdown clearfix" data-nav-dropdown="">
+  <ul class="primary">
+    
+      
+      <li data-flip="3"><a href="/reviews/categories/cellphones/3">Cellphones</a></li>
+    
+      
+      <li data-flip="8"><a href="/reviews/categories/tablets/8">Tablets</a></li>
+    
+      
+      <li data-flip="6"><a href="/reviews/categories/laptops/6">Laptops</a></li>
+    
+      
+      <li data-flip="1"><a href="/reviews/categories/all-in-ones/1">All-in-ones</a></li>
+    
+      
+      <li data-flip="4"><a href="/reviews/categories/desktops/4">Desktops</a></li>
+    
+      
+      <li data-flip="2"><a href="/reviews/categories/cameras/2">Cameras</a></li>
+    
+      
+      <li data-flip="5"><a href="/reviews/categories/e-readers/5">E-readers</a></li>
+    
+      
+      <li data-flip="12"><a href="/reviews/categories/gaming/12">Gaming</a></li>
+    
+      
+      
+      <li data-flip="17"><a href="/reviews/categories/home-theater/17">Home Theater</a></li>
+    
+      
+      <li data-flip="24"><a href="/reviews/categories/headphones-headsets/24">Headphones / Headsets</a></li>
+    
+      
+      <li data-flip="56"><a href="/reviews/categories/speakers-docks/56">Speakers / Docks</a></li>
+    
+      
+      <li data-flip="7"><a href="/reviews/categories/pmps/7">PMPs</a></li>
+    
+      
+      <li data-flip="50"><a href="/reviews/categories/displays/50">Displays</a></li>
+    
+      
+      <li data-flip="61"><a href="/reviews/categories/storage/61">Storage</a></li>
+    
+      
+      <li data-flip="63"><a href="/reviews/categories/modems/63">Modems</a></li>
+    
+      
+      <li data-flip="58"><a href="/reviews/categories/input-devices/58">Input Devices</a></li>
+    
+      
+      <li data-flip="27"><a href="/reviews/categories/misc/27">Misc.</a></li>
+    
+  </ul>
+  
+    
+    <div class="secondary" data-flip="3">
+      <h4>Recent Cellphone Reviews</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/2012/6/25/3113460/nokia-808-pureview-review">Nokia 808 PureView&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/6/24/3114091/sony-xperia-ion-review">Sony Xperia ion&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/5/25/3042640/samsung-galaxy-s-iii-review">Samsung Galaxy S III&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/6/19/3054644/lg-optimus-l7-review">LG Optimus L7&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/6/14/3078078/orange-san-diego-intel-medfield-review">Orange San Diego review: Intel comes to&nbsp;smartphones</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/6/12/3070614/huawei-ascend-p1-review">Huawei Ascend P1&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/6/6/3064317/asus-padfone-review">Asus PadFone&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/6/1/3055535/nokia-lumia-610-review">Nokia Lumia 610&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/5/23/3034255/sony-xperia-p-review">Sony Xperia P&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/5/18/3018125/lg-optimus-3d-max-review">LG Optimus 3D Max&nbsp;review</a></li>
+        
+      </ul>
+      <a href="/reviews/categories/cellphones/3" class="see-all">See All</a></a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="8">
+      <h4>Recent Tablet Reviews</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/2012/6/18/3094316/toshiba-tablet-reviews-2012-excite-13-10-7-inch">Toshiba Excite review: 13, 10, and 7.7-inch&nbsp;tablets</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/6/6/3064317/asus-padfone-review">Asus PadFone&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/5/25/3041280/asus-transformer-pad-review">Asus Transformer Pad (TF300T)&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/5/13/3016957/samsung-galaxy-tab-2-10-1-review">Samsung Galaxy Tab 2 10.1&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/5/11/3005665/acer-iconia-tab-a510-review">Acer Iconia Tab A510&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/3/22/2892430/samsung-galaxy-tab-7-7-for-verizon-review">Samsung Galaxy Tab 7.7 for Verizon&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/3/19/2876447/toshiba-excite-10-le-review">Toshiba Excite 10 LE&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/3/14/2870533/ipad-review">iPad review&nbsp;(2012)</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/3/6/2847197/sony-tablet-p-review">Sony Tablet P&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/2/23/2819610/blackberry-playbook-2-0-review">BlackBerry PlayBook 2.0&nbsp;review</a></li>
+        
+      </ul>
+      <a href="/reviews/categories/tablets/8" class="see-all">See All</a></a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="6">
+      <h4>Recent Laptop Reviews</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/2012/6/22/3109804/alienware-m17x-r4-review">Alienware M17x R4&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/6/22/3108823/lenovo-ideapad-y480-review">Lenovo IdeaPad Y480&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/6/13/3082649/macbook-pro-review-retina-display-15-inch">MacBook Pro with Retina display&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/6/1/3055686/lenovo-thinkpad-x230-review">Lenovo ThinkPad X230&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/5/29/3048298/chromebook-chromebox-chrome-os-review-2012"> New Samsung Chromebook & Chromebox review: Chrome OS grows&nbsp;up</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/3/29/2911827/samsung-series-9-review-15-inch-2012">Samsung Series 9 review (15-inch,&nbsp;2012)</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/3/21/2889405/acer-aspire-m3-ultrabook-review">Acer Aspire Timeline Ultra M3-581TG&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/3/14/2869658/hp-envy-14-spectre-review">HP Envy 14 Spectre&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/3/6/2848346/dell-xps-13-review">Dell XPS 13&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/3/2/2821566/razer-blade-review">Razer Blade&nbsp;review</a></li>
+        
+      </ul>
+      <a href="/reviews/categories/laptops/6" class="see-all">See All</a></a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="1">
+      <h4>Recent All-in-one Reviews</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/2011/11/11/2553266/samsung-series-7-all-in-one-review">Samsung Series 7 all-in-one&nbsp;review</a></li>
+        
+      </ul>
+      <a href="/reviews/categories/all-in-ones/1" class="see-all">See All</a></a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="4">
+      <h4>Recent Desktop Reviews</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/2012/5/29/3048298/chromebook-chromebox-chrome-os-review-2012"> New Samsung Chromebook & Chromebox review: Chrome OS grows&nbsp;up</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/2/3/2768359/alienware-x51-review">Alienware X51&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2011/11/11/2553266/samsung-series-7-all-in-one-review">Samsung Series 7 all-in-one&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2011/10/23/2508667/mac-mini-review-mid-2011">    Mac mini review (mid 2011)  </a></li>
+        
+          <li><a href="http://www.theverge.com/2011/10/23/2508758/apple-imac-review-mid-2011">Apple iMac review (mid&nbsp;2011)</a></li>
+        
+      </ul>
+      <a href="/reviews/categories/desktops/4" class="see-all">See All</a></a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="2">
+      <h4>Recent Camera Reviews</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/2012/6/8/3069074/sony-nex-f3-review">Sony NEX-F3&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/5/22/3032377/fujifilm-x-pro1-review">Fujifilm X-Pro1&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/5/1/2990243/olympus-om-d-e-m5-review">Olympus OM-D E-M5&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/4/13/2921671/sony-alpha-slt-a77-review">Sony Alpha SLT-A77&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/2/29/2821763/lytro-review">Lytro&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/2/14/2775567/canon-powershot-g1-x-review">Canon PowerShot G1 X&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/2/7/2775106/sony-nex-7-review">Sony NEX-7&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/1/30/2677544/dropcam-hd-review">Dropcam HD&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/1/9/2679919/sony-bloggie-live-review">Sony Bloggie Live&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2011/12/6/2597067/fujifilm-x10-review">Fujifilm X10&nbsp;review</a></li>
+        
+      </ul>
+      <a href="/reviews/categories/cameras/2" class="see-all">See All</a></a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="5">
+      <h4>Recent E-reader Reviews</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/2012/4/24/2969246/barnes-noble-nook-simple-touch-with-glowlight-review">Barnes & Noble Nook Simple Touch with GlowLight&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2011/11/14/2559732/kindle-touch-review">Kindle Touch&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2011/11/11/2458956/kindle-2011-review">Kindle (2011)&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2011/10/24/2454686/iriver-story-hd-review">iriver Story HD&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2011/10/24/2460695/barnes-noble-nook-review-2011">Barnes & Noble Nook review&nbsp;(2011)</a></li>
+        
+      </ul>
+      <a href="/reviews/categories/e-readers/5" class="see-all">See All</a></a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="12">
+      <h4>Recent Gaming Reviews</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/2012/2/23/2814926/onlive-universal-wireless-controller-review">OnLive Universal Wireless Controller&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2011/12/21/2648497/sony-playstation-vita-japan-review">Sony PlayStation Vita&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/gaming/2011/12/14/2633074/nintendo-3ds-circle-pad-pro-review-japan">Nintendo 3DS Circle Pad Pro&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2011/10/23/2509289/hulu-plus-for-xbox-360-review">Hulu Plus for Xbox 360&nbsp;review</a></li>
+        
+      </ul>
+      <a href="/reviews/categories/gaming/12" class="see-all">See All</a></a>
+    </div>
+  
+    
+    
+    <div class="secondary" data-flip="17">
+      <h4>Recent Home Theater Reviews</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/2012/6/25/3115296/sony-nsz-gs7-with-google-tv-review">Sony NSZ-GS7 with Google TV&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/2/24/2819048/samsung-optical-smart-hub-review">Samsung Optical Smart Hub&nbsp;review</a></li>
+        
+      </ul>
+      <a href="/reviews/categories/home-theater/17" class="see-all">See All</a></a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="24">
+      <h4>Recent Headphones / Headset Reviews</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/2012/2/16/2784159/sync-by-50-wireless-headphones-review">Sync by 50 wireless headphones&nbsp;review</a></li>
+        
+      </ul>
+      <a href="/reviews/categories/headphones-headsets/24" class="see-all">See All</a></a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="56">
+      <h4>Recent Speakers / Dock Reviews</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/2012/5/9/3002183/airplay-speaker-review-iphone">The best iPhone speakers: reviewing AirPlay's greatest&nbsp;hits</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/5/1/2986217/Jawbone-big-jambox-speaker-review">Big Jambox&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/1/3/2676099/mini-boombox-review-logitech">Logitech Mini Boombox&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2011/10/15/2485362/jambox-liveaudio-update-is-like-moving-in-stereo">Jawbone Jambox with LiveAudio&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2011/10/12/2481479/sonos-play-3-review">Sonos Play:3&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2011/10/17/2495197/libratone-live-review">Libratone Live&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2011/10/17/2495252/libratone-lounge-review">Libratone Lounge&nbsp;review</a></li>
+        
+      </ul>
+      <a href="/reviews/categories/speakers-docks/56" class="see-all">See All</a></a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="7">
+      <h4>Recent PMP Reviews</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/2012/4/11/2941982/samsung-galaxy-player-3-6-review">Samsung Galaxy Player 3.6&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2011/11/21/2553335/samsung-galaxy-player-4-0-5-0-review">Samsung Galaxy Player 4.0 and Galaxy Player 5.0&nbsp;review</a></li>
+        
+      </ul>
+      <a href="/reviews/categories/pmps/7" class="see-all">See All</a></a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="50">
+      <h4>Recent Display Reviews</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/2011/11/13/2557228/playstation-3d-display-review">Sony PlayStation 3D Display review  </a></li>
+        
+      </ul>
+      <a href="/reviews/categories/displays/50" class="see-all">See All</a></a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="61">
+      <h4>Recent Storage Reviews</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/2012/4/5/2910802/pogoplug-series-4-review">Pogoplug Series 4&nbsp;review</a></li>
+        
+      </ul>
+      <a href="/reviews/categories/storage/61" class="see-all">See All</a></a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="63">
+      <h4>Recent Modem Reviews</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/2012/4/23/2968630/verizon-jetpack-4620l-mobile-hotspot-review">Verizon Jetpack 4620L mobile hotspot&nbsp;review</a></li>
+        
+      </ul>
+      <a href="/reviews/categories/modems/63" class="see-all">See All</a></a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="58">
+      <h4>Recent Input Device Reviews</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/2012/4/5/2926120/logitech-cube-mouse-review">Logitech Cube Mouse&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2011/11/28/2586419/wacom-inkling-review">Wacom Inkling&nbsp;review</a></li>
+        
+      </ul>
+      <a href="/reviews/categories/input-devices/58" class="see-all">See All</a></a>
+    </div>
+  
+    
+    <div class="secondary" data-flip="27">
+      <h4>Recent Misc. Reviews</h4>
+      <ul>
+        
+          <li><a href="http://www.theverge.com/2012/4/23/2966393/aria-scale-review-fitbit-wi-fi">Fitbit Aria Wi-Fi scale&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2012/3/8/2853088/nike-fuelband-review">Nike+ FuelBand&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2011/11/9/2546990/wimm-one-review">WIMM One&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2011/11/6/2541783/jawbone-up-review">Jawbone Up fitness band&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2011/10/11/2483968/fitbit-uitra-review">Fitbit Ultra&nbsp;review</a></li>
+        
+          <li><a href="http://www.theverge.com/2011/10/23/2493876/j5-create-wormhole-km-switch-review">j5 Create Wormhole KM Switch&nbsp;review</a></li>
+        
+      </ul>
+      <a href="/reviews/categories/misc/27" class="see-all">See All</a></a>
+    </div>
+  
+</div>
+
+      </li>
+      <li id="nav-features" class="nav-tab has-dropdown clearfix">
+        <h2><a href="http://www.theverge.com/features/">Features</a></h2>
+        <div class="dropdown clearfix single">
+  <ul class="primary">
+    
+      <li><a href="http://www.theverge.com/2012/6/26/2986317/google-project-glass-wearable-computers-disappoint-me">Project Glass and the epic history of wearable&nbsp;computers</a></li>
+    
+      <li><a href="http://www.theverge.com/2012/6/25/3094321/peter-vidani-interview-tumblr-5-minutes-on-the-verge">Tumblr lead designer Peter Vidani: 'Are we the things we&nbsp;share?'</a></li>
+    
+      <li><a href="http://www.theverge.com/2012/6/25/3110947/anthrocon-furry-furries-pittsburgh-wild-kingdom">When animals attract: Inside Anthrocon, the Furry&nbsp;utopia</a></li>
+    
+      <li><a href="http://www.theverge.com/2012/6/24/3110555/the-best-tech-writing-of-the-week-june-24th">The best tech writing of the week, June&nbsp;24th</a></li>
+    
+      <li><a href="http://www.theverge.com/2012/6/22/3109846/three-screens-and-a-cloud-windows-8-windows-phone-8-xbox">Three screens and a cloud: can Microsoft deliver with Windows 8, Windows Phone 8, and&nbsp;Xbox?</a></li>
+    
+      <li><a href="http://www.theverge.com/2012/6/21/3048763/best-smartphone-what-to-buy-us-carriers">The best smartphone: what to buy on every&nbsp;carrier</a></li>
+    
+      <li><a href="http://www.theverge.com/2012/6/21/3105314/windows-phone-8-directx-mobile-gaming">Microsoft's secret weapon in mobile gaming: DirectX on Windows Phone&nbsp;8</a></li>
+    
+      <li><a href="http://www.theverge.com/2012/6/20/3096667/windows-phone-8-screenshots-features-nfc-start-screen-dual-core">Windows Phone 8 in detail: new Start Screen, multi-core support, VoIP integration, and&nbsp;NFC</a></li>
+    
+      <li><a href="http://www.theverge.com/2012/6/20/3065882/reid-hoffman-linkedin-5-minutes-on-the-verge">Reid Hoffman: 'your car will have more lines of code in it than LinkedIn does&nbsp;today'</a></li>
+    
+      <li><a href="http://www.theverge.com/2012/6/19/3097726/surface-microsoft-next-chapter">With the Surface, Microsoft just started writing its next&nbsp;chapter</a></li>
+    
+  </ul>
+</div>
+
+      </li>
+      <li id="nav-hubs" class="nav-tab has-dropdown clearfix">
+        <h2>Hubs</h2>
+        <div class="dropdown clearfix single">
+  <ul class="primary">
+    
+      <li><a href="/android">Android</a></li>
+    
+      <li><a href="/apple">Apple</a></li>
+    
+      <li><a href="/apps">Apps & Software</a></li>
+    
+      <li><a href="/blackberry">BlackBerry</a></li>
+    
+      <li><a href="/ces">CES 2012</a></li>
+    
+      <li><a href="/culture">Culture</a></li>
+    
+      <li><a href="/e3">E3 2012</a></li>
+    
+      <li><a href="/">Front Page</a></li>
+    
+      <li><a href="/gaming">Gaming</a></li>
+    
+      <li><a href="/hd">HD & Home</a></li>
+    
+      <li><a href="/microsoft">Microsoft</a></li>
+    
+      <li><a href="/mobile">Mobile</a></li>
+    
+      <li><a href="/mwc">MWC 2012</a></li>
+    
+      <li><a href="/photography">Photography & Video</a></li>
+    
+      <li><a href="/policy">Policy & Law</a></li>
+    
+      <li><a href="/web">Web & Social</a></li>
+    
+  </ul>
+</div>
+
+      </li>
+      <li id="nav-show" class="nav-tab has-dropdown clearfix">
+        <h2><a href="http://www.theverge.com/on-the-verge">Show</a></h2>
+          
+    <div class="dropdown clearfix single" id='show-dropdown'>
+  <img alt="On-the-verge-dropdown" src="http://cdn2.sbnation.com/images/verge/on-the-verge-dropdown.ve17d9fd.jpg" />
+  
+    <a href='http://www.theverge.com/2012/6/25/3114567/on-the-verge-007-levar-burton-alexis-ohanian-tim-wu'>
+      <h2>Episode 007</h2>
+      <span>with LeVar Burton, Alexis Ohanian, & Tim Wu</span>
+    </a>
+  
+    <a href='http://www.theverge.com/2012/5/21/3033638/on-the-verge-006-damon-lindelof-masi-oka-marco-arment '>
+      <h2>Episode 006</h2>
+      <span>with Damon Lindelof, Masi Oka, & Marco Arment</span>
+    </a>
+  
+    <a href='http://www.theverge.com/2012/4/30/2987892/on-the-verge-episode-005-tony-fadell-and-chris-grant'>
+      <h2>Episode 005</h2>
+      <span>with Tony Fadell & Chris Grant</span>
+    </a>
+  
+    <a href='http://www.theverge.com/2012/3/28/2909148/on-the-verge-episode-004-dr-neil-degrasse-tyson'>
+      <h2>Episode 004</h2>
+      <span>with Dr. Neil deGrasse Tyson</span>
+    </a>
+  
+    <a href='http://www.theverge.com/2012/2/13/2795602/on-the-verge-episode-003-jimmy-fallon'>
+      <h2>Episode 003</h2>
+      <span>with Jimmy Fallon</span>
+    </a>
+  
+    <a href='http://www.theverge.com/2011/12/12/2630911/on-the-verge-episode-002-john-gruber'>
+      <h2>Episode 002</h2>
+      <span>with John Gruber</span>
+    </a>
+  
+</div>
+
+
+
+
+      </li>
+      <li id="nav-podcast" class="nav-tab has-dropdown clearfix">
+        <h2><a href="http://www.theverge.com/podcast">Podcast</a></h2>
+        <div class="dropdown clearfix single" id="show-dropdown">
+  
+  <a href="http://www.theverge.com/the-vergecast">
+    <h2>The Vergecast</h2>
+    <span>with Joshua Topolsky, Nilay Patel, and Paul Miller</span>
+  </a>
+
+  <a href="http://www.theverge.com/the-verge-mobile-show">
+    <h2>The Verge Mobile Show</h2>
+    <span>with Chris Ziegler, Dieter Bohn, and Vlad Savov</span>
+  </a>
+
+  <a href="http://www.theverge.com/90-seconds-on-the-verge">
+    <h2>90 Seconds On The Verge</h2>
+  </a>
+  
+</div>
+      </li>
+      <li id="nav-about" class="nav-tab">
+        <h2><a href="http://www.theverge.com/about-the-verge">About</a></h2>
+      </li>
+      <li id="nav-tip-us" class="nav-tab">
+        <h2><a href="http://www.theverge.com/tip-us">Tip Us</a></h2>
+      </li>
+      <li id="nav-join-crew" class="nav-tab has-dropdown clearfix">
+        <h2><a href="http://www.theverge.com/forums">Forums</a></h2>
+        <div class="dropdown clearfix">
+  <h4>Most Popular</h4>
+
+  
+
+    <div class="forum clearfix">
+      
+        <a href="http://www.theverge.com/forums/apple-core"><img alt="Apple" src="http://cdn0.sbnation.com/uploads/forum/logo/1/apple.png" style="width: 85px" /></a>
+      
+      <div class="text">
+        <h3><a href="http://www.theverge.com/forums/apple-core">Apple Core</a></h3>
+        2190 posts (8 new)
+      </div>
+    </div>
+
+  
+
+    <div class="forum clearfix">
+      
+        <a href="http://www.theverge.com/forums/microsoft-tribe"><img alt="Microsoft" src="http://cdn0.sbnation.com/uploads/forum/logo/4/microsoft.png" style="width: 85px" /></a>
+      
+      <div class="text">
+        <h3><a href="http://www.theverge.com/forums/microsoft-tribe">Microsoft Tribe</a></h3>
+        2118 posts (5 new)
+      </div>
+    </div>
+
+  
+
+    <div class="forum clearfix">
+      
+        <a href="http://www.theverge.com/forums/android-army"><img alt="Android" src="http://cdn0.sbnation.com/uploads/forum/logo/6/android.png" style="width: 85px" /></a>
+      
+      <div class="text">
+        <h3><a href="http://www.theverge.com/forums/android-army">Android Army</a></h3>
+        1817 posts (8 new)
+      </div>
+    </div>
+
+  
+
+    <div class="forum clearfix">
+      
+        <a href="http://www.theverge.com/forums/meta"><img alt="Meta" src="http://cdn0.sbnation.com/uploads/forum/logo/11/meta.png" style="width: 85px" /></a>
+      
+      <div class="text">
+        <h3><a href="http://www.theverge.com/forums/meta">Meta</a></h3>
+        1379 posts (2 new)
+      </div>
+    </div>
+
+  
+
+    <div class="forum clearfix">
+      
+        <a href="http://www.theverge.com/forums/gaming"><img alt="Gaming" src="http://cdn3.sbnation.com/uploads/forum/logo/10/gaming.png" style="width: 85px" /></a>
+      
+      <div class="text">
+        <h3><a href="http://www.theverge.com/forums/gaming">Gaming</a></h3>
+        741 posts (4 new)
+      </div>
+    </div>
+
+  
+
+    <div class="forum clearfix">
+      
+        <a href="http://www.theverge.com/forums/off-topic"><img alt="Offtopic" src="http://cdn0.sbnation.com/uploads/forum/logo/12/offtopic.png" style="width: 85px" /></a>
+      
+      <div class="text">
+        <h3><a href="http://www.theverge.com/forums/off-topic">Off-topic / chit-chat</a></h3>
+        558 posts (2 new)
+      </div>
+    </div>
+
+  
+
+  <a href="http://www.theverge.com/forums" class="see-all">See All Forums</a>
+
+</div>
+
+      </li>
+    </ul>
+  </nav>
+
+  <div class="search-box">
+    <form action="/search" method="get">
+  <input class="textfield search" id="basic_search_query" name="q" onblur="resetField(this,true)" onfocus="resetField(this)" type="text" value="Search articles &amp; products" /><button>Go</button>
+</form>
+
+  </div>
+
+</header>
+
+
+    
+
+    
+
+
+    <div id="container-content">
+      <nav class="story-navigation row clearfix">
+  <ul> 
+    <li class="column grid_6 previous">
+    
+      <a href="http://www.theverge.com/gaming/2012/6/26/3118981/the-ville-is-the-next-game-from-zynga">
+        <strong>Previous Story</strong>
+        <span>'The Ville' is the next 'Ville game from Zynga, hits Facebook tomorrow</span>
+      </a>
+    
+    </li>
+    <li href="#" class="column grid_6 next">
+    
+      <a href="http://www.theverge.com/gaming/2012/6/26/3118999/chefville-joins-zyngas-stable-of-ville-games">
+        <strong>Next Story</strong>
+        <span>'ChefVille' joins Zynga's stable of 'Ville' games</span>
+      </a>
+    
+    
+    </li>
+  </ul>
+</nav>
+
+
+<article class="permalink article-entry hentry">
+  <header><a class="entry-section-title" name="top"></a>
+  
+  <ul class="simplelist categories inline clearfix"> 
+    
+      
+    
+      <li><a href="http://www.theverge.com/label/hands--on">Hands-on</a></li>
+    
+      <li><a href="http://www.theverge.com/label/report">Report</a></li>
+    
+  </ul>
+
+  
+
+  
+  <h1 class="headline instapaper_title entry-title" id="stream_title" style="font-size: 40px; line-height: 1.24;">A look inside Leap Motion, the 3D gesture control that's like Kinect on&nbsp;steroids</h1>
+  
+    
+  
+  
+
+  
+
+  <script type="text/javascript">
+  Event.observe(window,'load',function(){    
+    if (SBN.Streams == undefined){
+      SBN.Streams = {};
+    }
+
+    
+  
+    SBN.Streams.inPlaceEditing = {
+      streamTitle: 'A look inside Leap Motion, the 3D gesture control that\'s like Kinect on steroids',
+      streamSummary: 'We got a chance to test out Leap Motion\'s amazing motion-control technology, which could be the future of how we interact with computers.'
+    };
+  
+    
+  });
+</script>
+
+  <p class="byline vcard">
+    
+      By <a href="http://www.theverge.com/users/piercedavid" class="author fn">David Pierce</a>
+    
+    <span class="publish-date">on <time class="updated" datetime="2012-06-26 19:02:04+0000" pubdate>June  26, 2012 03:02 pm</time></span>
+    
+      <span class="comment-count big"><span class="update-with-count">121</span><strong>Comments</strong></span>
+    
+  </p>
+
+  
+
+</header>
+
+
+  <div class="column grid_8 c-contain  border-r pad-bot0">
+    <div class="story-image shadowbox entry-content-asset">
+      <img alt="Leap Motion" height="360" src="http://cdn3.sbnation.com/entry_photo_images/4476160/Still_for_article-hero_large_verge_medium_landscape.jpg" width="640" />
+    </div>
+    <div class="social-col">
+      <div class="social-media-column clearfix instapaper_ignore entry-unrelated">
+  
+
+  <iframe class="facebook" src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.theverge.com%2F2012%2F6%2F26%2F3118592%2Fleap-motion-gesture-controls&amp;send=false&amp;layout=box_count&amp;width=55&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=90" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:55px; height:62px; margin-bottom:3px !important;" allowtransparency="true"></iframe>
+
+
+
+
+    
+  <a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="verge"></a>
+  <script type="text/javascript">
+//<![CDATA[
+SBN.loadScriptAsync('http://platform.twitter.com/widgets.js');
+//]]>
+</script>
+  
+
+
+
+  
+  <div class="g-plusone" id="googleplus" data-size="tall" data-href="http://www.theverge.com/2012/6/26/3118592/leap-motion-gesture-controls"></div>
+
+
+
+
+
+  
+  <script type="text/javascript">
+//<![CDATA[
+SBN.loadScriptAsync('http://platform.linkedin.com/in.js')
+//]]>
+</script>
+  <script type="IN/Share" data-counter="top" data-url="http://www.theverge.com/2012/6/26/3118592/leap-motion-gesture-controls"></script>
+
+
+
+
+</div>
+
+    </div>
+    <div class="article-body instapaper_body entry-content">
+      <p>Leap Motion's not the household name Kinect is, but it should be &mdash; the company's <a href="http://www.theverge.com/2012/5/21/3033634/leap-3d-motion-control-system-video">motion-tracking system</a> is more powerful, more accurate, smaller, cheaper, and just more impressive. Leap CTO David Holz came by the Verge's New York offices to give us a demo of the company's upcoming product (called The Leap), and suffice to say we're only begrudgingly returning to our mice and keyboards.</p>
+<p>
+</p>
+<div id="video-post-2882935-560x315"></div>
+<div id="video-post-2882935-560x315"></div>
+<div id="video-post-2882935-560x315"></div>
+<div id="video-post-2882935-560x315"></div>
+<script src="http://player.ooyala.com/player.js?targetReplaceId=video-post-2882935-560x315&width=560&height=315&embedCode=VkYW04NTod5cDwz247vs1gGVcq_jw0X4&thruParam_openx=%26c.domain%3Dtheverge.com%26c.label%3Dhands--on"></script><noscript><img src="/images/manage/video-placeholder.png" width="560" height="315" class="mceItemFlash" embed_src='<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="ooyalaPlayer_6596g_h3xayzsm" width="560" height="315" codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab"><param name="movie" value="http://player.ooyala.com/player.swf?embedCode=VkYW04NTod5cDwz247vs1gGVcq_jw0X4&version=2" /><param name="bgcolor" value="#000000" /><param name="allowScriptAccess" value="always" /><param name="allowFullScreen" value="true" /><param name="flashvars" value="embedType=noscriptObjectTag&embedCode=VkYW04NTod5cDwz247vs1gGVcq_jw0X4&videoPcode=ppbnY65tdYh_HxFfIkVstq2Iq_oQ" /><embed src="http://player.ooyala.com/player.swf?embedCode=VkYW04NTod5cDwz247vs1gGVcq_jw0X4&version=2" mce_src="http://player.ooyala.com/player.swf?embedCode=VkYW04NTod5cDwz247vs1gGVcq_jw0X4&version=2" bgcolor="#000000" width="560" height="315" name="ooyalaPlayer_6596g_h3xayzsm" align="middle" play="true" loop="false" allowscriptaccess="always" allowfullscreen="true" type="application/x-shockwave-flash" flashvars="&embedCode=VkYW04NTod5cDwz247vs1gGVcq_jw0X4&videoPcode=ppbnY65tdYh_HxFfIkVstq2Iq_oQ" pluginspage="http://www.adobe.com/go/getflashplayer"></embed></object> '></noscript>
+<br><p>The Leap uses a number of camera sensors to map out a workspace of sorts &mdash; it's a 3D space in which you operate as you normally would, with almost none of the Kinect's angle and distance restrictions. Currently the Leap uses VGA camera sensors, and the workspace is about three cubic feet; Holz told us that bigger, better sensors are the only thing required to make that number more like thirty feet, or three hundred. Leap's device tracks all movement inside its force field, and is remarkably accurate, down to 0.01mm. It tracks your fingers individually, and knows the difference between your fingers and the pencil you're holding between two of them. </p>
+<p><q class="left">Fine-tuned motion control can change medical technology, games, and everything in between</q></p>
+<p>Holz showed off a number of different use cases for Leap Motion's technology. The simplest thing it can do is simulate a touch screen, so you can interact with any display as if it were touch-enabled &mdash; we were slicing pineapples in <i>Fruit Ninja</i> in seconds, without a moment of extra development or additional software.</p>
+<p>Developers that do take advantage of the Leap's SDK will be able to do much more, however, and the possibilities appear to be limited only by your imagination. All kinds of different apps are being developed: some could improving remote surgery, others allow easier navigation through complex models and data, and others might put you square in the middle of a first-person shooter. It's like holding the Mario Kart steering wheel, but on a whole new level.</p>
+<p>Rather than mapping particular gestures (cross your arms to close the app, draw a circle to open a new window), Holz said developers are being encouraged to provide constant dynamic feedback. No one needed to be taught what pinch-to-zoom meant &mdash; it's the natural thing to try and do on a touchscreen, and as soon as you start pinching or spreading it becomes clear what happens. That's the paradigm for the Leap, Holz says: you should always be able to just do something, and the app or device should respond.</p>
+<p><q class="right">You can buy a Leap next year, but it might be inside your other devices too</q></p>
+<p>Leap Motion's plans are huge (Holz mentioned a few times wanting to totally upend traditional computing methods) but the company's playing its cards close. The Leap will cost $70 when it's released &mdash; sometime between December and February &mdash; and Leap Motion is also working with OEMs to embed its technology into devices. The Leap is about the size of a USB drive, but Holz says it could easily be no larger than a dime, so adding it to a laptop or tablet shouldn't be difficult.</p>
+<p>Developers are apparently beating down the company's doors for access to the technology &mdash; Holz said thousands of Leaps will be given away in the next few months, before it's released to the public. That's no surprise: after only a few minutes of cutting fruit, scrolling around maps and webpages, and navigating through huge 3D spaces, all without ever touching a thing, we're pretty sure we've seen the next big thing in computing. </p>
+<p>The natural comparison to any motion control is <i>Minority Report</i>, an imagined future everyone seems to desperately want to come true. We asked Holz about the comparison, and if Leap Motion's technology meant we'd all have Tom Cruise's awesome PreCrime dashboard in the future.</p>
+<p>"No," he told us. "It'll be even better."</p>
+      <div class="article-meta clearfix">
+  <ul class="simplelist sourcelist clearfix">
+
+    
+
+    
+    
+    
+    
+    
+    
+      <li class="tags clearfix">
+        <strong>Related Items</strong> 
+        <span><a href="http://www.theverge.com/tag/motion">motion</a> <a href="http://www.theverge.com/tag/motion-control">motion control</a> <a href="http://www.theverge.com/tag/kinect">kinect</a> <a href="http://www.theverge.com/tag/gestures">gestures</a> <a href="http://www.theverge.com/tag/leap">leap</a> <a href="http://www.theverge.com/tag/hands--free">hands-free</a> <a href="http://www.theverge.com/tag/leap-motion">leap motion</a></span>
+      </li>
+    
+
+  </ul>
+</div>
+
+    </div>
+
+    
+    
+    
+
+  <div id="autoupdate_info" style="display:none">
+  <div id="autoupdate_info_list" class="clearfix"></div>
+</div>
+
+
+
+<div class="comments ">
+  
+    
+    
+
+  
+  <script type="text/javascript">
+  SBN.Comments.entry_id = 2882633;
+  SBN.Comments.entry_version = 186;
+  SBN.Comments.nodeId = 'node_2882633';
+  SBN.Comments.closed = false;
+</script>
+
+
+
+<style type="text/css">
+  
+  
+    .pic {
+      display:none;
+    }
+  
+  
+    .sig {
+      display:none;
+    }
+  
+  
+    .tools {
+      display:none;
+    }
+  
+
+  
+    #main-reply-section { display:none }
+  
+</style>
+
+
+
+<script type="text/javascript">
+  FastInit.addOnLoad(function(){
+    SBN.Comments.user_tz = ['EDT','-4'];    
+    SBN.Comments.pageLoaded = true;
+    
+  });
+  SBN.Comments.reply = function(commentable_id, comment_id) {
+    if (SBN.Comments.pageLoaded) {
+      
+        SBN.openModal('/communities/tease?commenting=true&amp;entry_id=2882633&amp;modal=true&amp;return_to=http%3A%2F%2Fwww.theverge.com%2F2012%2F6%2F26%2F3118592%2Fleap-motion-gesture-controls');
+      
+    }
+  }
+</script>
+
+
+  
+  
+
+  <style type="text/css">
+  .reply_link {
+    display:inline;
+  }
+</style>
+
+<a id="node_2882633_comment_anchor" name="comments"></a>
+
+
+
+  <script type="text/javascript">
+  $j(function(){
+     if(vCookie.read.value('prefs','Hide New Comment Indicator')) {
+       $j('#autoupdate_info').attr('id','autoupdate_info_dead');
+       $j('#comment-indicator-toggle').text('Show it!');
+     }
+     $j('#comment-indicator-toggle').live('click',function(){
+       var cookieValue = vCookie.read.value('prefs','Hide New Comment Indicator') ? false : true ;
+       var newId = vCookie.read.value('prefs','Hide New Comment Indicator') ? 'autoupdate_info' : 'autoupdate_info_dead' ;
+       var linkText = vCookie.read.value('prefs','Hide New Comment Indicator') ? 'Hide it!' : 'Show it!' ;
+       vCookie.write.value('prefs','Hide New Comment Indicator',cookieValue,{expires:365});
+       $j('#autoupdate_info, #autoupdate_info_dead').attr('id',newId);
+       $j(this).text(linkText);
+       return false;
+     });
+  });
+  </script>
+
+  <div class="comments-header">
+  
+    
+  
+  
+  <h2>There are <em class="update-with-count">121</em> Comments. <a id='comment-call-to-action' href='#' onclick='SBN.Comments.load_comments(); return false'>Load Em Up!</a> <img alt="Spinner" id="comments-loader" src="http://cdn0.sbnation.com/images/spinner.vc3fbde4.gif" style="display:none" />
+    
+  </h2>
+  
+    
+  </div>
+  
+
+
+
+<div class="comment-display">
+  
+</div>
+
+<div class="comment_master_list" id="node_2882633_comments_list"><!-- open master comment list ul -->
+  
+  
+</div>
+
+<a name="add-comment"></a>
+<div id='main-reply-section'>
+
+  
+    <div class="tease">
+
+
+<div class="sign_up">
+  <h2>Something to say? Choose one of these options to log in.</h2>
+  <ul>
+  
+  <li><a href="http://www.theverge.com/account/facebook_oauth_initiate?commenting=true&amp;community_id=372&amp;from_network_bar=true" id="login-facebook"><img alt="Connect_with_facebook" src="http://cdn0.sbnation.com/images/icons/service/connect_with_facebook.v7d24e9d.gif" /></a></li>    
+    
+  <li id="yahoo_signin_tease" style="display:none"><a href="http://www.theverge.com/login?community_id=372&amp;from_network_bar=true&amp;openid_url=http%3A%2F%2Fme.yahoo.com&amp;remember_me_openid=1&amp;return_to=http%3A%2F%2Fwww.theverge.com%2F2012%2F6%2F26%2F3118592%2Fleap-motion-gesture-controls" onclick="var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;f.submit();return false;">&raquo; Sign in with your Yahoo! ID</a></li>
+    
+  <li><a href="http://www.theverge.com/account/setup?community_id=372">&raquo; Create a new Verge account</a></li>
+  
+  <li><a href="http://www.theverge.com/login">&raquo; Already registered with The Verge? Log in!</a></li>
+  </ul>
+</div>  
+
+<script type="text/javascript">
+  if (SBN.Yahoo.isYahooReferral(/\.yahoo\.com/)) {
+    $('yahoo_signin_tease').style.display='block';
+  }
+</script>
+  
+
+</div>
+
+  
+
+</div>
+
+
+
+  
+    <ul class="entry-footnav">
+      <li><a href="#comments">&uarr; Top of comments</a></li>
+      <li><a href="#top">&uarr; Top of page</a></li>
+      
+      <li><a href="http://www.theverge.com/">&uarr; The Verge</a></li>
+    <ul>
+  
+
+
+
+  
+</div>
+
+  </div>
+
+
+  <aside class="column grid_4 c-contain border-l2 rightcol">
+    
+
+
+    <div class="vert vert300 hashable">
+  <div class="liner">
+  
+            
+            <div id="open_x_ad_unit_1802">
+              <script type="text/javascript">
+              SBN.OpenX.showAd(96674);
+              </script>
+            </div>
+          
+  </div>
+</div>
+    
+
+
+    <section class="widget-itemlist widget-related widget-latest-headlines">
+  <div class="widget-head clearfix">
+    <h2 class="title1 badged">Headlines</h1>
+  </div>
+  <ul>
+  
+    <li class="clearfix">
+      <a href="http://www.theverge.com/2012/6/27/3120302/bill-gates-tablets-education">
+      <div class='image-window shadowbox' style='height:55px; width:85px;'>
+  <img alt="bill gates" src="http://cdn1.sbnation.com/entry_photo_images/4482935/Screen_Shot_2012-06-27_at_6.07.49_PM_large_small.png" style="position: absolute; top: -0.833333333333332px; left: 0px;" width="85" />
+  
+</div>
+
+      <h3>Bill Gates: tablets in the classroom have a 'terrible track&nbsp;record'</h3>
+      </a>
+    </li>
+  
+    <li class="clearfix">
+      <a href="http://www.theverge.com/2012/6/27/3120125/apple-itunes-store-asia-hong-kong-singapore-taiwan">
+      <div class='image-window shadowbox' style='height:55px; width:85px;'>
+  <img alt="itunes" src="http://cdn2.sbnation.com/entry_photo_images/4482156/download_hero_large_small.jpeg" style="position: absolute; top: -0.833333333333332px; left: 0px;" width="85" />
+  
+</div>
+
+      <h3>Apple launches iTunes Store in 12 countries across&nbsp;Asia</h3>
+      </a>
+    </li>
+  
+    <li class="clearfix">
+      <a href="http://www.theverge.com/2012/6/27/3120301/european-union-microsoft-antitrust-appeal-fine">
+      <div class='image-window shadowbox' style='height:55px; width:85px;'>
+  <img alt="European Union flags" src="http://cdn1.sbnation.com/entry_photo_images/4482896/P016845000302_large_small.jpeg" style="position: absolute; top: -0.833333333333332px; left: 0px;" width="85" />
+  
+</div>
+
+      <h3>EU rejects Microsoft's appeal against billion-dollar antitrust fine, reduces it by $48&nbsp;million</h3>
+      </a>
+    </li>
+  
+    <li class="clearfix">
+      <a href="http://www.theverge.com/gaming/2012/6/27/3120285/mass-effect-3-extended-cut-includes-hidden-data-on-future-dlc-content">
+      <div class='image-window shadowbox' style='height:55px; width:85px;'>
+  <img alt="me3" src="http://cdn3.sbnation.com/entry_photo_images/4482849/Mass-Effect-3-reaper_large_small.jpg" style="position: absolute; top: -0.833333333333332px; left: 0px;" width="85" />
+  
+</div>
+
+      <h3>'Mass Effect 3' Extended Cut includes hidden data on future DLC </h3>
+      </a>
+    </li>
+  
+    <li class="clearfix">
+      <a href="http://www.theverge.com/2012/6/27/3120263/lenovo-thinkpad-tablet-android-4-us-update">
+      <div class='image-window shadowbox' style='height:55px; width:85px;'>
+  <img alt="ThinkPad Tablet-VERGE watermark" src="http://cdn1.sbnation.com/entry_photo_images/4482760/thinkpad-VERGE_large_small.jpg" style="position: absolute; top: -0.833333333333332px; left: 0px;" width="85" />
+  
+</div>
+
+      <h3>Lenovo releases Android 4.0 update for US ThinkPad&nbsp;Tablets</h3>
+      </a>
+    </li>
+  
+  </ul>
+</section>
+
+    <section class="widget-itemlist widget-related widget-related-media">
+  <h2 class="title1">Latest <em>Media</em></h2>
+  <ul>
+    
+    <li>
+      <a href="http://www.theverge.com/2012/6/26/3119967/90-seconds-on-the-verge-june-26-2012">
+        <div class="clearfix">
+          <div class="media-wrapper video">
+            <span>Video</span>
+            <div class='image-window shadowbox' style='height:55px; width:85px;'>
+  <img alt="90 Seconds - Ross 2" src="http://cdn3.sbnation.com/entry_photo_images/4481139/ross_2_large_small.png" style="position: absolute; top: -0.833333333333332px; left: 0px;" width="85" />
+  
+</div>
+
+          </div>
+          <div class="text">
+            <h3>90 Seconds on The Verge - June 26,&nbsp;2012</h3>
+            <p>
+              about 7 hours ago
+              
+                <span>2 comments</span>
+              
+            </p>
+          </div>
+        </div>
+      </a>
+    </li>
+    
+    <li>
+      <a href="http://www.theverge.com/2012/6/26/3119778/podcasts-for-ios-photos">
+        <div class="clearfix">
+          <div class="media-wrapper gallery">
+            <span>Gallery</span>
+            <div class='image-window shadowbox' style='height:55px; width:85px;'>
+  <img alt="Mza_9120902111516178477_small" src="http://cdn3.sbnation.com/entry_photo_images/4480266/mza_9120902111516178477_small.jpeg" style="position: absolute; top: -0.833333333333332px; left: 0px;" width="85" />
+  
+</div>
+
+          </div>
+          <div class="text">
+            <h3>Podcasts for iOS&nbsp;photos</h3>
+            <p>
+              about 9 hours ago
+              
+                <span>2 comments</span>
+              
+            </p>
+          </div>
+        </div>
+      </a>
+    </li>
+    
+    <li>
+      <a href="http://www.theverge.com/2012/6/26/3119504/monster-clarity-hd-micro-hands-on-photos">
+        <div class="clearfix">
+          <div class="media-wrapper gallery">
+            <span>Gallery</span>
+            <div class='image-window shadowbox' style='height:55px; width:85px;'>
+  <img alt="Theverge2_1020_small" src="http://cdn3.sbnation.com/entry_photo_images/4479313/theverge2_1020_small.jpg" style="position: absolute; top: -0.833333333333332px; left: 0px;" width="85" />
+  
+</div>
+
+          </div>
+          <div class="text">
+            <h3>Monster Clarity HD Micro hands-on&nbsp;photos</h3>
+            <p>
+              about 11 hours ago
+              
+            </p>
+          </div>
+        </div>
+      </a>
+    </li>
+    
+    <li>
+      <a href="http://www.theverge.com/2012/6/26/3119451/pioneer-wireless-speaker-htc-connect-airplay-hands-on-photos">
+        <div class="clearfix">
+          <div class="media-wrapper gallery">
+            <span>Gallery</span>
+            <div class='image-window shadowbox' style='height:55px; width:85px;'>
+  <img alt="Pioneer_speaker_1020_small" src="http://cdn3.sbnation.com/entry_photo_images/4479012/pioneer_speaker_1020_small.jpg" style="position: absolute; top: -0.833333333333332px; left: 0px;" width="85" />
+  
+</div>
+
+          </div>
+          <div class="text">
+            <h3>Pioneer wireless speaker with HTC Connect and AirPlay hands-on&nbsp;photos</h3>
+            <p>
+              about 12 hours ago
+              
+            </p>
+          </div>
+        </div>
+      </a>
+    </li>
+    
+    <li>
+      <a href="http://www.theverge.com/2012/6/26/3119433/polaroid-z2300-hands-on">
+        <div class="clearfix">
+          <div class="media-wrapper video">
+            <span>Video</span>
+            <div class='image-window shadowbox' style='height:55px; width:85px;'>
+  <img alt="Polaroid Z2300 hands-on" src="http://cdn1.sbnation.com/entry_photo_images/4478923/Polaroid_Z2300_still_for_thumbnail_large_small.png" style="position: absolute; top: -0.833333333333332px; left: 0px;" width="85" />
+  
+</div>
+
+          </div>
+          <div class="text">
+            <h3>Polaroid Z2300&nbsp;hands-on</h3>
+            <p>
+              about 12 hours ago
+              
+            </p>
+          </div>
+        </div>
+      </a>
+    </li>
+    
+  </ul>
+</section>
+
+    <section class="widget-itemlist widget-recent widget-recent-discussions forum-posts">
+  <div class="widget-head clearfix">
+    <h2 class="title1 badged">Discussions</h2>
+  </div>
+  <ul>
+    
+    <li>
+      <p class="categories"><a href="http://www.theverge.com/forums/gaming" class="gaming">Gaming</a></p>
+      <h3><a href="http://www.theverge.com/2012/6/27/3119737/how-do-you-tackle-teen-game-addiction">How do you tackle teen game&nbsp;addiction?</a></h3>
+      <p class="byline">
+        <strong>18 minutes ago</strong> by <a href="http://www.theverge.com/users/Hyunhu%20Jang">Hyunhu Jang</a>
+        
+      </p>
+    </li>
+    
+    <li>
+      <p class="categories"><a href="http://www.theverge.com/forums/android-army" class="android-army">Android Army</a></p>
+      <h3><a href="http://www.theverge.com/2012/6/27/3120313/play-store-expansion-for-their-nexus-tablet-today">Play store expansion for their Nexus tablet&nbsp;today?</a></h3>
+      <p class="byline">
+        <strong>20 minutes ago</strong> by <a href="http://www.theverge.com/users/thisismynextname">thisismynextname</a>
+        
+      </p>
+    </li>
+    
+    <li>
+      <p class="categories"><a href="http://www.theverge.com/forums/mobile" class="mobile">Mobile</a></p>
+      <h3><a href="http://www.theverge.com/2012/6/27/3120303/microsoft-and-apples-approach-to-naming-mobile-oses">Microsoft and Apple's Approach to naming Mobile&nbsp;OSes</a></h3>
+      <p class="byline">
+        <strong>about 1 hour ago</strong> by <a href="http://www.theverge.com/users/CYC10PZ">CYC10PZ</a>
+        
+      </p>
+    </li>
+    
+    <li>
+      <p class="categories"><a href="http://www.theverge.com/forums/apps-software" class="apps-software">Apps & Software</a></p>
+      <h3><a href="http://www.theverge.com/2012/6/27/3120280/what-to-do-when-gmail-is-down">What to do when GMail is&nbsp;down...</a></h3>
+      <p class="byline">
+        <strong>about 2 hours ago</strong> by <a href="http://www.theverge.com/users/g4n">g4n</a>
+        
+          <span>1 comment</span>
+        
+      </p>
+    </li>
+    
+    <li>
+      <p class="categories"><a href="http://www.theverge.com/forums/microsoft-tribe" class="microsoft-tribe">Microsoft Tribe</a></p>
+      <h3><a href="http://www.theverge.com/2012/6/27/3120246/microsoft-offices-fire-bombed-in-athens">Microsoft offices fire-bombed in Athens </a></h3>
+      <p class="byline">
+        <strong>about 3 hours ago</strong> by <a href="http://www.theverge.com/users/Firefly7475">Firefly7475</a>
+        
+          <span>9 comments</span>
+        
+      </p>
+    </li>
+    
+    <li>
+      <p class="categories"><a href="http://www.theverge.com/forums/pc" class="pc">PCs</a></p>
+      <h3><a href="http://www.theverge.com/2012/6/27/3120233/computer-desktop-thread">Computer desktop&nbsp;thread.</a></h3>
+      <p class="byline">
+        <strong>about 4 hours ago</strong> by <a href="http://www.theverge.com/users/JerryGPena">JerryGPena</a>
+        
+          <span>1 comment</span>
+        
+      </p>
+    </li>
+    
+    <li>
+      <p class="categories"><a href="http://www.theverge.com/forums/microsoft-tribe" class="microsoft-tribe">Microsoft Tribe</a></p>
+      <h3><a href="http://www.theverge.com/2012/6/27/3120213/why-i-hate-windows-8-so-far">Why i hate windows 8 so&nbsp;far..</a></h3>
+      <p class="byline">
+        <strong>about 4 hours ago</strong> by <a href="http://www.theverge.com/users/AwwwYeah">AwwwYeah</a>
+        
+          <span>20 comments</span>
+        
+      </p>
+    </li>
+    
+    <li>
+      <p class="categories"><a href="http://www.theverge.com/forums/microsoft-tribe" class="microsoft-tribe">Microsoft Tribe</a></p>
+      <h3><a href="http://www.theverge.com/2012/6/27/3120096/what-will-the-windows-ux-be-like-in-a-decade">What will the Windows UX be like in a decade&nbsp;?</a></h3>
+      <p class="byline">
+        <strong>about 4 hours ago</strong> by <a href="http://www.theverge.com/users/bio_shocker">bio_shocker</a>
+        
+          <span>2 comments</span>
+        
+      </p>
+    </li>
+    
+    <li>
+      <p class="categories"><a href="http://www.theverge.com/forums/microsoft-tribe" class="microsoft-tribe">Microsoft Tribe</a></p>
+      <h3><a href="http://www.theverge.com/2012/6/27/3120199/installing-windows-8-on-an-ultrabook">Installing Windows 8 on an&nbsp;Ultrabook</a></h3>
+      <p class="byline">
+        <strong>about 4 hours ago</strong> by <a href="http://www.theverge.com/users/GoblinFever">GoblinFever</a>
+        
+          <span>10 comments</span>
+        
+      </p>
+    </li>
+    
+    <li>
+      <p class="categories"><a href="http://www.theverge.com/forums/meta" class="meta">Meta</a></p>
+      <h3><a href="http://www.theverge.com/2012/6/27/3120197/how-do-you-know-if-someone-replied-to-your-comment">How do you know if someone replied to your comment? </a></h3>
+      <p class="byline">
+        <strong>about 4 hours ago</strong> by <a href="http://www.theverge.com/users/confundo">confundo</a>
+        
+          <span>1 comment</span>
+        
+      </p>
+    </li>
+    
+  </ul>
+
+  <p class="alignC"><a href="/forums/all" class="button">All</a></p>
+</section>
+
+  </aside>
+
+</article>
+
+    </div>
+
+    <footer class="row clearfix">
+  <div class="column grid_4">
+    <a href="/" class="sprite verge-footer-logo"></a>
+    <form action="/search" method="get">
+  <input class="textfield search" id="basic_search_query" name="q" onblur="resetField(this,true)" onfocus="resetField(this)" type="text" value="Search articles &amp; products" /><button>Go</button>
+</form>
+
+    <p class="copyright">
+      <a href="http://www.theverge.com/ethics-statement">Ethics Statement</a> -
+      <a href="http://www.theverge.com/community-guidelines">Community Guidelines</a><br />
+      <a href="http://www.theverge.com/terms-of-service">Terms of Use</a> -
+      <a href="http://www.theverge.com/privacy-policy">Privacy Policy</a><br/>
+      <span id="version-history"><a href="http://www.theverge.com/version-history">v1.1.7, March 26, 2012</a></span>
+    </p>
+  </div>
+  <div class="column grid_2">
+    <h3>The <em>Hubs</em></h3>
+    <ul class="basics simplelist">
+        <li><a href="/android">Android</a></li>
+        <li><a href="/apple">Apple</a></li>
+        <li><a href="/apps">Apps &amp; Software</a></li>
+        <li><a href="/blackberry">BlackBerry</a></li>
+        <li><a href="/ces">CES 2012</a></li>
+        <li><a href="/culture">Culture</a></li>
+        <li><a href="/gaming">Gaming</a></li>
+        <li><a href="/hd">HD &amp; Home</a></li>
+        <li><a href="/microsoft">Microsoft</a></li>
+        <li><a href="/mobile">Mobile</a></li>
+        <li><a href="/photography">Photo &amp; Video </a></li>
+        <li><a href="/policy">Policy &amp; Law</a></li>
+        <li><a href="/web">Web &amp; Social</a></li>
+      </ul>
+  </div>
+  <div class="column grid_2">
+    <h3>The <em>Basics</em></h3>
+    <ul class="basics simplelist">
+      <li><a href="http://www.theverge.com/products">Products</a></li>
+      <li><a href="http://www.theverge.com/reviews">Reviews</a></li>
+      <li><a href="http://www.theverge.com/features/">Features</a></li>
+      <li><a href="http://www.theverge.com/label/podcast">Podcast</a></li>
+      <li><a href="http://www.theverge.com/about-the-verge">About</a></li>
+      <li><a href="http://www.theverge.com/contact-the-verge">Contact</a></li>
+      <li><a href="http://www.theverge.com/tip-us">Tip Us</a></li>
+      <li><a href="http://www.theverge.com/forums">Forums</a></li>
+      <li><a href="http://www.theverge.com/jobs">Jobs</a></li>
+      <li><a href="http://mobile.theverge.com">Mobile Site</a></li>
+    </ul>
+  </div>
+  <div class="column grid_2">
+    <h3>The <em>Elsewhere</em></h3>
+    <ul class="elsewhere simplelist">
+      <li><a href="http://www.facebook.com/ThisIsTheVerge"  title="Like us on Facebook" class="facebook">Facebook</a></li>
+      <li><a href="http://twitter.com/#!/verge" title="Follow us on Twitter" class="twitter">Twitter</a></li>
+      <li><a href="https://plus.google.com/100601380617286837373/posts" title="Follow us on Google+" class="google">Google+</a></li>
+      <li><a href="http://thisistheverge.tumblr.com/" class="tumblr" title="Follow us on Tumblr">Tumblr</a></li>
+      <li><a href="http://youtube.com/theverge" class="youtube" title="Follow us on YouTube">YouTube</a></li>
+      <li><a href="/rss/index.xml" class="rss" title="Subscribe to The Verge via RSS">Subscribe</a></li>
+
+    </ul>
+    <div class="site-by">
+      <a href="http://www.voxmedia.com"><img alt="Vox Media Logo" src="http://cdn2.sbnation.com/images/globals/logos/vox-bug-150.vf12c0ba.png" style="width: 150px; margin-right:3px" title="voxmedia.com" /></a>
+      <p>&copy; 2012 <a href="http://www.voxmedia.com">Vox Media</a>, Inc. All rights reserved.<br />
+      Designed in collaboration with <a href="http://www.codeandtheory.com">Code and Theory</a>.</p>
+    </div>  
+  </div>
+
+</footer>
+
+    
+  </div>
+</div>
+
+
+  
+  <div id="community_analytics" class="analytics clearfix">
+  
+</div>
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript"
+src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">_qacct="p-d9vfr8QTWnv1E";quantserve();</script>
+<noscript>
+<a href="http://www.quantcast.com/p-d9vfr8QTWnv1E"
+target="_blank"><img
+src="http://pixel.quantserve.com/pixel/p-d9vfr8QTWnv1E.gif"
+style="display: none;" border="0" height="1" width="1"
+alt="Quantcast"/></a>
+</noscript>
+<!-- End Quantcast tag -->
+
+
+
+
+  <script type="text/javascript">
+  var _sf_async_config={uid:2724,domain:"theverge.com"};
+  (function(){
+    function loadChartbeat() {
+      window._sf_endpt=(new Date()).getTime();
+      var e = document.createElement('script');
+      e.setAttribute('language', 'javascript');
+      e.setAttribute('type', 'text/javascript');
+      e.setAttribute('src',
+         (("https:" == document.location.protocol) ? "https://a248.e.akamai.net/chartbeat.download.akamai.com/102508/" : "http://static.chartbeat.com/") +
+         "js/chartbeat.js");
+      document.body.appendChild(e);
+    }
+    var oldonload = window.onload;
+    window.onload = (typeof window.onload != 'function') ?
+       loadChartbeat : function() { oldonload(); loadChartbeat(); };
+  })();
+  </script>
+  
+  <img src="http://aperture.displaymarketplace.com/audmeasure.gif?liveconclientID=5497559777280&PageID=650423876&EventType=view" style="width:1px; height: 1px; visibility:hidden" /> 
+  
+
+
+
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+</body>
+</html>
