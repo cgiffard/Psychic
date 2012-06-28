@@ -14,7 +14,7 @@
     "index.js"
   ],
   "engines": {
-    "node": "~0.6.9"
+    "node": "~0.6.0"
   },
   "dependencies": {
     "castor": ">=0.0.1"
