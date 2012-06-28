@@ -17,7 +17,7 @@
     "node": "~0.6.0"
   },
   "dependencies": {
-    "castor": ">=0.0.1"
+    "castor": "~0.0.1"
   },
   "devDependencies": {},
   "optionalDependencies": {}
