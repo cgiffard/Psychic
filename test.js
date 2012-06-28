@@ -26,7 +26,7 @@ function logTree(tree,depth) {
 			console.log(indent + tree.textContent.replace(/\s+/ig," "));
 		}
 	} else if (tree.nodeType === 8) {
-		//console.log(indent + "<!-- " + tree.textContent.replace(/\s+/ig," ") + " -->");
+		console.log(indent + "<!-- " + tree.textContent.replace(/\s+/ig," ") + " -->");
 	} else if (tree.nodeType === 1) {
 		var nodeAttributes = printAttr(tree);
 		console.log(indent + "<" + tree.tagName + nodeAttributes + (tree.childNodes.length ? "" : "/") + ">");
@@ -72,10 +72,10 @@ fs.readdir("./test",function(err,dirContents) {
 			//var docHeading = psy.getDocumentHeading();
 			var content = psy.getContent();
 			//console.log(content);
-			[psy.getContent().shift()].forEach(function(region) {
-				console.log("REGION: " + region.node.tagName + " Score was ",region.score);
+			[psy.getContent().shift()].forEach(function(node) {
+				//console.log("REGION: " + region.node.tagName + " Score was ",region.score);
 				//console.log(region.node.getText().replace(/\n\s+/g,"\n\n").replace(/\t/g,"").replace(/\s\s+/g," "));
-				logTree(region.node);
+				logTree(node);
 				console.log("\n\n\n\n");
 			})
 		});

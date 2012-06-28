@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" class="section-user">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Opera Developer News - Introducing RoboHydra - Opera's open-source HTTP client test tool</title>
+<meta property="og:url" content="http://my.opera.com/ODIN/blog/2012/06/27/introducing-robohydra-operas-open-source-http-client-test-tool">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/ODIN/xml/rsd">
+<link rel="shortcut icon" href="http://static.myopera.com/favicon.ico" type="image/x-icon">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 Feed" href="/ODIN/xml/rss/blog/">
+<link rel="alternate" type="application/atom+xml" title="Atom 1.0 Feed" href="/ODIN/xml/atom/blog/">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 Feed for comments" href="/ODIN/xml/rss/comments/50250912">
+<link rel="alternate" type="application/atom+xml" title="Atom 1.0 Feed for comments" href="/ODIN/xml/atom/comments/50250912">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="http://static.myopera.com/community/css/users/101/main.css" type="text/css">
+<link rel="stylesheet" href="http://files.myopera.com/ODIN/usercss/main-1340719072.css" type="text/css" media="screen,projection,tv,print" charset="utf-8">
+<!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie.css" type="text/css">
+        <script src="http://static.myopera.com/community/js/browsers/ie-5581986f.js"></script>
+        <script defer src="http://static.myopera.com/community/js/browsers/ie-css3-610effed.js"></script>
+    <![endif]--><!--[if IE 6]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie6.css" type="text/css"><![endif]--><!--[if IE 7]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie7.css" type="text/css"><![endif]--><!--[if IE 8]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie8.css" type="text/css"><![endif]--><script>
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-4118503-7'],
+                  ['_setCustomVar', 1, 'Loggedin', 'Loggedout', 3]
+                  ['_setCustomVar', 2, 'Section', 'blog', 3],
+                  
+                  ['_trackPageview'],
+                  ['_trackPageLoadTime']); // MYO-664
+        (function() { var ga = document.createElement('script'); ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })();
+    </script><link rel="alternate" type="application/x-opera-widgets" href="http://widgets.opera.com/widgetize/Feed%20Reader/Advanced/?serve&amp;skin=skin101&amp;widgetname=Developer%20Relations%20team%20blog&amp;rel=myopera&amp;ref=ODIN">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Opera Developer News - Introducing RoboHydra - Opera's open-source HTTP client test tool">
+<meta property="og:image" content="https://static.myopera.com/upic/pool1/lV/hXp/9JkEt6b4blztDhhNQoEjS4/1743471_l.jpg">
+<meta property="og:description" content="We'd like you to meet RoboHydra - a web server designed to help you test any kind of HTTP-based client. RoboHydra is easy to configure to return the responses you want, mimicking any server behaviour needed to test your clients.
+Usecases include:
+
+Testing how the client behaves when it receives a certain combination of valid (but possibly uncommon or cumbersome to reproduce) data
+Being able to easily reproduce race conditions
+Checking how the client behaves when the server returns I ...">
+<meta property="og:site_name" content="My Opera">
+</head>
+<body id="myopera" class="loggedout">
+<!--[if IE 6]><div class="ie6"><![endif]--><!--[if IE 7]><div class="ie7"><![endif]--><!--[if IE 8]><div class="ie8"><![endif]--><!--[if IE 9]><div class="ie9"><![endif]--><div id="wrap0"><div id="wrap1"><div id="wrap2"><div id="wrap3">
+<div id="header">
+<a href="/community/" id="logo" tabindex="0"><img src="http://static.myopera.com/community/graphics/dexter/myo-icon.png" alt="" width="32" height="35"><b>My Opera</b></a><div id="nav" role="navigation"><ul role="menubar">
+<li role="menuitem" aria-haspopup="true" class="menu-community">
+<a href="/community/explore/" tabindex="0">Community</a><ul role="menu" id="menu-community">
+<li role="menuitem"><a href="/community/explore/" tabindex="0">News</a></li>
+<li role="menuitem"><a href="/community/blogs" tabindex="0">Blogs</a></li>
+<li role="menuitem"><a href="/community/photos" tabindex="0">Photos</a></li>
+<li role="menuitem"><a href="/community/members" tabindex="0">Members</a></li>
+<li role="menuitem"><a href="/community/groups/" tabindex="0">Groups</a></li>
+</ul>
+</li>
+<li role="menuitem" aria-haspopup="true" class="menu-opera">
+<a href="/chooseopera/" tabindex="0">Opera</a><ul role="menu" id="menu-opera">
+<li role="menuitem"><a href="/chooseopera/">Opera news</a></li>
+<li role="menuitem"><a href="/community/forums/">Forums</a></li>
+<li role="menuitem"><a href="https://my.opera.com/community/operalink/" tabindex="0">Opera Link</a></li>
+<li role="menuitem"><a href="/community/customize/skins/">Skins &amp; buttons</a></li>
+</ul>
+</li>
+</ul></div>
+<ul id="loginsignup">
+<li><a href="https://my.opera.com/community/signup">Sign up</a></li>
+<li><a href="https://my.opera.com/community/login/">Log in</a></li>
+</ul>
+</div>
+<div id="wrap4">
+<div id="top" class="top-blog">
+<div id="top2">
+<a href="http://my.opera.com/ODIN/blog/">
+<p>Developer Relations team blog</p>
+<h1>
+<span>Opera</span> Developer News</h1>
+</a>
+</div>
+<div id="menu"><ul>
+<li id="menu_blog"><a href="/ODIN/blog/" id="selected"><span>Blog</span></a></li>
+<li id="menu_archive"><a href="/ODIN/archive/"><span>Archive</span></a></li>
+<li id="menu_members"><a href="/ODIN/members/"><span>Members</span></a></li>
+</ul></div>
+</div>
+<div id="content" class="blogentry">
+<div id="mainwrap"><div id="main">
+
+
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+
+<div class="groupblog">
+<p class="buttons"></p>
+<div class="post" id="firstpost">
+<div class="avatar"><a href="/brucelawson/"><img src="/community/users/avatar.pl/1146592" alt=""></a></div>
+<h2 class="title">Introducing RoboHydra - Opera's open-source HTTP client test tool</h2>
+<p class="postdate"><span class="poster">
+                  By <a class="userlink" title="brucelawson" href="/brucelawson">Bruce Lawson<span>brucelawson</span></a>. </span>Wednesday, June 27, 2012 11:02:52 AM</p>
+<p class="tags"><a href="/ODIN/blog/index.dml/tag/open%20source" rel="tag">open source</a>, <a href="/ODIN/blog/index.dml/tag/server" rel="tag">server</a>, <a href="/ODIN/blog/index.dml/tag/Opera" rel="tag">Opera</a>, <a href="/ODIN/blog/index.dml/tag/testing" rel="tag">testing</a>, <a href="/ODIN/blog/index.dml/tag/robohydra" rel="tag">robohydra</a> </p>
+<div class="content">
+<p>We'd like you to meet <a href="http://robohydra.org/" rel="nofollow" target="_blank">RoboHydra</a> - a web server designed to help you test any kind of HTTP-based client. RoboHydra is easy to configure to return the responses you want, mimicking any server behaviour needed to test your clients.</p>
+<p><a href="http://robohydra.org/usecases/" rel="nofollow" target="_blank">Usecases</a> include:</p>
+<ul>
+<li>Testing how the client behaves when it receives a certain combination of valid (but possibly uncommon or cumbersome to reproduce) data</li>
+<li>Being able to easily reproduce race conditions</li>
+<li>Checking how the client behaves when the server returns Internal Server Error or invalid data</li>
+<li>Simulating server connection latency when connecting to a real server</li>
+</ul>
+<p>Take a look at the <a href="http://robohydra.org/" rel="nofollow" target="_blank">screencasts</a> for more information on how to use RoboHydra while we're preparing some tutorial articles.</p>
+<p>The code is Copyright 2012 Esteban Manchado Velázquez, and is released on <a href="https://github.com/operasoftware/robohydra" rel="nofollow" target="_blank">Github</a> under the <a href="http://www.apache.org/licenses/LICENSE-2.0.txt" rel="nofollow">Apache 2.0 license</a>. Jacob Rask did all the CSS for the admin interface.</p> 
+<p>The project started at Opera as an internal tool to test some of our projects. Large parts of this code were (and still are) developed there, but as it’s pretty generic we decided to open source it. See Opera’s GitHub account for <a href="https://github.com/operasoftware" rel="nofollow">more open source goodies</a>.</p>
+
+
+</div>
+</div>
+<ul id="share">
+<li><a href="http://www.stumbleupon.com/submit?url=http%3A%2F%2Fmy.opera.com%2FODIN%2Fblog%2F2012%2F06%2F27%2Fintroducing-robohydra-operas-open-source-http-client-test-tool&amp;title=Introducing%20RoboHydra%20-%20Opera's%20open-source%20HTTP%20client%20test%20tool" onclick="window.open('http://www.stumbleupon.com/submit?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent('Introducing RoboHydra - Opera's open-source HTTP client test tool'),'stumbleupon','location=0,menubar=0,scrollbars=1,status=0,titlebar=0,toolbar=0,width=800,height=600'); return false;" title="Share on StumbleUpon" class="share-stumbleupon">StumbleUpon</a></li>
+<li><a href="http://reddit.com/submit?url=http%3A%2F%2Fmy.opera.com%2FODIN%2Fblog%2F2012%2F06%2F27%2Fintroducing-robohydra-operas-open-source-http-client-test-tool&amp;title=Introducing%20RoboHydra%20-%20Opera's%20open-source%20HTTP%20client%20test%20tool" onclick="window.open('http://reddit.com/submit?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent('Introducing RoboHydra - Opera's open-source HTTP client test tool'),'reddit','location=0,menubar=0,scrollbars=1,status=0,titlebar=0,toolbar=0,width=800,height=600'); return false;" title="Share on reddit" class="share-reddit">reddit</a></li>
+<li class="share-plusone">
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script><div class="g-plusone" data-size="small" data-count="true"></div>
+</li>
+<li>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+</li>
+<li class="share-facebook"><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fmy.opera.com%2FODIN%2Fblog%2F2012%2F06%2F27%2Fintroducing-robohydra-operas-open-source-http-client-test-tool&amp;layout=button_count&amp;width=225&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=verdana&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:21px; margin:6px 0 0 8px" allowTransparency="true"></iframe></li>
+</ul>
+<p class="postnav"><span class="prv"><img src="http://static.myopera.com/community/graphics/prev.gif" width="9" height="8" alt="" class="arrow-prev"><a href="/ODIN/blog/shiny-demos-on-github"><span>Shiny Demos on Github</span></a></span></p>
+<a name="comments"></a><div class="comments">
+<h3>
+<a href="/ODIN/xml/rss/comments/50250912"><img src="http://static.myopera.com/community/graphics/feedicon16.gif" width="16" height="16" alt="" class="feedicon"></a> Comments</h3>
+<div id="pagenav-top"></div>
+<div class="comment1" id="comment91797722">
+<div class="avatar"><a href="/BS-Harou/"><img src="/community/users/avatar.pl/756767" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="BS-Harou" href="/BS-Harou/">Martin Kadlec aka BS-Harou<span>BS-Harou</span></a></b> <span class="comment-date"><a href="/ODIN/blog/show.dml/50250912#comment91797722" class="permalink">#</a> Wednesday, June 27, 2012 12:16:52 PM</span></p>
+<div class="text">Wow, this is definitely going to be handy! Long live Node.JS <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-party" alt="party"> </div>
+</div>
+<div class="comment2" id="comment91797842">
+<div class="avatar"><a href="/greench/"><img src="/community/users/avatar.pl/174006" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="greench" href="/greench/">Çağlar Yeşilyurt<span>greench</span></a></b> <span class="comment-date"><a href="/ODIN/blog/show.dml/50250912#comment91797842" class="permalink">#</a> Wednesday, June 27, 2012 12:19:57 PM</span></p>
+<div class="text">Cool tool <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile">
+</div>
+</div>
+<div class="comment1" id="comment91799352">
+<div class="avatar"><a href="/BS-Harou/"><img src="/community/users/avatar.pl/756767" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="BS-Harou" href="/BS-Harou/">Martin Kadlec aka BS-Harou<span>BS-Harou</span></a></b> <span class="comment-date"><a href="/ODIN/blog/show.dml/50250912#comment91799352" class="permalink">#</a> Wednesday, June 27, 2012 1:01:42 PM</span></p>
+<div class="text">RoboHydra ready on port 3000 - Admin URL: <a href="http://localhost:3000/robohydra-admin" rel="nofollow" target="_blank">http://localhost:3000/robohydra-admin</a><br><br>now the worse part, trying to actually understand it <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-bigsmile" alt="bigsmile">
+</div>
+</div>
+<div class="comment2" id="comment91815472">
+<div class="avatar"><a href="/emanchado/"><img src="/community/users/avatar.pl/1056703" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="emanchado" href="/emanchado/">Esteban Manchado Velázquez<span>emanchado</span></a></b> <span class="comment-date"><a href="/ODIN/blog/show.dml/50250912#comment91815472" class="permalink">#</a> Wednesday, June 27, 2012 7:30:30 PM</span></p>
+<div class="text">BS-Harou: watch the screencasts and read the tutorials, that should be (hopefully) a good introduction :-)<br><br>I'm guessing if you have a use for it, you'll realise after going through the tutorials and reading the examples (see <a href="https://github.com/operasoftware/robohydra/tree/master/examples" rel="nofollow" target="_blank">https://github.com/operasoftware/robohydra/tree/master/examples</a>). Good luck!</div>
+</div>
+<div class="comment1" id="comment91820892">
+<div class="avatar"><a href="/BS-Harou/"><img src="/community/users/avatar.pl/756767" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="BS-Harou" href="/BS-Harou/">Martin Kadlec aka BS-Harou<span>BS-Harou</span></a></b> <span class="comment-date"><a href="/ODIN/blog/show.dml/50250912#comment91820892" class="permalink">#</a> Wednesday, June 27, 2012 9:14:39 PM</span></p>
+<div class="text">
+<p class="cite">Originally posted by emanchado:</p>
+<blockquote class="bbquote"><p>I'm guessing if you have a use for it, you'll realise after going through the tutorials and reading the examples (see <a href="https://github.com/operasoftware/robohydra/tree/master/examples" rel="nofollow" target="_blank">https://github.com/operasoftware/robohydra/tree/master/examples</a>). Good luck!</p></blockquote>
+<br><br>Thx. The tutorials seems fine, already feeling much more clever <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-wink" alt="wink"> and it has lots of similarities with ExpressJS <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile"><br><br>One thing that seems a bit odd to me is the req.getParams property. The "get" at start  makes me always think it is method and not property. It would even make sense as you would not have to parse the query string until (and only if) the method is called.</div>
+</div>
+<a name="lastcomment"></a><div class="comment2" id="comment91821562">
+<div class="avatar"><a href="/BS-Harou/"><img src="/community/users/avatar.pl/756767" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="BS-Harou" href="/BS-Harou/">Martin Kadlec aka BS-Harou<span>BS-Harou</span></a></b> <span class="comment-date"><a href="/ODIN/blog/show.dml/50250912#comment91821562" class="permalink">#</a> Wednesday, June 27, 2012 9:36:34 PM</span></p>
+<div class="text">Also it seems to me that often we need only one config file with no configuration so instead of: <br><pre>{"plugins": [{"name": "search", "config": {}}]}</pre>It would be nice to just write:<br><pre>{"name": "search"}</pre>Or in case of some config.:<br><pre>{"name": "search", "config": { ... } }</pre>
+<br>It might even be good idea to consider running the robohydra like:<br><pre>robohydra (-l | --plugin) path/search</pre> and get rid of the config file completely - when it's possible</div>
+</div>
+</div>
+<div id="login-here">
+<h3 class="header">Write a comment</h3>
+<p><img src="http://static.myopera.com/community/graphics/info.png" width="17" height="17" alt=""> 
+                        You must be <a href="https://my.opera.com/community/login/">logged in</a> to write a comment. If you're not a registered member, please <a href="https://my.opera.com/community/signup">sign up</a>.
+                     </p>
+</div>
+</div>
+
+   
+
+   
+
+
+</div></div>
+<div id="sidewrap"><div id="side">
+<div id="blogsearch" class="sidebox">
+<label for="searchbox" class="h2">Blog search</label><form action="/ODIN/search/?" method="get"><div class="pad">
+<input type="text" name="search" value="" id="searchbox" maxlength="128"><input type="submit" value="search" id="submitsearch">
+</div></form>
+</div>
+<div class="sidebox" id="newcomments">
+<h2>Latest comments</h2>
+<div class="pad">
+<ul class="nobullets usercom">
+<li>
+<div class="userpic"><a href="/BS-Harou/"><img src="https://static.myopera.com/upic/pool1/jN/39T/epbeIpAg1v8lSr9uTvMXrg/756767_t.jpg" width="40" height="30" alt="photo"></a></div>
+<p><b><a href="/BS-Harou/" class="username">Martin Kadlec aka BS-Harou</a></b></p>
+<p><a href="/ODIN/blog/2012/06/27/introducing-robohydra-operas-open-source-http-client-test-tool?cid=91821562#comment91821562" class="usertext"><text>Also it seems to me that often we need only one config file  ...</text></a></p>
+</li>
+<li class="even">
+<div class="userpic"><a href="/BS-Harou/"><img src="https://static.myopera.com/upic/pool1/jN/39T/epbeIpAg1v8lSr9uTvMXrg/756767_t.jpg" width="40" height="30" alt="photo"></a></div>
+<p><b><a href="/BS-Harou/" class="username">Martin Kadlec aka BS-Harou</a></b></p>
+<p><a href="/ODIN/blog/2012/06/27/introducing-robohydra-operas-open-source-http-client-test-tool?cid=91820892#comment91820892" class="usertext"><text>I'm guessing if you have a use for it, you'll realise after  ...</text></a></p>
+</li>
+<li>
+<div class="userpic"><a href="/emanchado/"><img src="https://static.myopera.com/upic/pool1/n1/srK/w8S8rO9S67UvmvcABA4gZg/1056703_t.jpg" width="40" height="30" alt="photo"></a></div>
+<p><b><a href="/emanchado/" class="username">Esteban Manchado Velázquez</a></b></p>
+<p><a href="/ODIN/blog/2012/06/27/introducing-robohydra-operas-open-source-http-client-test-tool?cid=91815472#comment91815472" class="usertext"><text>BS-Harou: watch the screencasts and read the tutorials, that ...</text></a></p>
+</li>
+<li class="even">
+<div class="userpic"><a href="/BS-Harou/"><img src="https://static.myopera.com/upic/pool1/jN/39T/epbeIpAg1v8lSr9uTvMXrg/756767_t.jpg" width="40" height="30" alt="photo"></a></div>
+<p><b><a href="/BS-Harou/" class="username">Martin Kadlec aka BS-Harou</a></b></p>
+<p><a href="/ODIN/blog/2012/06/27/introducing-robohydra-operas-open-source-http-client-test-tool?cid=91799352#comment91799352" class="usertext"><text>RoboHydra ready on port 3000 - Admin URL: http://localhost:3 ...</text></a></p>
+</li>
+<li>
+<div class="userpic"><a href="/greench/"><img src="https://static.myopera.com/upic/pool1/Uj/vda/1orrbYcy7y26UlGATvy3Xc/174006_t.jpg" width="40" height="30" alt="photo"></a></div>
+<p><b><a href="/greench/" class="username">Çağlar Yeşilyurt</a></b></p>
+<p><a href="/ODIN/blog/2012/06/27/introducing-robohydra-operas-open-source-http-client-test-tool?cid=91797842#comment91797842" class="usertext"><text>Cool tool :)</text></a></p>
+</li>
+<li class="even">
+<div class="userpic"><a href="/BS-Harou/"><img src="https://static.myopera.com/upic/pool1/jN/39T/epbeIpAg1v8lSr9uTvMXrg/756767_t.jpg" width="40" height="30" alt="photo"></a></div>
+<p><b><a href="/BS-Harou/" class="username">Martin Kadlec aka BS-Harou</a></b></p>
+<p><a href="/ODIN/blog/2012/06/27/introducing-robohydra-operas-open-source-http-client-test-tool?cid=91797722#comment91797722" class="usertext"><text>Wow, this is definitely going to be handy! Long live Node.JS ...</text></a></p>
+</li>
+</ul>
+<div class="clear"></div>
+</div>
+</div>
+<div class="sidebox sidelinx">
+<h2>Useful resources</h2>
+<div class="pad"><ul>
+<li><a href="http://dev.opera.com" target="_blank">Dev.Opera articles and tutorials</a></li>
+<li><a href="http://www.opera.com/developer/tools/" target="_blank">Opera Developer Tools</a></li>
+<li><a href="http://www.opera.com/browser/next/" target="_blank">Opera Next alpha/beta channel</a></li>
+</ul></div>
+</div>
+<div class="sidebox sidelinx">
+<h2>Other blogs</h2>
+<div class="pad"><ul>
+<li><a href="http://my.opera.com/dragonfly/blog/" target="_blank">Opera Dragonfly</a></li>
+<li><a href="http://my.opera.com/desktopteam/blog/" target="_blank">Opera Desktop Team</a></li>
+<li><a href="http://my.opera.com/mobile/" target="_blank">Opera Mobile / Opera Mini</a></li>
+</ul></div>
+</div>
+</div></div>
+<div id="footer"><div id="footer2">
+<div id="operatxtad"><p><b><a href="http://www.opera.com/browser/?utm_source=myopera&amp;utm_medium=text&amp;utm_campaign=myoperalinks&amp;utm_content=dl_opera_lightning_speed_fastest_browser" class="red">Download Opera</a></b> - 
+Surf the Web with lightning speed, using the fastest browser ever.
+</p></div>
+<div id="footer-promo">
+<div class="footer-pic"><a href="https://my.opera.com/community/signup"><img src="https://static.myopera.com/upic/pool1/lV/hXp/9JkEt6b4blztDhhNQoEjS4/1743471_m.jpg" width="104" height="78" alt="ODIN"></a></div>
+<h2>
+					<b>Opera Developer News</b> is blogging on My Opera
+				</h2>
+<p>
+					My Opera is a blog and photo sharing community with millions of members. 
+						<a href="https://my.opera.com/community/signup"><b>Join now</b></a> to follow Opera Developer News's blog and get your own.
+					</p>
+<div class="clear"></div>
+</div>
+<p><a href="/community/help/">Help/FAQ</a> | 
+            <a href="/community/terms-of-service/" class="black">Terms</a></p>
+<div class="prefs"><form action="/community/change-language" method="POST" name="sitelang" id="sitelang"><fieldset>
+<input type="hidden" name="return_url" value="/ODIN/blog/2012/06/27/introducing-robohydra-operas-open-source-http-client-test-tool"><label for="chooselang"><b>Language:</b></label><select name="set_lang" id="chooselang" onchange="this.form.submit()"><option value="de">Deutsch</option>
+<option value="en" selected>English</option>
+<option value="es-LA">Español</option>
+<option value="fr">Français</option>
+<option value="fy">Frysk</option>
+<option value="hu">Magyar</option>
+<option value="pl">Polski</option>
+<option value="pt-BR">Português Brasileiro</option>
+<option value="ru">Русский</option>
+<option value="sk">Slovenčina</option>
+<option value="sq">Shqip</option>
+<option value="tr">Türkçe</option>
+<option value="uk">Українська</option>
+<option value="vn">Tiếng Việt</option>
+<option value="xx-LOL">LOLCATZ</option>
+<option value="zh-TW">正體中文</option>
+<optgroup label="In progress">
+<option value="ja">日本語</option>
+<option value="no">Norsk Bokmål</option>
+<option value="sr">Српски</option>
+</optgroup></select><noscript><input type="submit" value="OK"></noscript>
+</fieldset></form></div>
+<div class="clear"></div>
+</div></div>
+</div>
+</div>
+</div></div></div></div>
+<!--[if IE]></div><![endif]--><script type="text/javascript" src="http://static.myopera.com/community/js/lib/yui/build/yuiloader-dom-event/yuiloader-dom-event.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/yui/build/selector/selector.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/opera-68592c43.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/opera-driver-yui-f3e2272e.js"></script><script type="text/javascript">var O = new Opera({"extension":".js","combine":"0","base_url":"http://static.myopera.com/community/js","path":"/community/js","minified":"-min","suffix":"-min.js","minifier":"closure-compiler","map_file":"/var/www/static.myopera.com/community/js/js-map.json","driver":"yui"});O.set_js_map({"lib/yui-modules/usermessage/usermessage":"lib/yui-modules/usermessage/usermessage-4fbbfc53","site/virus-scan-status":"site/virus-scan-status-249bc0e4","fadeimg":"fadeimg-87a42e1a","xmlviewer":"xmlviewer-8165f4e3","link/notes":"link/notes-e7130e4b","site/mail":"site/mail-f17dabea","link/topbar-menu":"link/topbar-menu-9fa8c628","competitions/spiderman":"competitions/spiderman-16ea3bdb","topbar-menu":"topbar-menu-2920fbe5","rate":"rate-f65eeeef","refresh":"refresh-faedf2b7","lib/yui-modules/tooltip/tooltip":"lib/yui-modules/tooltip/tooltip-18a910b1","lib/yui-modules/countdown/countdown":"lib/yui-modules/countdown/countdown-df6ae0a3","myopera-hitslink-new-n-stupid":"myopera-hitslink-new-n-stupid-6c9e8c3d","code":"code-65f9fc0d","site/date-utils":"site/date-utils-605c4d64","lib/yui-modules/autocomplete/autocomplete":"lib/yui-modules/autocomplete/autocomplete-16c34728","video":"video-2af781bf","myopera-hitslink-classic":"myopera-hitslink-classic-eea2763d","lib/yui-modules/calendar/calendar":"lib/yui-modules/calendar/calendar-fe82c3b9","toggle":"toggle-aba25ffd","addrow":"addrow-c87c3b98","user-forums-sidebar":"user-forums-sidebar-ac97a9e4","quick-reply":"quick-reply-fa14d9ab","site/albums/tag_bounding_box":"site/albums/tag_bounding_box-0b5f75aa","site/messages/autocomplete-recipients":"site/messages/autocomplete-recipients-bc2b8895","link/track":"link/track-0eddf87e","lib/yui-modules/ajax/ajax":"lib/yui-modules/ajax/ajax-8eb94c88","lib/standalone-modules/svg_zoomnpan/svg_zoomnpan":"lib/standalone-modules/svg_zoomnpan/svg_zoomnpan-7964199a","myopera-hitslink":"myopera-hitslink-207ff0b6","wii":"wii-2014ea1a","site/profile-usermedia":"site/profile-usermedia-378e8918","flash_upload":"flash_upload-c85f08b9","link/topbar-status":"link/topbar-status-90f9aeea","lib/opera":"lib/opera-68592c43","image-resize-ie":"image-resize-ie-ee413c43","seo":"seo-f4dca896","site/blog/autosave":"site/blog/autosave-343f22a2","site/quickQuote":"site/quickQuote-8fab13dd","site/clone-input":"site/clone-input-8474cc6e","browsers/mobile-menu":"browsers/mobile-menu-f9c17575","shoutbox":"shoutbox-46fb33f6","site/albums/slideshow-fullscreen":"site/albums/slideshow-fullscreen-586cd529","site/iphone-countup":"site/iphone-countup-03d60227","link/link-foldertoggle":"link/link-foldertoggle-9f46c436","competitions/zombie":"competitions/zombie-552c6f3a","site/albums/tagging":"site/albums/tagging-f5770337","takeaction":"takeaction-147eb7e3","postform":"postform-a4630151","image-resize-home":"image-resize-home-8f09422e","site/friends-invite-utils":"site/friends-invite-utils-f008f5b2","tags":"tags-30a91276","site/api":"site/api-b63dab5e","user-blog-calendar":"user-blog-calendar-ac9c9115","sortpics2k":"sortpics2k-c03ece95","topbar-status":"topbar-status-aa171844","link-foldertoggle":"link-foldertoggle-b5e5e7c1","ticker":"ticker-6905e729","site/messages/broadcast":"site/messages/broadcast-4292aa69","site/help":"site/help-404fa392","site/messages/selection":"site/messages/selection-72e632dc","lib/opera-driver-yui":"lib/opera-driver-yui-f3e2272e","site/yahoo360-import":"site/yahoo360-import-3f83dde6","site/members/location":"site/members/location-2930ae6c","browsers/ie":"browsers/ie-5581986f","site/admin/files":"site/admin/files-7d3fe31a","competitions/trek":"competitions/trek-6968c435","dropmenu":"dropmenu-1fee5ec4","lib/yui-modules/filterlist/filterlist":"lib/yui-modules/filterlist/filterlist-782f9396","lib/yui-modules/cookie/cookie":"lib/yui-modules/cookie/cookie-a9bac995","hitslink":"hitslink-a047bd06","generic":"generic-682cfe40","stats/ga":"stats/ga-8663400c","checkform":"checkform-495248d2","toggleadv":"toggleadv-bf021494","forum-split-thread":"forum-split-thread-8a9ecdc6","live_counter":"live_counter-b73905ba","setcookie":"setcookie-2e313718","browsers/ie-css3":"browsers/ie-css3-610effed","help":"help-06dea79f","site/virus-scan-status-blog":"site/virus-scan-status-blog-66d20e09","site/usercss-utils":"site/usercss-utils-68672d66","userbar":"userbar-b67a64b0","sortpics":"sortpics-a3a6f826","cookies":"cookies-449b9392","site/social_networks-utils":"site/social_networks-utils-587cf72c","site/albums/slideshow-embed":"site/albums/slideshow-embed-7eac64f0","lib/yui-modules/multicheck/multicheck":"lib/yui-modules/multicheck/multicheck-c7f82f17","ban":"ban-8b4c8fed","menu":"menu-f3677acd","site/maxlength":"site/maxlength-2fabedaa","site/signup-utils":"site/signup-utils-d2e7bb9e","forum-code":"forum-code-0650946a","code_oldbrowser":"code_oldbrowser-bc4c3390","site/admin-campaigns":"site/admin-campaigns-be04c082","p7_eqCols2_10":"p7_eqCols2_10-f2de659e","lib/yui-modules/animation/animation":"lib/yui-modules/animation/animation-cf0d4480","site/ban_oversight":"site/ban_oversight-aa276ee9"});O.loadScripts(["site/quickQuote"]);</script><script type="text/javascript" src="http://static.myopera.com/community/js/cookies-449b9392.js"></script>
+</body>
+</html>
+<!-- 1340840956.myo.cDoyNzowNjowMA== -->

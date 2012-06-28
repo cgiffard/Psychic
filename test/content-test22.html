@@ -1,0 +1,443 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	
+			<title>Node.js | Cloud9 IDE | Online IDE &#8211; Your code anywhere, anytime</title>
+		<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+	<!-- <meta name="robots" content="index, follow" /> -->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />  	
+	
+
+			<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		
+		<link rel="apple-touch-icon-precomposed" 					href="http://c9.io/site/wp-content/themes/cloud9/img/apple-touch-icon-precomposed.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="57x57" 		href="http://c9.io/site/wp-content/themes/cloud9/img/apple-touch-icon-57x57-precomposed.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" 		href="http://c9.io/site/wp-content/themes/cloud9/img/apple-touch-icon-72x72-precomposed.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" 	href="http://c9.io/site/wp-content/themes/cloud9/img/apple-touch-icon-114x114-precomposed.png" />
+	
+	<link rel="shortcut icon" type="image/x-icon" href="http://c9.io/site/wp-content/themes/cloud9/favicon.ico" /> 
+	<link rel="icon" type="image/x-icon" href="http://c9.io/site/wp-content/themes/cloud9/favicon.ico" />
+
+				
+				
+			
+			
+		
+						   				
+	<!-- google chrome extension install -->
+	
+	<link rel="chrome-webstore-item"
+	    href="https://chrome.google.com/webstore/detail/nbdmccoknlfggadpfkmcpnamfnbkmkcp">
+
+    	<script type="text/javascript" src="/auth/check.js"></script>
+	<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18736001-1']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+	<link rel="alternate" type="application/rss+xml" title="Cloud9 IDE | Online IDE - Your code anywhere, anytime &raquo; Node.js Comments Feed" href="http://c9.io/site/node-js/feed/" />
+<link rel='stylesheet' id='c9-style-css'  href='http://c9.io/site/wp-content/themes/cloud9/css/style.css?ver=1' type='text/css' media='screen' />
+<link rel='stylesheet' id='c9-fonts-css'  href='http://c9.io/site/wp-content/themes/cloud9/css/fonts.css?ver=1' type='text/css' media='screen' />
+<link rel='stylesheet' id='jquery-cb-css'  href='http://c9.io/site/wp-content/themes/cloud9/css/jquery.checkbox.css?ver=1' type='text/css' media='screen' />
+<link rel='stylesheet' id='c9-menu-css'  href='http://c9.io/site/wp-content/themes/cloud9/css/menu.css?ver=1' type='text/css' media='screen' />
+<link rel='stylesheet' id='prettyPhoto-css'  href='http://c9.io/site/wp-content/themes/cloud9/js/prettyPhoto/css/prettyPhoto.css?ver=1' type='text/css' media='screen' />
+<link rel='stylesheet' id='aviaSlider-css'  href='http://c9.io/site/wp-content/themes/cloud9/css/aviaslider.css?ver=1' type='text/css' media='screen' />
+<link rel='stylesheet' id='popupc9-css'  href='http://c9.io/site/wp-content/themes/cloud9/css/popup.c9.css?ver=1' type='text/css' media='screen' />
+<link rel='stylesheet' id='tnswc-css-css'  href='http://c9.io/site/wp-content/plugins/TNW-Social-Count/frontend/css/tnwsc.css?ver=1340780378' type='text/css' media='all' />
+<script type='text/javascript' src='http://c9.io/site/wp-includes/js/l10n.js?ver=20101110'></script>
+<script type='text/javascript' src='http://c9.io/site/wp-content/themes/cloud9/js/prefixfree.min.js?ver=3.2.3'></script>
+<script type='text/javascript' src='http://c9.io/site/wp-content/themes/cloud9/js/jquery-1.6.2.min.js?ver=3.2.3'></script>
+<script type='text/javascript' src='http://c9.io/site/wp-content/themes/cloud9/js/jquery.validate.min.js?ver=3.2.3'></script>
+<script type='text/javascript' src='http://c9.io/site/wp-content/themes/cloud9/js/cloud9.code2.js?ver=3.2.3'></script>
+<script type='text/javascript' src='http://c9.io/site/wp-content/themes/cloud9/js/jquery.checkbox.js?ver=3.2.3'></script>
+<script type='text/javascript' src='http://c9.io/site/wp-content/themes/cloud9/js/prettyPhoto/js/jquery.prettyPhoto.js?ver=3.2.3'></script>
+<script type='text/javascript' src='http://c9.io/site/wp-content/themes/cloud9/js/jquery.aviaSlider.js?ver=3.2.3'></script>
+<script type='text/javascript' src='http://c9.io/site/wp-content/themes/cloud9/js/popup.c9.jquery.js?ver=3.2.3'></script>
+<script type='text/javascript' src='http://c9.io/site/wp-content/themes/cloud9/js/jquery.extinfobar.js?ver=3.2.3'></script>
+<script type='text/javascript' src='http://c9.io/site/wp-content/plugins/TNW-Social-Count/frontend/js/tnwsc.js?ver=1340780378'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://c9.io/site/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://c9.io/site/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='Cloud9 IDE | Online IDE &#8211; Your code anywhere, anytime' href='http://c9.io/site/' />
+<link rel='prev' title='404 file not found' href='http://c9.io/site/404-file-not-found/' />
+<link rel='next' title='Resend Confirmation Email' href='http://c9.io/site/resend-confirmation-email/' />
+<meta name="generator" content="WordPress 3.2.3" />
+<link rel='canonical' href='http://c9.io/site/node-js/' />
+<link rel='shortlink' href='http://wp.me/P2mnak-bB' />
+<script type="text/javascript">
+//<![CDATA[
+var _wpcf7 = { cached: 1 };
+//]]>
+</script>
+<!-- Infinite-Scroll not added. Reason: Single post/page -->
+<!--##LivefyreHeadTestOK##--><!--##LivefyreHeadTestBlognameOK##--></head>
+<body>
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+
+<div class="wrapper">
+	<div class="header">
+        <div class="wrapper">
+    		<div class="content-container">
+    			<h1 id="logo"><a class="logo-image" href="/">Cloud9 IDE - Online IDE</a></h1>
+    				<!-- AddThis Button BEGIN -->
+    			<div class="follow-us addthis_toolbox addthis_default_style">
+    				<span class="title">Give us a shout out:</span>
+    				<span class="social-buttons">
+    					<a class="addthis_button_twitter social-button" tw:via="cloud9ide" addthis:title="Cloud9 IDE – Your code anywhere, anytime" addthis:url="http://c9.io"></a>
+    					<a class="custom_google social-button" href="https://plusone.google.com/_/+1/confirm?hl=en&url=http://c9.io" target="_blank" title="Cloud9 IDE – Your code anywhere, anytime"><span>Share on Google</span></a>
+    					<a class="addthis_button_facebook social-button" addthis:title="Cloud9 IDE – Your code anywhere, anytime" addthis:url="http://c9.io"></a>
+    					<a class="addthis_button_email social-button" addthis:title="Cloud9 IDE – Your code anywhere, anytime" addthis:url="http://c9.io"></a>
+    				</span>
+    				
+    				
+    				<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4f475e1304781d67"></script>
+    				<script>
+    				var addthis_share = {
+    				   templates: {
+    				                   twitter: '{{title}} {{url}} (via @cloud9ide)'
+    				               }
+    				}
+    				var addthis_config = {
+    			        data_track_clickback: false
+    			    } //remove # when sharing with addthis
+    				</script>
+    				<!-- AddThis Button END -->
+    			</div><!-- follow-us -->
+    			<div class="sign-up" id="signUp">
+    				    				<a class="notice" href="/site/pricing/"><img src="http://c9.io/site/wp-content/themes/cloud9/img/spacer.png" alt="" border="0" class="btn-sign-up-image" id="signUpBtn" title="Sign up"/></a>
+    			</div><!-- sign-up -->
+    			
+    			<div class="sign-out" id="signOut">
+    				<a href="/dashboard.html" class="btn-dashboard"><img src="http://c9.io/site/wp-content/themes/cloud9/img/spacer.png" alt="" border="0" /></a>
+    				<a href="/site/sign-up-for-standard-or-premium"><img src="http://c9.io/site/wp-content/themes/cloud9/img/spacer.png" alt="" border="0" class="btn-sign-out-image" id="signOutBtn" title="Sign out" /></a>
+    			</div><!-- sign-up -->
+    			
+    			<div class="header-login" id="header-login" style="height:20px">
+    				<div id="header-login-content">				
+    					<div id="resetPasswordForm" style="display:none">	
+    						<form action="#" id="resetPasswordForm2" onSubmit="return false;">
+    							<input type="text" name="inpUsernameEmailRP" id="inpUsernameEmailRP" value="Username or e-mail" class="input big" onblur="if(this.value==''){this.value='Username or e-mail'};" onclick="if(this.value=='Username or e-mail'){this.value=''};" />
+    	<!--							<input type="submit" class="submit btn-sign-in big" id="resetPasswordBtn" value="Reset password" />-->
+    	                        <a href="#" id="resetPasswordBtn"><img src="http://c9.io/site/wp-content/themes/cloud9/img/spacer.png" alt="" border="0" class="btn-forget-pass-image" /></a>					
+    
+    							
+    							<div class="clear"></div><!-- clear -->
+    							<div id="explainRP">
+    								<p>To reset your password, type the full email address or  username.<br />
+    								You will receive an email with a new password.</p>
+    							</div>
+    							
+    							<div class="hr"><hr /></div>
+    							<a href="#" class="return-to-sign-in" id="returnToSigninLnk">Return to Sign in</a>
+    						</form>
+    						<div class="clear"></div><!-- clear -->
+    					</div>					
+    					
+    					<div id="loginForm" style="display:none">
+    						<form action="#" id="loginForm2" onSubmit="return false;">
+    							<input type="text" name="inpUsernameEmail" value="Username or e-mail" id="inpUsernameEmail" class="input" onblur="if(this.value==''){this.value='Username or e-mail'};" onclick="if(this.value=='Username or e-mail'){this.value=''};" />
+    							<!--<input type="text" name="inpPassword" value="Password" class="input" id="inpPassword" onblur="if(this.value==''){this.type='text';this.value='Password'};" onclick="if(this.value=='Password'){this.type='password';this.value=''};" />-->
+    							<input type="text" name="inpPasswordPlaceholder" value="Password" class="input" id="inpPasswordPlaceholder" />
+    							<input type="password" name="inpPassword" class="input" id="inpPassword" style="display:none;" />
+    							
+    							    							<a href="#"><img src="http://c9.io/site/wp-content/themes/cloud9/img/spacer.png" alt="" border="0" class="btn-sign-in-image" id="signinBtn" title="Sign in"/></a>					
+    	                        
+    	                        <div class="email_suggestion" style="display: none;">
+    	                            Did you mean <a class="email"><span class="address"></span>@<span class="domain"></span></a>?
+    	                        </div>
+    							<div id="loginFormError" class="errormsg"></div>
+    					
+    							<div class="checkbox"><input name="" type="checkbox" id="check" checked="checked"/> <label for="check">Keep me signed in</label></div>
+    						
+    							<a href="#" id="forgotLnk" class="forgot-password">Forgot password?</a>						
+    							<a href="/site/resend-confirmation-email/" id="resendActicationLnk" >Resend activation email</a>						
+    							<div class="hr"><hr /></div>
+    							<div class="sign-in-instantly">
+    								<ul>
+    									<li><span>Or sign in instantly with:</span></li>
+    									<li class="signin-github"><a href="#"><img src="http://c9.io/site/wp-content/themes/cloud9/img/spacer.png" border="0" alt="signin-github" id="signInGithubBtn" title="Sign in with Github" class="free" /></a></li>
+    									<li class="signin-bitbucket"><a href="#"><img src="http://c9.io/site/wp-content/themes/cloud9/img/spacer.png" border="0" alt="signin-bitbucket" id="signInBitBucketBtn" title="Sign in with Bitbucket" class="free" /></a></li>
+    								</ul>
+    							</div>							
+    						</form>
+    	                        	                            <div class="recent-article">
+    	                                <div class="hr"><hr /></div>
+    	                                <h4 class="recent-post-title"><span class="switch"></span><span>NEWS: </span>
+    	                                Coding, Revolutionized!    	                                </h4>
+    	                                <div class="recent-content">
+    	                                        	                                    <div class="recent-excrept">
+    	                                        Looking at the past year, Cloud9 has grown leaps and bounds as we refined the UI, integrated with partners and built up the back-end to bring cloud development to over ...    	                                        <div class="recent-post-actions">
+    	                                            <a href="http://c9.io/site/blog/2012/06/cloud9ide-new-features/" title="check the full article">read the full article</a> | <a href="/site/blog" title="read more articles">see all articles</a>
+    	                                        </div>
+    	                                    </div>
+    	                                    <div class="thumb-overlay-small"></div>
+    	                                    <div class="post-thumb-small size-75x60">
+    	                                        <img width="140" height="105" src="http://c9.io/site/wp-content/uploads/2012/06/feature-pic.jpg" class="attachment-post-thumbnail wp-post-image" alt="feature pic" title="feature pic" />    	                                    </div>
+    	                                    <div class="clear"></div><!-- clear -->
+    	                                </div>
+    	                            </div>
+    	                        					</div>
+    					<div class="clear"></div><!-- clear -->
+    				</div><!-- header-login-content -->
+    				<div class="clear"></div><!-- clear -->
+    			</div><!-- login -->
+    			
+    			<div id="menu">
+    				<ul id="nav">
+    					<li><a href="/" class=""><img src="http://c9.io/site/wp-content/themes/cloud9/img/spacer.png" alt="" class="btn-home" border="0" /></a></li>
+    					<li id="menu-item-134" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-134"><a href="http://c9.io/site/pricing/">Pricing</a></li>
+<li id="menu-item-2270" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2270"><a href="http://c9.io/site/features/">Features</a></li>
+<li id="menu-item-75" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-75"><a href="http://c9.io/site/category/blog/">Blog</a></li>
+<li id="menu-item-76" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-76 has-sub"><a href="http://c9.io/site/company/">Company</a>
+<ul class="sub-menu">
+	<li id="menu-item-704" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-704"><a title="Company" href="http://c9.io/site/company/">Company</a><span>&bull;</span></li>
+	<li id="menu-item-1356" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1356"><a href="http://c9.io/site/company/team/">The Team</a><span>&bull;</span></li>
+	<li id="menu-item-1358" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1358"><a href="http://c9.io/site/company/board-members/">Board Members</a><span>&bull;</span></li>
+	<li id="menu-item-163" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-163"><a href="http://c9.io/site/category/current-vacancies/">Jobs</a><span>&bull;</span></li>
+	<li id="menu-item-2274" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2274"><a href="http://c9.io/site/category/press/">Press</a><span>&bull;</span></li>
+	<li id="menu-item-80" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-80"><a href="http://c9.io/site/company/contact/">Contact</a></li>
+</ul>
+</li>
+<li id="menu-item-721" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-719 current_page_item current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-721 has-sub"><a href="http://c9.io/site/node-js/" class="active" class="active">Node.js</a>
+<ul class="sub-menu">
+	<li id="menu-item-722" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-719 current_page_item menu-item-722"><a title="Node.js" target="_blank" href="http://c9.io/site/node-js/" class="active">Node.js</a><span>&bull;</span></li>
+	<li id="menu-item-322" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-322"><a title="Nodebits.com" target="_blank" href="http://nodebits.org/">Nodebits.com</a><span>&bull;</span></li>
+	<li id="menu-item-735" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-735"><a title="NodeManual.org" target="_blank" href="http://nodemanual.org">NodeManual.org</a></li>
+</ul>
+</li>
+<li id="menu-item-180" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-180"><a href="http://c9.io/site/category/faq/">Support</a></li>
+    				</ul>
+    			</div><!-- menu -->		
+    		</div>
+		</div>
+	</div><!-- header -->
+
+	<div class="content-container page-body">
+	
+		<div class="content">
+<div class="page-company">
+	
+	<div class="page-left">
+		<div class="page-content">
+			<h1>Node.js</h1>
+			<p>When we decided to build <a href="http://c9.io/">Cloud9 IDE</a>, it was only natural to use Node.js. By using Node.js for Cloud9, we could use a single language front to back. We absolutely love Node.js. However, we also recognize it’s still a young platform. A platform that, if nurtured properly, would easily become the official runtime of the cloud. But who will nurture it?</p>
+<div data-posterous-file-list="%5B%7B%22large%22%3A%22http%3A%2F%2Fgetfile3.posterous.com%2Fgetfile%2Ffiles.posterous.com%2Ftemp-2012-01-23%2FmIpiuadtJsEdDhDzphsfryzrceEvAGCdrwmGoIDxhAxDxGrDictCFmJuyajG%2Fnodejs.png.scaled1000.png%22%2C%22originalWidth%22%3A%22520%22%2C%22largeWidth%22%3A%22520%22%2C%22thumb%22%3A%22http%3A%2F%2Fgetfile0.posterous.com%2Fgetfile%2Ffiles.posterous.com%2Ftemp-2012-01-23%2FmIpiuadtJsEdDhDzphsfryzrceEvAGCdrwmGoIDxhAxDxGrDictCFmJuyajG%2Fnodejs.png.thumb.png%22%2C%22originalHeight%22%3A%22178%22%2C%22largeHeight%22%3A%22178%22%2C%22thumbWidth%22%3A%2236%22%2C%22height%22%3A%22171%22%2C%22main%22%3A%22http%3A%2F%2Fgetfile7.posterous.com%2Fgetfile%2Ffiles.posterous.com%2Ftemp-2012-01-23%2FmIpiuadtJsEdDhDzphsfryzrceEvAGCdrwmGoIDxhAxDxGrDictCFmJuyajG%2Fnodejs.png.scaled500.png%22%2C%22thumbHeight%22%3A%2236%22%2C%22originalSize%22%3A%2225%22%2C%22original%22%3A%22http%3A%2F%2Fgetfile5.posterous.com%2Fgetfile%2Ffiles.posterous.com%2Ftemp-2012-01-23%2FmIpiuadtJsEdDhDzphsfryzrceEvAGCdrwmGoIDxhAxDxGrDictCFmJuyajG%2Fnodejs.png%22%2C%22width%22%3A%22500%22%7D%5D" data-posterous-image-gallery-initialized="true" data-posterous-image-gallery="true" data-posterous-options="%7B%22zipFile%22%3Anull%2C%22zipFileSize%22%3Anull%2C%22external_url%22%3Anull%2C%22showDownload%22%3Atrue%2C%22url_slug%22%3A%22our-commitment-to-the-nodejs-community%22%7D"><a href="http://cloud9ide.posterous.com/#"><img id="mainImage" src="http://getfile7.posterous.com/getfile/files.posterous.com/temp-2012-01-23/mIpiuadtJsEdDhDzphsfryzrceEvAGCdrwmGoIDxhAxDxGrDictCFmJuyajG/nodejs.png.scaled500.png" alt="" width="500" height="171" /></a></div>
+<p>Plenty of folks have recognized Node’s potential and invested heavily in it. Joyent hired Ryan Dahl to work on node.js full-time and helped grow the community by organizing seminars and rebuilding the nodejs.org website. Mozilla has always been the driving force in the development of JavaScript, the core of Node.js &#8212; it’s where JavaScript originates. In addition, Mozilla hosts <a href="https://developer.mozilla.org/en-US/" TARGET = "_blank">MDN</a>, the best resource for front-end development technologies including extensive JavaScript documentation.</p>
+<p>As a company that lives and breathes Node, we also feel it’s our duty to contribute to the Node community in any way we can. A few months ago, we asked Tim Caswell, a prominent Node.js community member, well known for his <a href="http://howtonode.org/"TARGET = "_blank">howtonode.org</a> blog, to join us full-time in our efforts to further build the Node community and make it more accessible to new members.</p>
+<p>Today, we’re happy to announce a number of new initiatives that we believe will help shape Node.js into the mainstream platform of the future.</p>
+<ol>
+<li>The introduction of <a href="http://nodebits.org/"TARGET = "_blank">Nodebits.org</a>, the new community blog edited by Tim, featuring high-quality Node.js tutorials;</li>
+<li>The introduction of <a href="http://nodemanual.org/"TARGET = "_blank">Nodemanual.org</a>, the official Node manual site;</li>
+<li>The introduction of <a href="http://training.c9.io/"TARGET = "_blank">Node.js &amp; Cloud9 IDE training</a> for everyone from individual developers to large enterprises.</li>
+</ol>
+<h2>Node.js News and Tutorials</h2>
+<p>Beside howtonode, there is no frequently updated community website. No reliable source for news and in-depth articles about Node.js. So, today we officially launch <a href="http://nodebits.org/"TARGET = "_blank">Nodebits.org</a>. Nodebits is a community blog, edited by Tim, which includes high-quality articles and tutorials about Node.js applications and libraries. The code examples presented can be tested and played with by loading them into Cloud9 with just a single click. Nothing to download and no compilation required.</p>
+<h2>Node.js Manuals and Documentation</h2>
+<p>There is no single source of comprehensive Node.js documentation, and most of the documentation that is available is incomplete or of insufficient quality.</p>
+<p>We have completely reworked many different sources of documentation into a concise and consistent website that offers a Node.js and Javascript reference guide and manual, based on work from Joyent and Mozilla. From now on, <a href="http://nodemanual.org/">NodeManual.org</a> is your destination to learn about Node.js. And, like any good community docs, Nodemanual.org is fully open. We encourage everyone in the Node community help us continue to improve the site, through your own contributions. Fork nodemanual on GitHub and get started on helping us build a better Node.js.</p>
+<h2>Training</h2>
+<p>There is no place where you can get Node.js training and support. As part of our training and support program we are now offering Node.js training. You will get high quality training from Node.js specialists in a three-day course. This course will teach you not only how to use Node.js, but how to become a better programmer. Sign up now at <a href="http://training.c9.io/"TARGET = "_blank">training.c9.io</a>.</p>
+		</div><!-- page-content -->
+	
+	</div><!-- page-left -->
+	
+	<div class="page-right">
+					<div id="text-20" class="box widget_text grey-container widget-1 insert-even"><h3 class="widget-title"><span>IRC for Node.js</span></h3><div class="widget-content">			<div class="textwidget"><p>For real-time chat about Node.js development with its developers, go to the #node.js channel at <strong>irc.freenode.net</strong> . You can also connect through your web browser using freenode's <a href="http://webchat.freenode.net/?channels=node.js" target="_blank">WebChat client</a>. Felix Geisendörfer keeps a log of the channel for those who miss a day.</p>
+</div>
+		</div></div>					
+	</div><!-- page-right -->
+
+</div>
+	<div class="clear"></div><!-- clear -->
+</div><!-- content -->
+	
+	</div><!-- content-container -->
+
+</div><!-- wrapper -->
+
+
+<div class="footer">
+	<div class="footer-content footer-top">
+		<div class="footer-box1">
+			<img class="cloud9-ide" src="http://c9.io/site/wp-content/themes/cloud9/img/logo_cloud9_small.png" title="Cloud9 IDE"alt="" border="0" width="178" height="40"/>
+							<h3 style="display:none">What is Cloud9</h3>			<div class="textwidget"><p>Write, run, and debug your code with our powerful and flexible cloud IDE. Collaborate on your projects publicly, or keep it private. The choice is yours!</p>
+</div>
+									
+		</div><!-- footer-box1 -->
+		<div class="footer-box2">
+			<h6>Cloud9 IDE</h6>
+			<ul>
+				<li id="menu-item-165" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-165"><span>></span><a href="http://c9.io/site/company/">About Cloud9 IDE</a></li>
+<li id="menu-item-164" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-164"><span>></span><a href="http://c9.io/site/category/features/">Key Features</a></li>
+<li id="menu-item-166" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-166"><span>></span><a href="http://c9.io/site/pricing/">Prices</a></li>
+<li id="menu-item-837" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-837"><span>></span><a title="Fork the C9 repo" href="https://github.com/ajaxorg/cloud9/">Fork the C9 repo</a></li>
+			</ul>
+		</div><!-- footer-box2 -->
+
+		<div class="footer-box3">
+			<h6>Support</h6>
+			<ul>
+			<li id="menu-item-468" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-468"><span>></span><a title="Knowledge Base" href="http://support.cloud9ide.com/home">Knowledge Base</a></li>
+<li id="menu-item-470" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-470"><span>></span><a href="http://support.cloud9ide.com/home">Report a bug</a></li>
+<li id="menu-item-471" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-471"><span>></span><a title="FAQ Support" href="http://c9.io/site/category/faq/">FAQ Support</a></li>
+ 
+			</ul>
+		</div><!-- footer-box3 -->
+
+		<div class="footer-box4">
+			<h6>Community</h6>
+			<ul>
+				<li id="menu-item-172" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-172"><span>></span><a href="http://c9.io/site/category/blog/">Blog</a></li>
+						
+				<li>Follow us:
+					<ul class="follow-icons">
+						<li><a href="http://c9.io/site/feed/"TARGET='_blank'title="RSS Feed for Cloud9IDE blog" class="icon follow-rss">RSS</a></li>
+						<li><a href="http://twitter.com/#!/cloud9ide"TARGET='_blank'title="Cloud9IDE Twitter" class="icon follow-twitter">Twitter</a></li>
+						<li><a href="https://www.facebook.com/Cloud9IDE"TARGET='_blank'title="Cloud9IDE Facebook"class="icon follow-facebook" >Facebook</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div><!-- footer-box4 -->
+		
+			<div class="footer-box5">
+				<a href="/site/pricing/" class="btn-small-red" title="Sign up now">Sign up now</a>
+							</div><!-- footer-box3 -->
+
+
+	</div><!-- footer-content -->
+
+	<div class="footer-bottom">
+		<div class="footer-content">
+			<div class="fleft">Running on Red Hat OpenShift</div>
+			All content and design is copyright &copy;2010-2012 Cloud9ide. All rights reserved.
+		</div>
+	</div><!-- footer-bottom -->
+
+</div><!-- footer -->
+
+
+<script type="text/javascript">
+
+	
+	function getStorage(key_prefix) {
+	    // this function will return us an object with a "set" and "get" method
+	    // using either localStorage if available, or defaulting to document.cookie
+	    if (window.localStorage) {
+	      // use localStorage:
+	      return {
+	        set: function(id, data) {
+	          localStorage.setItem(key_prefix+id, data);
+	        },
+	        get: function(id) {
+	          return localStorage.getItem(key_prefix+id);
+	        }
+	      };
+	    } else {
+	      // use document.cookie:
+	      return {
+	         set: function(id, data) {
+	           document.cookie = key_prefix+id+'='+encodeURIComponent(data);
+	         },
+	         get: function(id, data) {
+	           var cookies = document.cookie, parsed = {};
+	           cookies.replace(/([^=]+)=([^;]*);?\s*/g, function(whole, key, value) {
+	              parsed[key] = decodeURIComponent(value);
+	           });
+	           return parsed[key_prefix+id];
+	         }
+	       };
+	     }
+	  }
+
+
+	$(document).ready(function() {
+		$('input:checkbox:not([safari])').checkbox({empty: 'http://c9.io/site/wp-content/themes/cloud9/img/spacer.png'});
+		$('input[safari]:checkbox').checkbox({cls:'jquery-safari-checkbox', empty: 'http://c9.io/site/wp-content/themes/cloud9/img/spacer.png'});
+		$('input:radio').checkbox({empty: 'http://c9.io/site/wp-content/themes/cloud9/img/spacer.png'});
+		
+		var selectedSubmenu;
+		
+		$('#nav .has-sub').mouseover(function(){			
+			selectedSubmenu = $('.current-menu-parent ul.sub-menu');
+			if (! $(this).hasClass('current-menu-parent')){
+				selectedSubmenu.parent().addClass('dont-hover');
+			}
+		});		
+		$('#nav .has-sub').mouseout(function(){			
+			if (selectedSubmenu){
+				selectedSubmenu.parent().removeClass('dont-hover');
+				selectedSubmenu = false;
+			}
+		});
+
+		if (typeof chrome != "undefined" && !chrome.app.isInstalled && window.location.pathname === "/") {
+			$(function () {
+				$.fn.extInfobar({
+					id: 'nbdmccoknlfggadpfkmcpnamfnbkmkcp',
+					message: "Unlock extra features by getting Cloud9 IDE from the Chrome Web Store.",
+					rememberClose: true
+				});
+
+				$("#clear").click(function () {
+					localStorage.clear();
+					window.location = window.location;
+				});
+			});
+		}
+	});
+</script>
+
+
+
+
+	<div style="display:none">
+	</div>
+
+	<script src="http://stats.wordpress.com/e-201226.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	st_go({v:'ext',j:'1:1.2.4',blog:'34884940',post:'719'});
+	var load_cmc = function(){linktracker_init(34884940,719,2);};
+	if ( typeof addLoadEvent != 'undefined' ) addLoadEvent(load_cmc);
+	else load_cmc();
+	</script>
+<!-- ClickTale Bottom part -->
+<div id="ClickTaleDiv" style="display: none;"></div>
+<script type='text/javascript'>
+document.write(unescape("%3Cscript%20src='"+
+ (document.location.protocol=='https:'?
+  'https://clicktale.pantherssl.com/':
+  'http://s.clicktale.net/')+
+ "WRc9.js'%20type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var ClickTaleSSL=1;
+if(typeof ClickTale=='function') ClickTale(48230,0.85,"www");
+</script>
+<!-- ClickTale end of Bottom part -->
+</body>
+</html>
+<script type="text/javascript" charset="utf-8">
+	$('.wpcf7-not-valid-tip-no-ajax').parent().find('input,textarea').addClass('error');
+</script>					
+
+<!-- Dynamic page generated in 0.403 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-06-27 08:12:27 -->
+<!-- super cache -->

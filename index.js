@@ -7,52 +7,9 @@
 
 /// This is INCREDIBLY messy. I'll tidy this up for human consumption later.
 
-
-
-
-function printAttr(tree) {
-	var attrs = [];
-	for (attrName in tree.attributes) {
-		if (tree.attributes.hasOwnProperty(attrName)) {
-			attrs.push(attrName + "='" + tree.attributes[attrName] + "'");
-		}
-	}
-
-	return attrs.length ? " " + attrs.join(" ") : "";
-}
-
-function logTree(tree,depth) {
-	var indent = "", depth = depth || 0;
-	while (indent.length < depth) indent += "\t";
-
-	if (tree.nodeType === 3) {
-		if (tree.textContent.replace(/\s+/ig,"").length) {
-			console.log(indent + tree.textContent.replace(/\s+/ig," "));
-		}
-	} else if (tree.nodeType === 8) {
-		console.log(indent + "<!-- " + tree.textContent.replace(/\s+/ig," ") + " -->");
-	} else if (tree.nodeType === 1) {
-		var nodeAttributes = printAttr(tree);
-		console.log(indent + "<" + tree.tagName + nodeAttributes + (tree.childNodes.length ? "" : "/") + ">");
-	} else if (tree.nodeType === 99) {
-		// Ignore document node, but decrement depth to balance tree...
-		depth --;
-	} else {
-		console.log(indent + "<? [[ " + tree.nodeType + ":" + tree.nodeValue + " ]] ?>");
-	}
-
-	if (tree && tree.childNodes && tree.childNodes.length) {
-		tree.childNodes.forEach(function(node) {
-			logTree(node,depth+1);
-		});
-
-		if (tree.nodeType === 1) {
-			console.log(indent + "</" + tree.tagName + ">");
-		}
-	}
-};
 (function(glob) {
 	var Castor = require("castor");
+	var bulldozer = new (require("./bulldozer.js"))();
 	
 	// Very general function for walking an arbitrary data structure and
 	// returning components based on an evaluated expression...
@@ -290,19 +247,23 @@ function logTree(tree,depth) {
 				"noscript": -5,
 				"body": -10,
 				"nav": -10,
-				"form": -5,
+				"form": -20,
 				"input": -3,
 				"button": -3,
 				"q": 4,
 				"time": -5,
-				"iframe": -20
+				"iframe": -20,
+				"span": -2
 			};
 			
 			var attributeKeywords = {
 				"other": 0,
 				"content": 50,
-				"article": 10,
+				"article": 20,
+				"main": 10,
+				"articlebody": 100,
 				"comment": -200,
+				"comments": -200,
 				"javascript": -5,
 				"viewstate": -100,
 				"footer": -50,
@@ -315,14 +276,23 @@ function logTree(tree,depth) {
 				"post": 30,
 				"entry": 10,
 				"published": 30,
-				// Pick up drupal nodes
 				"node": 10,
 				"title": 10,
 				"children": -10,
 				"reply": -20,
 				"block": -20,
 				"form": -10,
-				"instapaper": 1000
+				"instapaper": 1000,
+				"midarticle": 30,
+				"copyright": -20,
+				"widget": -100,
+				"discussion": -100,
+				"discussions": -100,
+				"recent": -100,
+				"categories": -50,
+				"list": -30,
+				"clearfix": -10,
+				"disqus": -100
 			};
 			
 			var scanTextLengthIn = {
@@ -364,7 +334,7 @@ function logTree(tree,depth) {
 										word = word.toLowerCase().replace(/\s+/g,"");
 										
 										if (attributeKeywords[word]) {
-											currentNodeScore += attributeKeywords[word]/relativeDepthOfCurrentNode;
+											currentNodeScore += attributeKeywords[word] < 0 ? attributeKeywords[word] : attributeKeywords[word]/relativeDepthOfCurrentNode;
 										} else {
 											//console.log("Unhandled attribute keyword",word);
 											currentNodeScore += attributeKeywords.other/relativeDepthOfCurrentNode;
@@ -418,25 +388,21 @@ function logTree(tree,depth) {
 			}
 		}
 		
-		var nodeSorted = getElementsByTagName(this.parseTree,isTextContainer).map(findNodeScore);
+		var regionList = getElementsByTagName(this.parseTree,isTextContainer).map(findNodeScore);
 		
-		if (!nodeSorted.length) {
+		if (!regionList.length) {
 			return null;
 		}
 		
-		return nodeSorted.sort(function(a,b) {
-			return b.score - a.score;
-		});
-		
-		// Unwritten algorithm ideas:
-		// Define certain nodes as being highly relevant to 'text' content. P, STRONG, B, U, I, OL, UL, LI, etc.
-		// Return node with greatest proportion of these text nodes as direct children, or ancestors.
-		// Ancestor elements are rated less highly.
-		// Potentially weight text nodes as being more likely to contain real content (as opposed to UI elements, menus etc)
-		// by the number of words they contain.
-		// Nodes with negative weight would include script tags, link tags, etc.
-		// Also use 'flatness' as a deciding factor. Flatness would be number of direct children divided by total decendant nodes.
-		//
+		var sortedList = regionList.sort(function(a,b) {
+				return b.score - a.score;
+			})
+			.slice(0,5)
+			.map(function(region) {
+				return bulldozer.doze(region.node);
+			});
+			
+		return sortedList;
 	};
 	
 	function psychic(htmlData) {
