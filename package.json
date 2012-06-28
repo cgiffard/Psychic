@@ -1,6 +1,6 @@
 {
   "author": "Christopher Giffard <christopher.giffard@cgiffard.com>",
-  "name": "Psychic",
+  "name": "psychic",
   "description": "Discovers and extracts content and semantic data from raw HTML.",
   "version": "0.0.1",
   "homepage": "https://github.com/cgiffard/Psychic",
@@ -15,7 +15,9 @@
   "engines": {
     "node": "~0.6.9"
   },
-  "dependencies": {},
+  "dependencies": {
+    "castor": ">=0.0.1"
+  },
   "devDependencies": {},
   "optionalDependencies": {}
 }
