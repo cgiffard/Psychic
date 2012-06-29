@@ -2,6 +2,7 @@
 // Takes a Castor tree and trims the fat.
 
 (function(glob) {
+	"use strict";
 	
 	// Really just wrapping a function to make it fit better as a module.
 	// I'll probably change this in future, but for now it stays.
@@ -9,138 +10,134 @@
 	
 	// Nodes we want to include in the final output...
 	var nodeWhiteList = {
-		"header": 		true,
-		"article": 		true,
-		"aside": 		true,
-		"section": 		true,
-		"nav": 			true,
-		"h1": 			true,
-		"h2": 			true,
-		"h3": 			true,
-		"h4": 			true,
-		"h5": 			true,
-		"h6": 			true,
-		"hgroup": 		true,
-		"header": 		true,
-		"footer": 		true,
-		"address": 		true,
-		"p": 			true,
-		"hr": 			true,
-		"pre": 			true,
-		"blockquote": 	true,
-		"ol": 			true,
-		"ul": 			true,
-		"li": 			true,
-		"dl": 			true,
-		"dt": 			true,
-		"dd": 			true,
-		"figure": 		true,
+		"article":		true,
+		"aside":		true,
+		"section":		true,
+		"nav":			true,
+		"h1":			true,
+		"h2":			true,
+		"h3":			true,
+		"h4":			true,
+		"h5":			true,
+		"h6":			true,
+		"hgroup":		true,
+		"header":		true,
+		"footer":		true,
+		"address":		true,
+		"p":			true,
+		"hr":			true,
+		"pre":			true,
+		"blockquote":	true,
+		"ol":			true,
+		"ul":			true,
+		"li":			true,
+		"dl":			true,
+		"dt":			true,
+		"dd":			true,
+		"figure":		true,
 		"figcaption":	true,
-		"center": 		true,
-		"a": 			true,
-		"abbr": 		true,
-		"acronym": 		true,
-		"b": 			true,
-		"big": 			true,
-		"br": 			true,
-		"cite": 		true,
-		"code": 		true,
-		"dfn": 			true,
-		"em": 			true,
-		"i": 			true,
-		"kbd": 			true,
-		"listing": 		true,
-		"mark": 		true,
-		"q": 			true,
-		"rp": 			true,
-		"rt": 			true,
-		"ruby": 		true,
-		"s": 			true,
-		"samp": 		true,
-		"small": 		true,
-		"span": 		true,
-		"strike": 		true,
-		"strong": 		true,
-		"sub": 			true,
-		"sup": 			true,
-		"time": 		true,
-		"tt": 			true,
-		"u": 			true,
-		"ins": 			true,
-		"del": 			true,
-		"img": 			true,
-		"video": 		true,
-		"audio": 		true,
-		"source": 		true,
-		"track": 		true,
-		"canvas": 		true,
-		"math": 		true,
-		"svg": 			true,
-		"table": 		true,
-		"caption": 		true,
-		"colgroup": 	true,
-		"col": 			true,
-		"tbody": 		true,
-		"thead": 		true,
-		"tfoot": 		true,
-		"tr": 			true,
-		"td": 			true,
-		"td": 			true,
-		"th": 			true,
-		"acronym": 		true
+		"center":		true,
+		"a":			true,
+		"abbr":			true,
+		"acronym":		true,
+		"b":			true,
+		"big":			true,
+		"br":			true,
+		"cite":			true,
+		"code":			true,
+		"dfn":			true,
+		"em":			true,
+		"i":			true,
+		"kbd":			true,
+		"listing":		true,
+		"mark":			true,
+		"q":			true,
+		"rp":			true,
+		"rt":			true,
+		"ruby":			true,
+		"s":			true,
+		"samp":			true,
+		"small":		true,
+		"span":			true,
+		"strike":		true,
+		"strong":		true,
+		"sub":			true,
+		"sup":			true,
+		"time":			true,
+		"tt":			true,
+		"u":			true,
+		"ins":			true,
+		"del":			true,
+		"img":			true,
+		"video":		true,
+		"audio":		true,
+		"source":		true,
+		"track":		true,
+		"canvas":		true,
+		"math":			true,
+		"svg":			true,
+		"table":		true,
+		"caption":		true,
+		"colgroup":		true,
+		"col":			true,
+		"tbody":		true,
+		"thead":		true,
+		"tfoot":		true,
+		"tr":			true,
+		"td":			true,
+		"th":			true
 	};
 	
 	// Nodes we do NOT want to include in the final output...
 	var nodeBlackList = {
-		"script": 		true,
-		"style": 		true,
-		"iframe": 		true,
-		"embed": 		true,
-		"object": 		true,
-		"map": 			true,
-		"area": 		true,
-		"applet": 		true,
-		"param": 		true,
-		"frameset": 	true,
-		"frame": 		true
+		"script":		true,
+		"style":		true,
+		"iframe":		true,
+		"embed":		true,
+		"object":		true,
+		"map":			true,
+		"area":			true,
+		"applet":		true,
+		"param":		true,
+		"frameset":		true,
+		"frame":		true
 	};
 	
 	var attributeWhitelist = {
-		"rel": 			true,
-		"href": 		true,
-		"src": 			true,
-		"alt": 			true,
+		"rel":			true,
+		"href":			true,
+		"src":			true,
+		"alt":			true,
 		"title":		true,
-		"width": 		true,
-		"height": 		true,
-		"role": 		true,
-		"name": 		true,
-		"summary": 		true,
-		"rowspan": 		true,
-		"colspan": 		true,
-		"srclang": 		true,
-		"type": 		true,
-		"summary": 		true
+		"width":		true,
+		"height":		true,
+		"role":			true,
+		"name":			true,
+		"summary":		true,
+		"rowspan":		true,
+		"colspan":		true,
+		"srclang":		true,
+		"type":			true
 	};
 	
 	// Elements which should not include any content.
 	var voidElements = {
-	 	"area": 		true,
-	 	"base": 		true,
-	 	"br": 			true,
-	 	"col": 			true,
+	 	"area":			true,
+	 	"base":			true,
+	 	"br":			true,
+	 	"col":			true,
 	 	"command":		true,
-	 	"embed": 		true,
-	 	"hr": 			true,
-	 	"img": 			true,
-	 	"input": 		true,
-	 	"keygen": 		true,
-	 	"link": 		true,
-	 	"meta": 		true,
-	 	"param": 		true,
-	 	"source": 		true,
-	 	"track": 		true,
-	 	"wbr": 			true
+	 	"embed":		true,
+	 	"hr":			true,
+	 	"img":			true,
+	 	"input":		true,
+	 	"keygen":		true,
+	 	"link":			true,
+	 	"meta":			true,
+	 	"param":		true,
+	 	"source":		true,
+	 	"track":		true,
+	 	"wbr":			true
 	 };
 	 
 	// Clones an object (but not a deep clone.)
@@ -190,7 +187,7 @@
 		function bulldozeChildren(childNodes,depth) {
 			var newChildNodeList = [];
 			childNodes.forEach(function(node) {
-				var tagName = String(node.tagName || "").toLowerCase().replace(/[^a-z]/g,"");
+				var tagName = String(node.tagName || "").toLowerCase().replace(/[^a-z0-9]/ig,"");
 				node.tagName = tagName;
 				
 				cleanAttributes(node);
@@ -204,7 +201,6 @@
 				// Unlisted nodes will have their children and innertext scanned.
 				// Blacklisted nodes will be dropped entirely.
 				} else if (node.nodeType === 1 && !nodeBlackList[tagName]) {
-					
 					// Not blacklisted, but not whitelisted.
 					// Loop through children and bulldoze them as children of our current node.
 					if (node.childNodes && node.childNodes.length) {
@@ -254,7 +250,7 @@
 			
 			if (!node.attributes) return;
 			
-			for (attrName in node.attributes) {
+			for (var attrName in node.attributes) {
 				if (!attributeWhitelist[attrName]) {
 					delete node.attributes[attrName];
 				}
@@ -267,7 +263,7 @@
 		var newTree = self.flatClone(inputTree);
 		
 		// Do a couple of things to this node first...
-		newTree.tagName = String(newTree.tagName || "").toLowerCase().replace(/[^a-z]/g,"");;
+		newTree.tagName = String(newTree.tagName || "").toLowerCase().replace(/[^a-z0-9]/g,"");
 		cleanAttributes(newTree);
 		
 		// And now process the children.
@@ -275,7 +271,6 @@
 		
 		return newTree;
 	};
-	
 	
 	function bulldozer() {
 		return new Bulldozer();
