@@ -409,5 +409,7 @@
 		return new Psychic(htmlData);
 	}
 	
+	psychic.walkFor = walkFor;
+	
 	(typeof module != "undefined" && module.exports) ? (module.exports = psychic) : (typeof define != "undefined" ? (define("psychic", [], function() { return psychic; })) : (glob.castor = psychic));
 })(this);
