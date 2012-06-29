@@ -122,22 +122,22 @@
 	
 	// Elements which should not include any content.
 	var voidElements = {
-	 	"area":			true,
-	 	"base":			true,
-	 	"br":			true,
-	 	"col":			true,
-	 	"command":		true,
-	 	"embed":		true,
-	 	"hr":			true,
-	 	"img":			true,
-	 	"input":		true,
-	 	"keygen":		true,
-	 	"link":			true,
-	 	"meta":			true,
-	 	"param":		true,
-	 	"source":		true,
-	 	"track":		true,
-	 	"wbr":			true
+		"area":			true,
+		"base":			true,
+		"br":			true,
+		"col":			true,
+		"command":		true,
+		"embed":		true,
+		"hr":			true,
+		"img":			true,
+		"input":		true,
+		"keygen":		true,
+		"link":			true,
+		"meta":			true,
+		"param":		true,
+		"source":		true,
+		"track":		true,
+		"wbr":			true
 	 };
 	 
 	// Clones an object (but not a deep clone.)
@@ -154,7 +154,7 @@
 		} else if (typeof object === "object") {
 			var newObj = {};
 			
-			for (prop in object) {
+			for (var prop in object) {
 				if (object.hasOwnProperty(prop)) {
 					newObj[prop] = object[prop];
 				}
