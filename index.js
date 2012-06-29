@@ -4,7 +4,6 @@
 
 
 // WARNING!
-
 /// This is INCREDIBLY messy. I'll tidy this up for human consumption later.
 
 (function(glob) {
@@ -99,7 +98,7 @@
 			});
 		
 		if (titleText.length) {
-			var titleText = titleText[0];
+			titleText = titleText[0];
 			
 			titleText =
 				titleText
@@ -126,7 +125,7 @@
 		});
 		
 		if (headingText.length) {
-			var headingText = headingText[0].textContent;
+			headingText = headingText[0].textContent;
 			
 			headingText =
 				headingText
@@ -243,7 +242,6 @@
 				"footer": -3,
 				"section": 2,
 				"div": -10,
-				"span": 1,
 				"noscript": -5,
 				"body": -10,
 				"nav": -10,
@@ -272,7 +270,6 @@
 				"item": -1,
 				"avatar": -3,
 				"story": 3,
-				"midarticle": 10,
 				"post": 30,
 				"entry": 10,
 				"published": 30,
@@ -310,21 +307,29 @@
 			walkFor(node,function(testNode,relativeDepthOfCurrentNode) {
 				// We use the relative depth of the current node to balance negative and positive weighting.
 				// We want to get as close to the actual content as possible, so the flatter the node, the better.
-				var currentNodeScore = 0;
+				var currentNodeScore = 0, words = [];
+				
+				// Use an exponential operator to weight the score of flatter nodes.
+				var scoreDivisor = Math.pow(relativeDepthOfCurrentNode,2);
 				
 				if (testNode && testNode.tagName) {
 					if (!!nodeScores[testNode.tagName] && !isNaN(nodeScores[testNode.tagName])) {
-						currentNodeScore += (nodeScores[testNode.tagName]/relativeDepthOfCurrentNode);
+						if (nodeScores[testNode.tagName] > 0) {
+							currentNodeScore += (nodeScores[testNode.tagName]/scoreDivisor);
+						} else {
+							// Don't weight negative scores. We want those to propagate right down the tree.
+							currentNodeScore += nodeScores[testNode.tagName];
+						}
 					} else {
-						currentNodeScore += (nodeScores.other/relativeDepthOfCurrentNode);
+						currentNodeScore += (nodeScores.other/scoreDivisor);
 					}
 					
 					if (testNode.attributes) {
 						// Scan for keywords in node attributes...
-						for (attribute in testNode.attributes) {
+						for (var attribute in testNode.attributes) {
 							if (testNode.attributes.hasOwnProperty(attribute)) {
 								// Split up attribute into 'words'
-								var words = String(testNode.attributes[attribute]).split(/[^a-z]/ig);
+								words = String(testNode.attributes[attribute]).split(/[^a-z]/ig);
 								
 								words
 									.filter(function(word) {
@@ -334,10 +339,10 @@
 										word = word.toLowerCase().replace(/\s+/g,"");
 										
 										if (attributeKeywords[word]) {
-											currentNodeScore += attributeKeywords[word] < 0 ? attributeKeywords[word] : attributeKeywords[word]/relativeDepthOfCurrentNode;
+											currentNodeScore += attributeKeywords[word] < 0 ? attributeKeywords[word] : attributeKeywords[word]/scoreDivisor;
 										} else {
 											//console.log("Unhandled attribute keyword",word);
-											currentNodeScore += attributeKeywords.other/relativeDepthOfCurrentNode;
+											currentNodeScore += attributeKeywords.other/scoreDivisor;
 										}
 									});
 							}
@@ -346,7 +351,7 @@
 					
 					// Combine score with text length analysis
 					if (scanTextLengthIn[String(testNode.tagName).toLowerCase()]) {
-						var words = testNode.getText().split(/[^a-z0-9]/ig).filter(function(word) {
+						words = testNode.getText().split(/[^a-z0-9]/ig).filter(function(word) {
 							return word.replace(/[^a-z0-9]/ig,"").length;
 						});
 						
@@ -367,22 +372,34 @@
 		
 		// Find node score...
 		function findNodeScore(node) {
+			
+			// Function for ensuring numbers & zero-division aren't going to NaN the calculation...
+			function checkNumBounds(number) {
+				if (number === Infinity) return 1;
+				if (number === -Infinity) return -1;
+				if (isNaN(number)) return 1;
+				if (number === null || number === undefined) return 1;
+				
+				return number;
+			}
+			
 			if (node.nodeType === 1) {
-				var descendantCount			= countDescendants(node) || 0;
-				var childElementCount		= countElementChildren(node) || 0;
-				var childDescendantRatio	= (childElementCount / descendantCount) || 0;
-				var nodeWords				= countNodeWords(node) || 0;
-				var nodeLinkWords			= countLinkWords(node) || 0;
-				var linkWordsToWords		= (nodeWords / nodeLinkWords) || 0;
-				var nonTextNodes			= countNonTextNodes(node) || 0;
-				var textNodes				= countTextNodes(node) || 0;
-				var textNodesToNodes		= (textNodes / descendantCount) || 0;
+				var descendantCount			= checkNumBounds(countDescendants(node));
+				var childElementCount		= checkNumBounds(countElementChildren(node));
+				var childDescendantRatio	= checkNumBounds((childElementCount / descendantCount));
+				var nodeWords				= checkNumBounds(countNodeWords(node));
+				var nodeLinkWords			= checkNumBounds(countLinkWords(node));
+				var linkWordsToWords		= checkNumBounds((nodeWords / nodeLinkWords));
+				var nonTextNodes			= checkNumBounds(countNonTextNodes(node));
+				var textNodes				= checkNumBounds(countTextNodes(node));
+				var textNodesToNodes		= checkNumBounds((textNodes / descendantCount));
 				var nodeText				= node.getText();
-				var whitespaceToText		= nodeText.replace(/\S/ig,"").length / nodeText.replace(/\s/ig,"").length;
+				var whitespaceToText		= checkNumBounds(nodeText.replace(/\S/ig,"").length / nodeText.replace(/\s/ig,"").length);
 				
 				var nodeScore = tallyNodeScores(node);
 				
-				var digest = (descendantCount * childDescendantRatio) * textNodesToNodes * (linkWordsToWords < Infinity ? linkWordsToWords : 1) * (nodeScore * whitespaceToText);
+				// Digest all of these inputs...
+				var digest = descendantCount * childDescendantRatio * textNodesToNodes * linkWordsToWords * nodeScore * whitespaceToText;
 				
 				return {"node":node,"score":digest};
 			}
@@ -395,11 +412,16 @@
 		}
 		
 		var sortedList = regionList.sort(function(a,b) {
-				return b.score - a.score;
+				if (a.score < b.score) return 1;
+				if (a.score === b.score) return 0;
+				return -1;
 			})
 			.slice(0,5)
 			.map(function(region) {
-				return bulldozer.doze(region.node);
+				return {
+					"node": bulldozer.doze(region.node);
+					"score": region.score
+				};
 			});
 			
 		return sortedList;
