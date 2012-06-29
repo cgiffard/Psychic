@@ -419,7 +419,7 @@
 			.slice(0,5)
 			.map(function(region) {
 				return {
-					"node": bulldozer.doze(region.node);
+					"node": bulldozer.doze(region.node),
 					"score": region.score
 				};
 			});
